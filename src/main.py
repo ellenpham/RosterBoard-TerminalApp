@@ -1,4 +1,5 @@
 import os
+import re
 
 # Start the program with a welcome banner
 
@@ -33,47 +34,60 @@ os.system('clear')
 print("-------------------------------------------------------------------------------------------------------------------------")
 
 # Employee information
-first_name = str(input("Please enter your first name: "))
-last_name = str(input("Please enter your last name: "))
 
+# Input name
+while True: 
+    #Check if the string has any characters from a to z lower case, and A to Z upper case:
+    first_name = input("Enter your first name: ")
+    last_name = input("Enter your last name: ")
+    user_first_name = re.findall(r"^[a-zA-Z]+$", first_name)
+    user_last_name = re.findall(r"^[a-zA-Z]+$", last_name)
+
+    if user_first_name and user_last_name:
+        print(f'\nHello {first_name}, we hope you are doing good!')
+        break
+    else:
+        print("Invalid input! Please try again.\n")
+
+print("\n")
+# Department selection
 def department_choice():
     print("Please select your department:")
     print("[1] Enter 1 for Pick Packing")
     print("[2] Enter 2 for Inventory")
     print("[3] Enter 3 for Receiving/Despatch")
-    department = input("Enter your selection: ")
-    return department
 
-# print(department_choice())
+    while True:
+        try:
+            department = int(input("Please enter your selection: "))
+        except ValueError:
+            print("Invalid input! Please try again.\n")
+            continue
 
-# user_department_choice = str()
+        if department != 1 and department != 2 and department != 3:
+            print("Sorry, your selection is not in the list.\n")
+            continue
+        else:
+            break
+    
+    if department == 1: 
+        print("Pick Packing")
+    
+    elif department == 2:
+        print ("Inventory")
+    else:
+        print("Receiving/Despatch")
 
-# if(user_department_choice == "1"):
-#     print("Pick Packing")
-
-# elif(user_department_choice == "2"):
-#     print("Inventory")
-
-# elif(user_department_choice == "3"):
-#     print("Receiving/Despatch")
-
-# else:
-#     print("Invalid input! Please try again.")
-
-# while user_department_choice != "1" "2" "3":
-#     print("Invalid input! Please try again.")
-#     user_department_choice = department_choice()
-#     print("Invalid input! Please try again.")
+department_choice()
 
 print("-------------------------------------------------------------------------------------------------------------------------")
 
-os.system('clear')
 
 # Main menu
 print("-------------")
 print("| MAIN MENU |")
 print("-------------")
-print(f'Hello {first_name}, we hope you are doing good. Please select your option: ')
+print("Please select your option: ")
 
 def main_menu():
     print("[1] Enter 1 to create your roster for the following week")
