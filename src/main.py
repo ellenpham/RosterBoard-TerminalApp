@@ -1,6 +1,8 @@
 import os
 import re
 
+from create_roster_function import create_roster
+
 # Start the program with a welcome banner
 
 print("*-----------*****-----------******----------*****----------*****----------*****----------*****----------*****-----------*")
@@ -82,13 +84,35 @@ department_choice()
 
 print("-------------------------------------------------------------------------------------------------------------------------")
 
+print("Let's start scheduling! Hit Enter to begin...")
+input()
+os.system('clear')
 
 # Main menu
 print("-------------")
 print("| MAIN MENU |")
 print("-------------")
-print("Please select your option: ")
 
+# File handling
+# Availablity, Completed
+# Day 1, False
+# Day 2, True
+file_name = "schedule_record.csv"
+
+# Check if schedule_records.csv exists
+try:
+    roster_file = open(file_name, "r")
+    roster_file.close()
+    print("Record existed")
+
+except FileNotFoundError as e:
+    roster_file = open(file_name, "w")
+    roster_file.write("Availability, Completed")
+    roster_file.close()
+    print("Record is not existed, create records")
+
+
+print("Please select your option: ")
 def main_menu():
     print("[1] Enter 1 to create your roster for the following week")
     print("[2] Enter 2 to add your unavailability for ONE week after the following week")
@@ -104,7 +128,7 @@ while user_menu_choice != "5":
     user_menu_choice = main_menu()
 
     if(user_menu_choice == "1"):
-        print("Create your roster")
+        create_roster(file_name)
     
     elif(user_menu_choice == "2"):
         print("Add your unavailability")
