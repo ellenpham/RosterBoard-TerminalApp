@@ -26,9 +26,9 @@ print("INSTRUCTIONS")
 print("------------")
 print("\n")
 print("Once you Start the work schedule process, you will be prompted to action the below requests:")
-print("1. Create your roster for the following week.")
-print("2. Inform us your unavailability for the next ONE week after the following week.")
-print("3. Modify your schedule if needed.")
+print("- Create your roster for the following week.")
+print("- Inform us your unavailability for the next ONE week after the following week.")
+print("- Modify your schedule if needed.")
 print("\n")
 print("Are you ready to Start your work schedule? Please hit Enter to start...")
 input()
@@ -55,9 +55,9 @@ print("\n")
 # Department selection
 def department_choice():
     print("Please select your department:")
-    print("[1] Enter 1 for Pick Packing")
+    print("[1] Enter 1 for Operation")
     print("[2] Enter 2 for Inventory")
-    print("[3] Enter 3 for Receiving/Despatch")
+    print("[3] Enter 3 for Distribution")
 
     while True:
         try:
@@ -73,12 +73,12 @@ def department_choice():
             break
     
     if department == 1: 
-        print("Pick Packing")
+        print("Operation")
     
     elif department == 2:
         print ("Inventory")
     else:
-        print("Receiving/Despatch")
+        print("Distribution")
 
 department_choice()
 
@@ -95,8 +95,8 @@ print("-------------")
 
 # File handling
 # Availablity, Completed
-# Day 1, False
-# Day 2, True
+# Day 1, Added
+# Day 2, Modified
 file_name = "schedule_record.csv"
 
 # Check if schedule_records.csv exists
@@ -107,7 +107,7 @@ try:
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
-    roster_file.write("Availability, Completed")
+    roster_file.write("Availability, Actions\n")
     roster_file.close()
     print("Record is not existed, create records")
 

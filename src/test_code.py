@@ -29,4 +29,72 @@
 #     else:
 #         print("Invalid input! Please try again.")
 
-    
+# from datetime import datetime as dt
+# now = dt.now()
+ 
+# s = now.strftime("%A %d %m %-Y")
+# print(s)
+
+# from datetime import datetime, timedelta
+# dt = datetime.now()
+# td = timedelta(days=5)
+# # your calculated date
+# my_date = dt + td
+
+# print(my_date)
+
+# import datetime
+
+
+# print((datetime.datetime.now() + datetime.timedelta(days=6)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=7)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=8)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=9)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=10)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=11)).strftime("%A %B %d %-Y"))
+# print((datetime.datetime.now() + datetime.timedelta(days=12)).strftime("%A %B %d %-Y"))
+
+import datetime
+ 
+from datetime import timedelta 
+ 
+d=int(27)
+m=int(4)
+y=int(2023)
+     
+# roster release date
+release_date = datetime.datetime(y, m, d) 
+
+# Monday to Sunday the following week
+# Monday
+mon = (release_date + timedelta(days = 4)).strftime("%A %B %d %-Y")
+print("[1]", mon) 
+
+# Tuesday
+tue = (release_date + timedelta(days = 5)).strftime("%A %B %d %-Y")
+print("[2]", tue) 
+
+# Wednesday
+wed = (release_date + timedelta(days = 6)).strftime("%A %B %d %-Y")
+print("[3]", wed) 
+
+# Thursday
+thu = (release_date + timedelta(days = 7)).strftime("%A %B %d %-Y")
+print("[4]", thu) 
+
+# Friday
+fri = (release_date + timedelta(days = 8)).strftime("%A %B %d %-Y")
+print("[5]", fri) 
+
+# Saturday
+sat = (release_date + timedelta(days = 9)).strftime("%A %B %d %-Y")
+print("[6]", sat) 
+
+# Sunday
+sun = (release_date + timedelta(days = 10)).strftime("%A %B %d %-Y")
+print("[7]", sun)
+
+# Finish choosing the days
+
+print("[Q] Finish your selection")
+
