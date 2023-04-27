@@ -135,16 +135,58 @@
 # if __name__ == "__main__":
 #     main()
 
-import csv
+# import csv
 
-with open('file.csv', 'a') as f:
-    w = csv.writer(f, quoting=csv.QUOTE_ALL) 
+# with open('file.csv', 'a') as f:
+#     w = csv.writer(f, quoting=csv.QUOTE_ALL) 
 
-while (1):
-    why = input("why? ")
-    date = input("date: ")
-    story = input("story: ")
-    w.writerow([why, date, story])
+# while (1):
+#     why = input("why? ")
+#     date = input("date: ")
+#     story = input("story: ")
+#     w.writerow([why, date, story])
 
 
+# with open("hello.txt", "w") as my_file:
+#     my_file.write("Hello world \n")
+#     my_file.write("I hope you're doing well today \n")
+#     my_file.write("This is a text file \n")
+#     my_file.write("Have a nice time \n")
 
+# with open("hello.txt") as my_file:
+#     for line in my_file:
+#         print(line)
+
+
+# libraries
+import sys
+
+# list variable to store name
+names = []
+
+# limits to save name
+limit = 10
+
+# function to display menu
+def menu():
+    print("Enter 1 to add Name")
+    print("Enter 2 to show list")
+    print("Enter 3 to quit")
+    choice = int(input("Enter your choice : "))
+    return choice
+
+# running for infinite times till user quits
+while(True):
+    choice = menu()
+    if(choice == 1):
+        name = input("Enter name to add in list : ")
+        if(len(names) >= 1):
+            print("You cannot enter more names")
+        else:
+            names.append(name)
+            print(name + " - Name saved successfully.")
+    if(choice == 2):
+        print("List of names : ")
+        print(names)
+    if(choice == 3):
+        sys.exit()

@@ -20,17 +20,17 @@ def create_roster(file_name):
     print("| AVAILABILITY |")
     print("+--------------+") 
 
-    # Start selection
+    # Start creating roster
     print("Enter index in the [] to select or enter Q to finish.")
 
+    # Roster release date
     d=int(25)
     m=int(5)
     y=int(2023)
         
-    # roster release date
     release_date = datetime.datetime(y, m, d) 
 
-    # Monday to Sunday of the following week
+    # Monday to Sunday of the following week based on roster release date
     # Monday
     mon = (release_date + timedelta(days = 4)).strftime("%A %B %d %-Y")
     print("[1]", mon) 
@@ -63,42 +63,52 @@ def create_roster(file_name):
     print("[Q] Finish your selection\n")
 
         
-    # input("Please select your available days: ")
-    
-    # with open(file_name, "a") as schedule_record:
-    #     writer = csv.writer(schedule_record)
-
+    # Get users input
     available_day = str()
     
     while available_day != "Q":
         available_day = input("Please select your available days: ")
 
         if (available_day == "1"):
-            # writer.writerow([mon, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([mon, " Added"])
             print(f'{mon} is added to your roster.')
 
         elif (available_day == "2"):
-            # writer.writerow([tue, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([tue, " Added"])
             print(f'{tue} is added to your roster.')
 
         elif (available_day == "3"):
-            # writer.writerow([wed, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([wed, " Added"])
             print(f'{wed} is added to your roster.')
 
         elif (available_day == "4"):
-            # writer.writerow([thu, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([thu, " Added"])
             print(f'{thu} is added to your roster.')
 
         elif (available_day == "5"):
-            # writer.writerow([fri, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([fri, " Added"])
             print(f'{fri} is added to your roster.')
 
         elif (available_day == "6"):
-            # writer.writerow([sat, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([sat, " Added"])
             print(f'{sat} is added to your roster.')
 
         elif (available_day == "7"):
-            # writer.writerow([sun, " Added"])
+            with open(file_name, "a") as schedule_record:
+                writer = csv.writer(schedule_record)
+                writer.writerow([sun, " Added"])
             print(f'{sun} is added to your roster.')
 
         elif (available_day == "Q"):
