@@ -251,8 +251,73 @@
 #             line_count += 1
 #     print(f'Processed {line_count} lines.')
 
-import csv
+# import csv
 
-reader = csv.reader(open("employees.csv"))
-no_lines= len(list(reader))
-print(no_lines)
+# reader = csv.reader(open("employees.csv"))
+# no_lines= len(list(reader))
+# print(no_lines)
+
+# import random
+# correct = 0
+# incorrect = 0
+# usedwords = []
+# print ('Welcome to text twist, you have 14 guesses to get 7 words made up of 4, 5 or 6 letters. Good Luck!')
+
+# for i in range(14):
+#     print ("Your letters are 'E' 'P' 'L' 'B' 'E' 'B', what is your guess?")
+#     answer = input()
+#     if answer in usedwords:
+#         print ("Sorry, you've already used this word")
+#     else: #Newly added
+#         usedwords.append(answer) #We have to add the input words to the list if they are new
+#         if answer == 'belle' or answer == 'bleep' or answer == 'pebble' or answer == 'beep' or answer == 'bell' or answer == 'peel' or answer == 'peep':
+#             if answer in usedwords:
+#                 print ('Nice that was one of the words!')
+#             usedwords.append(answer)
+#             correct = correct + 1
+#         if answer != 'belle' and answer != 'bleep' and answer != 'pebble' and answer != 'beep' and answer != 'bell' and answer != 'peel' and answer != 'peep':
+#             print ('Sorry, that was not one of the words.')
+#             incorrect = incorrect + 1
+
+
+# print ('Your final score was'), correct, 'correct and', incorrect, 'wrong.'
+
+
+    # Remove duplicates in schedule_record.csv file if there's any
+    # original_file = open('schedule_record.csv','r')
+
+    # final_file = open('schedule_record_filtered.csv','w')
+
+    # list_rows = []
+
+    # for row in original_file:
+
+    #     if row in list_rows:
+    #         continue
+
+    #     else:
+    #         final_file.write(row)
+    #         list_rows.append(row)
+    
+    # original_file.close()
+    # final_file.close()
+
+user_day_selection = True
+while user_day_selection:
+    # if less than 3 available days, users can choose to continue adding more days or have no roster at all
+    print("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?")
+    continue_or_not = input ("--> Enter Yes to continue or No to quit: ")
+    if continue_or_not == "No":
+        user_day_selection = False
+        print("---------------------------------------------------------------------------------")
+        print("You have no roster for the following week.")
+        print("If you need further discussion, please contact our HR department on 1300 123 456.")
+        print("-------------------------------------------------------------------------------- ")
+
+    elif continue_or_not == "Yes":
+        continue
+    
+    else: 
+        print("Invalid input! Please try again!")
+               
+                

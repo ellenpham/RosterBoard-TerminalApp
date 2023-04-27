@@ -104,7 +104,6 @@ def main_menu():
         roster_file = open(file_name, "r")
         roster_file.close()
         print("Record existed")
-        # clear data in csv file
 
     except FileNotFoundError as e:
         roster_file = open(file_name, "w")
@@ -118,7 +117,7 @@ def main_menu():
 
     print("[1] Enter 1 to create your roster for the following week")
     print("[2] Enter 2 to add your unavailability for ONE week after the following week")
-    print("[3] Enter 3 to view your work schedule")
+    print("[3] Enter 3 to view your current work schedule")
     print("[4] Enter 4 to modify your work schedule")
     print("[5] Enter 5 to exit the program")
     menu_choice = input("Enter your selection: ")
@@ -148,6 +147,8 @@ while user_menu_choice != "5":
         print("| Please contact our HR department on 1300 123 456 if you have any questions.                      |")
         print("+--------------------------------------------------------------------------------------------------+")
         print("\n")
+        # clear data in csv file when exit program
+        os.system("rm schedule_record.csv")
         continue
     
     else:
