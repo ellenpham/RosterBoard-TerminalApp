@@ -215,3 +215,44 @@
 #     else:
 #         finalFile.write(row)
 #         listRows.append(row)
+
+# print ('screen question1 here')
+# screen1 = input('user answer')
+# if screen1 == 'yes':
+#     print('screen question2 here')
+#     screen2 = input('user answer')
+#     if screen2 == 'yes':
+#         print('screen question3 here')
+#         screen3 = input('user answer')
+#     else:
+#         print('camera question1 here')
+#         camera1 = input('user answer')
+# else:
+#     print('battery question1 here')
+#     battery1 = input('user answer')
+#     if battery1 == 'yes':
+#         print('battery question2 here')
+#         battery2 =input('user answer')
+#     else:
+#         print('wifi question1 here')
+#         wifi1 = input('user answer')
+
+# import csv
+
+# with open('test_file.txt') as csv_file:
+#     csv_reader = csv.reader(csv_file, delimiter=',')
+#     line_count = 0
+#     for row in csv_reader:
+#         if line_count == 0:
+#             print(f'Column names are {", ".join(row)}')
+#             line_count += 1
+#         else:
+#             print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+#             line_count += 1
+#     print(f'Processed {line_count} lines.')
+
+import csv
+
+reader = csv.reader(open("employees.csv"))
+no_lines= len(list(reader))
+print(no_lines)

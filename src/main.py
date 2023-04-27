@@ -99,23 +99,21 @@ def main_menu():
     print("+-------------+")
 
     # File handling
-    # Availablity, Completed
-    # Day 1, Added
-    # Day 2, Modified
-    # file_name = "schedule_record.csv"
 
-    # Check if schedule_records.csv exists
     try:
         roster_file = open(file_name, "r")
         roster_file.close()
         print("Record existed")
+        # clear data in csv file
 
     except FileNotFoundError as e:
         roster_file = open(file_name, "w")
-        roster_file.write("Rostered days, Actions\n")
+        roster_file.write("Rostered days, Shifts, Actions\n")
         roster_file.close()
         print("Record is not existed, create records")
 
+
+    # Start Home Menu selection 
     print("Please select your option: ")
 
     print("[1] Enter 1 to create your roster for the following week")
