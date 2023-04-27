@@ -119,4 +119,25 @@ def create_roster(file_name):
         else:
             print("Invalid input! Please try again.")
 
+
+    # Remove duplicates in schedule_record.csv file if any
+    originalFile = open('schedule_record.csv','r')
+
+    finalFile = open('schedule_record_filtered.csv','w')
+
+    listRows = []
+
+    for row in originalFile:
+
+        if row in listRows:
+            continue
+
+        else:
+            finalFile.write(row)
+            listRows.append(row)
+    
+    originalFile.close()
+    finalFile.close()
+
+
         

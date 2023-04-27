@@ -38,18 +38,20 @@ print("-------------------------------------------------------------------------
 # Employee information
 
 # Input name
-while True: 
-    #Check if the string has any characters from a to z lower case, and A to Z upper case:
-    first_name = input("Enter your first name: ")
-    last_name = input("Enter your last name: ")
-    user_first_name = re.findall(r"^[a-zA-Z]+$", first_name)
-    user_last_name = re.findall(r"^[a-zA-Z]+$", last_name)
+def input_name():
+    while True: 
+        #Check if the string has any characters from a to z lower case, and A to Z upper case:
+        first_name = input("Enter your first name: ")
+        last_name = input("Enter your last name: ")
+        user_first_name = re.findall(r"^[a-zA-Z]+$", first_name)
+        user_last_name = re.findall(r"^[a-zA-Z]+$", last_name)
 
-    if user_first_name and user_last_name:
-        print(f'\nHello {first_name}, we hope you are doing good!')
-        break
-    else:
-        print("Invalid input! Please try again.\n")
+        if user_first_name and user_last_name:
+            print(f'\nHello {first_name}, we hope you are doing good!')
+            break
+        else:
+            print("Invalid input! Please try again.\n")
+input_name()
 
 print("\n")
 # Department selection
@@ -88,34 +90,31 @@ print("Let's start scheduling! Hit Enter to begin...")
 input()
 os.system('clear')
 
-# Main menu
-# print("-------------")
-# print("| MAIN MENU |")
-# print("-------------")
 
-# File handling
-# Availablity, Completed
-# Day 1, Added
-# Day 2, Modified
 file_name = "schedule_record.csv"
-
-# Check if schedule_records.csv exists
-try:
-    roster_file = open(file_name, "r")
-    roster_file.close()
-    print("Record existed")
-
-except FileNotFoundError as e:
-    roster_file = open(file_name, "w")
-    roster_file.write("Rostered days, Actions\n")
-    roster_file.close()
-    print("Record is not existed, create records")
-
 
 def main_menu():
     print("+-------------+")
     print("|  HOME MENU  |")
     print("+-------------+")
+
+    # File handling
+    # Availablity, Completed
+    # Day 1, Added
+    # Day 2, Modified
+    # file_name = "schedule_record.csv"
+
+    # Check if schedule_records.csv exists
+    try:
+        roster_file = open(file_name, "r")
+        roster_file.close()
+        print("Record existed")
+
+    except FileNotFoundError as e:
+        roster_file = open(file_name, "w")
+        roster_file.write("Rostered days, Actions\n")
+        roster_file.close()
+        print("Record is not existed, create records")
 
     print("Please select your option: ")
 

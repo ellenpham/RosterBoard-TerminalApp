@@ -159,34 +159,59 @@
 
 
 # libraries
-import sys
+# import sys
 
-# list variable to store name
-names = []
+# # list variable to store name
+# names = []
 
-# limits to save name
-limit = 10
+# # limits to save name
+# limit = 10
 
-# function to display menu
-def menu():
-    print("Enter 1 to add Name")
-    print("Enter 2 to show list")
-    print("Enter 3 to quit")
-    choice = int(input("Enter your choice : "))
-    return choice
+# # function to display menu
+# def menu():
+#     print("Enter 1 to add Name")
+#     print("Enter 2 to show list")
+#     print("Enter 3 to quit")
+#     choice = int(input("Enter your choice : "))
+#     return choice
 
-# running for infinite times till user quits
-while(True):
-    choice = menu()
-    if(choice == 1):
-        name = input("Enter name to add in list : ")
-        if(len(names) >= 1):
-            print("You cannot enter more names")
-        else:
-            names.append(name)
-            print(name + " - Name saved successfully.")
-    if(choice == 2):
-        print("List of names : ")
-        print(names)
-    if(choice == 3):
-        sys.exit()
+# # running for infinite times till user quits
+# while(True):
+#     choice = menu()
+#     if(choice == 1):
+#         name = input("Enter name to add in list : ")
+#         if(len(names) >= 1):
+#             print("You cannot enter more names")
+#         else:
+#             names.append(name)
+#             print(name + " - Name saved successfully.")
+#     if(choice == 2):
+#         print("List of names : ")
+#         print(names)
+#     if(choice == 3):
+#         sys.exit()
+
+
+# import pandas as pd
+
+# df = pd.read_csv('test_file.csv', sep=', ', engine='python')
+
+# new_df = df[['min-zoom','max-zoom']].drop_duplicates()
+
+# new_df.to_csv('out.csv', index=False)
+
+
+# originalFile = open('schedule_record.csv','r')
+
+# finalFile = open('schedule_record_filtered.csv','w')
+
+# listRows = []
+
+# for row in originalFile:
+
+#     if row in listRows:
+#         continue
+
+#     else:
+#         finalFile.write(row)
+#         listRows.append(row)
