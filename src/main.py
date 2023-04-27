@@ -5,11 +5,11 @@ from create_roster_function import create_roster
 
 # Start the program with a welcome banner
 
-print("*-----------*****-----------******----------*****----------*****----------*****----------*****----------*****-----------*")
-print("*                                               WELCOME TO ROSTERBOARD                                                  *")
-print("*                             A work scheduling platform for all rostered staff of NKG Corp.                            *")
-print("*                        A centralized space to monitor your roster and put your schedule in place.                     *")
-print("*------------*****-----------******----------*****----------*****----------*****----------*****----------*****----------*")
+print("+-----------*****-----------******----------*****----------*****----------*****----------*****----------*****-----------+")
+print("|                                               WELCOME TO ROSTERBOARD                                                  |")
+print("+                            A work scheduling platform for all rostered staff of NKG Corp.                             +")
+print("|                        A centralized space to monitor your roster and put your schedule in place.                     |")
+print("+------------*****-----------******----------*****----------*****----------*****----------*****----------*****----------+")
 print("\n")
 print("-------------------------------------------------------------------------------------------------------------------------")
 print("Please note that every second Thursday, we will release a new request. Turn on the notification to receive the request.")
@@ -21,9 +21,9 @@ print("Please hit Enter to move on to the the application instructions...")
 input()
 
 # Instructions
-print("------------")
-print("INSTRUCTIONS")
-print("------------")
+print("+------------+")
+print("|INSTRUCTIONS|")
+print("+------------+")
 print("\n")
 print("Once you Start the work schedule process, you will be prompted to action the below requests:")
 print("- Create your roster for the following week.")
@@ -89,9 +89,9 @@ input()
 os.system('clear')
 
 # Main menu
-print("-------------")
-print("| MAIN MENU |")
-print("-------------")
+# print("-------------")
+# print("| MAIN MENU |")
+# print("-------------")
 
 # File handling
 # Availablity, Completed
@@ -107,13 +107,18 @@ try:
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
-    roster_file.write("Availability, Actions\n")
+    roster_file.write("Rostered days, Actions\n")
     roster_file.close()
     print("Record is not existed, create records")
 
 
-print("Please select your option: ")
 def main_menu():
+    print("+-------------+")
+    print("|  HOME MENU  |")
+    print("+-------------+")
+
+    print("Please select your option: ")
+
     print("[1] Enter 1 to create your roster for the following week")
     print("[2] Enter 2 to add your unavailability for ONE week after the following week")
     print("[3] Enter 3 to view your work schedule")
@@ -141,10 +146,10 @@ while user_menu_choice != "5":
     
     elif(user_menu_choice == "5"):
         print("\n")
-        print("------------------------------------------------------------------------------------------------")
-        print("See you again! Make sure you action your work schedule before this Sunday to secure your roster.")
-        print("Please contact our HR department on 1300 123 456 if you have any questions. ")
-        print("------------------------------------------------------------------------------------------------")
+        print("+--------------------------------------------------------------------------------------------------+")
+        print("| See you again! Make sure you action your work schedule before this Sunday to secure your roster. |")
+        print("| Please contact our HR department on 1300 123 456 if you have any questions.                      |")
+        print("+--------------------------------------------------------------------------------------------------+")
         print("\n")
         continue
     

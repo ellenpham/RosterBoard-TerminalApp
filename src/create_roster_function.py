@@ -2,28 +2,28 @@ import datetime
 from datetime import timedelta
 import csv
 
-
 def create_roster(file_name):
     print("-------------------------------------------------------------------------------------------------------------------------")
     print("You are about to create your roster for next week...")
     print("\n")
     print("**Important note**")
     print("\n")
-    print("You are required to be available at least 3 days. If you select less than 3 days of work, you will not get rostered.")
-    print("If you select 3 or more days, you will get rostered for all of the available days that you have chosen.")
-    print("You can only select 1 available shift, shift duration is 5 hours, anything over will get counted to your overtime rate.")
+    print("You are required to be available for at least THREE days.")
+    print("If you select less than THREE days of work, you will not get rostered.")
+    print("If you select THREE days or more, you will get rostered for all of the available days that you have chosen.")
+    print("You can only select ONE available shift, shift duration is 5 hours, anything over will get counted to your overtime rate.")
     print("-------------------------------------------------------------------------------------------------------------------------")
     print("Hit enter to start...")
     input()
 
-    print("----------------")
+    print("+--------------+")
     print("| AVAILABILITY |")
-    print("----------------")
+    print("+--------------+") 
 
     # Start selection
     print("Enter index in the [] to select or enter Q to finish.")
 
-    d=int(11)
+    d=int(25)
     m=int(5)
     y=int(2023)
         
@@ -60,49 +60,53 @@ def create_roster(file_name):
     print("[7]", sun)
 
     # Finish creating roster
-    print("[Q] Finish your selection")
+    print("[Q] Finish your selection\n")
 
-    # user_available_day = str()
-
-    # while user_available_day != "Q":
-    #     user_available_day = create_roster(file_name)
         
-    available_day = input("Please select your available days: ")
-    with open(file_name, "a") as schedule_record:
-        writer = csv.writer(schedule_record)
+    # input("Please select your available days: ")
+    
+    # with open(file_name, "a") as schedule_record:
+    #     writer = csv.writer(schedule_record)
 
-        if available_day == "1":
-            writer.writerow([mon, " Added"])
+    available_day = str()
+    
+    while available_day != "Q":
+        available_day = input("Please select your available days: ")
+
+        if (available_day == "1"):
+            # writer.writerow([mon, " Added"])
             print(f'{mon} is added to your roster.')
 
-        elif available_day == "2":
-            writer.writerow([tue, " Added"])
+        elif (available_day == "2"):
+            # writer.writerow([tue, " Added"])
             print(f'{tue} is added to your roster.')
 
-        elif available_day == "3":
-            writer.writerow([wed, " Added"])
+        elif (available_day == "3"):
+            # writer.writerow([wed, " Added"])
             print(f'{wed} is added to your roster.')
 
-        elif available_day == "4":
-            writer.writerow([thu, " Added"])
+        elif (available_day == "4"):
+            # writer.writerow([thu, " Added"])
             print(f'{thu} is added to your roster.')
 
-        elif available_day == "5":
-            writer.writerow([fri, " Added"])
+        elif (available_day == "5"):
+            # writer.writerow([fri, " Added"])
             print(f'{fri} is added to your roster.')
 
-        elif available_day == "6":
-            writer.writerow([sat, " Added"])
+        elif (available_day == "6"):
+            # writer.writerow([sat, " Added"])
             print(f'{sat} is added to your roster.')
 
-        elif available_day == "7":
-            writer.writerow([sun, " Added"])
+        elif (available_day == "7"):
+            # writer.writerow([sun, " Added"])
             print(f'{sun} is added to your roster.')
 
-        elif available_day == "Q":
-            print("You have completed your roster for the following week.")
+        elif (available_day == "Q"):
+            print("\nThank you! You have completed your roster for the following week.\n")
+            print("-------------------------------------------------------------------------------------------------------------------------\n")
+            break
 
         else:
             print("Invalid input! Please try again.")
 
-    print("-------------------------------------------------------------------------------------------------------------------------\n")
+        
