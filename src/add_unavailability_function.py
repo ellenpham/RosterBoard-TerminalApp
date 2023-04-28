@@ -1,0 +1,136 @@
+import csv
+import datetime
+from datetime import timedelta
+
+def add_unavailability(ua_file_name):
+    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("You are about to inform us of your unavailability for the week after the following week...")
+    print("\n")
+    print("**Important note**")
+    print("\n")
+    print("You can enter as many days and shifts as possible")
+    print("By promptly notifying us if you have any planned leave, we can prepare a better workfore plan for our site.")
+    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("Hit enter to start...")
+    input()
+
+    print("+----------------+")
+    print("| UNAVAILABILITY |")
+    print("+----------------+") 
+
+
+    # Start adding unavailability
+    print("Enter index in the [] to select or enter Q to finish.")
+
+    # Thursday of the following week
+    d=int(1)
+    m=int(6)
+    y=int(2023)
+        
+    release_date = datetime.datetime(y, m, d) 
+
+    # Monday to Sunday of the week after the following week
+    # Monday
+    mon = (release_date + timedelta(days = 4)).strftime("%A %B %d %-Y")
+    print("[1]", mon) 
+
+    # Tuesday
+    tue = (release_date + timedelta(days = 5)).strftime("%A %B %d %-Y")
+    print("[2]", tue) 
+
+    # Wednesday
+    wed = (release_date + timedelta(days = 6)).strftime("%A %B %d %-Y")
+    print("[3]", wed) 
+
+    # Thursday
+    thu = (release_date + timedelta(days = 7)).strftime("%A %B %d %-Y")
+    print("[4]", thu) 
+
+    # Friday
+    fri = (release_date + timedelta(days = 8)).strftime("%A %B %d %-Y")
+    print("[5]", fri) 
+
+    # Saturday
+    sat = (release_date + timedelta(days = 9)).strftime("%A %B %d %-Y")
+    print("[6]", sat) 
+
+    # Sunday
+    sun = (release_date + timedelta(days = 10)).strftime("%A %B %d %-Y")
+    print("[7]", sun)
+
+    # Finish adding unavailability
+    print("[Q] Enter Q to finish your selection\n")
+
+
+    unavailable_days_dict = {
+        "1": mon,
+        "2": tue,
+        "3": wed,
+        "4": thu,
+        "5": fri,
+        "6": sat,
+        "7": sun,
+    }    
+
+    unavailable_day = str()
+    unavailable_day_selection = True
+    selected_unavailable_days = []
+
+    while unavailable_day_selection:
+        unavailable_day = input("Please select your unavailable days: ")
+
+        if (unavailable_day == "Q"):
+            print("\n")
+            print("THANK YOU! You have finished adding your unvailability.")
+            print("\n")
+            break
+
+        elif unavailable_day in unavailable_days_dict:
+            if unavailable_day in selected_unavailable_days:
+                print("--> Sorry you have selected this day! Please try again.")
+                continue
+            else:             
+                selected_unavailable_days.append(unavailable_day)
+            
+            print("Enter AM, PM or Night to select or enter Q to finish.")
+            print("[AM]    Enter AM for AM")
+            print("[PM]    Enter PM for PM")
+            print("[Night] Enter Night for Night")
+            print("[Q]     Enter Q to finish your selection")
+            
+            unavailable_shift = str()
+            unavailable_shift_list = []
+
+            while unavailable_shift != "Q":
+                unavailable_shift = input("Please select your unavailable shifts: ")
+                
+                unavailable_shift_list.append(unavailable_shift)
+
+                if unavailable_shift == "AM":
+                    pass
+
+                elif unavailable_shift == "PM":
+                    pass
+                
+                elif unavailable_shift == "Night":
+                    pass
+
+                elif unavailable_shift == "Q":
+                    unavailable_shift_list.remove("Q")
+                    unavailable_shift_set = set(unavailable_shift_list)
+                    print("--> You have finished seleting your unavailable shifts.")
+                    break
+                else:
+                    print("--> Invalid input! Please try again.")
+
+        
+            with open(ua_file_name, "a") as ua_record:
+                writer = csv.writer(ua_record)
+                writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift, " Added"])
+                if unavailable_shift_set == {''}:
+                    print(f'--> You are NOT marked as unavalable on {unavailable_days_dict[unavailable_day]}')
+                else:
+                    print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_set}')
+
+        else:
+            print("--> Invalid input! Please try again.")

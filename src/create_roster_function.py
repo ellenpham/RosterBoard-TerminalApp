@@ -1,6 +1,6 @@
 import datetime
 from datetime import timedelta
-import csv
+import csv 
 
 def create_roster(file_name):
     print("-------------------------------------------------------------------------------------------------------------------------")
@@ -21,7 +21,7 @@ def create_roster(file_name):
     print("+--------------+") 
 
     # Start creating roster
-    print("Enter index in the [] to select or enter 8 to finish.")
+    print("Enter index in the [] to select or enter Q to finish.")
 
     # Roster release date
     d=int(25)
@@ -60,7 +60,7 @@ def create_roster(file_name):
     print("[7]", sun)
 
     # Finish creating roster
-    print("[8] Enter 8 to finish your selection\n")
+    print("[Q] Enter Q to finish your selection\n")
 
     days_dict = {
         "1": mon,
@@ -90,7 +90,7 @@ def create_roster(file_name):
         If users keep enter invalid input and none of the above cases is met.
         user_input_selection will keep looping until one of the above condition is met. 
         '''
-        if (available_day == "8"):
+        if (available_day == "Q"):
             # count data from csv file to check how many available days get recorded
             # if more than 3 available days then users have completed creating roster
             csv_reader = csv.reader(open("schedule_record.csv"))

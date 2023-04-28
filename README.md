@@ -134,8 +134,8 @@ Day 2: Develop Create Roster Function for when Prompt 1 in Home Menu is selected
 
 <br>
 
-Day 3: Complete Create Roster Function and update Readme file, start Add Future Unavailability Function. 
+Day 3: Complete Create Roster Function and update Readme file, start working on Add Future Unavailability Function. 
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
-![Trello_Day3_2](./docs/Trello_Day3_2.png)
+![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
 
 to be continued...

@@ -302,22 +302,10 @@
     # original_file.close()
     # final_file.close()
 
-user_day_selection = True
-while user_day_selection:
-    # if less than 3 available days, users can choose to continue adding more days or have no roster at all
-    print("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?")
-    continue_or_not = input ("--> Enter Yes to continue or No to quit: ")
-    if continue_or_not == "No":
-        user_day_selection = False
-        print("---------------------------------------------------------------------------------")
-        print("You have no roster for the following week.")
-        print("If you need further discussion, please contact our HR department on 1300 123 456.")
-        print("-------------------------------------------------------------------------------- ")
-
-    elif continue_or_not == "Yes":
-        continue
-    
-    else: 
-        print("Invalid input! Please try again!")
+# sample_list is defined list
+sample_list = [1,2,3,'seeker',3,7.5]
+# set() to convert list to set
+sample_set  = set(sample_list)
+print(sample_set) #printing set
                
                 

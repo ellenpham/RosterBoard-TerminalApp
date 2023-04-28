@@ -2,6 +2,7 @@ import os
 import re
 
 from create_roster_function import create_roster
+from add_unavailability_function import add_unavailability
 
 # Start the program with a welcome banner
 
@@ -92,26 +93,42 @@ os.system('clear')
 
 
 file_name = "schedule_record.csv"
+ua_file_name = "ua_record.csv"
+
+# File handling
+# CSV file for store availability
+try:
+    roster_file = open(file_name, "r")
+    roster_file.close()
+    print("Record existed")
+
+except FileNotFoundError as e:
+    roster_file = open(file_name, "w")
+    roster_file.write("Rostered days, Shifts, Actions\n")
+    roster_file.close()
+    print("Record is not existed, create records")
+
+# CSV file for store unavailability
+try:
+    ua_file = open(ua_file_name, "r")
+    ua_file.close()
+    print("UA record existed")
+
+except FileNotFoundError as e:
+    ua_file = open(ua_file_name, "w")
+    ua_file.write("Unavailable days, Shifts, Actions\n")
+    ua_file.close()
+    print("UA record is not existed, create records")
+        
+
+
 
 def main_menu():
     print("+-------------+")
     print("|  HOME MENU  |")
     print("+-------------+")
 
-    # File handling
-
-    try:
-        roster_file = open(file_name, "r")
-        roster_file.close()
-        print("Record existed")
-
-    except FileNotFoundError as e:
-        roster_file = open(file_name, "w")
-        roster_file.write("Rostered days, Shifts, Actions\n")
-        roster_file.close()
-        print("Record is not existed, create records")
-
-
+ 
     # Start Home Menu selection 
     print("Please select your option: ")
 
@@ -119,28 +136,33 @@ def main_menu():
     print("[2] Enter 2 to add your unavailability for ONE week after the following week")
     print("[3] Enter 3 to view your current work schedule")
     print("[4] Enter 4 to modify your work schedule")
-    print("[5] Enter 5 to exit the program")
+    print("[Exit] Enter Exit to exit the program")
     menu_choice = input("Enter your selection: ")
     return menu_choice
 
 user_menu_choice = str()
 
-while user_menu_choice != "5":
+while user_menu_choice != "Exit":
     user_menu_choice = main_menu()
 
+    # Prompt 1
     if(user_menu_choice == "1"):
         create_roster(file_name)
     
+    # Prompt 2
     elif(user_menu_choice == "2"):
-        print("Add your unavailability")
-    
+        add_unavailability(ua_file_name)
+
+    # Prompt 3
     elif(user_menu_choice == "3"):
         print("View roster")
     
+    # Prompt 4
     elif(user_menu_choice == "4"):
         print("Modify roster")
     
-    elif(user_menu_choice == "5"):
+    # Prompt 5
+    elif(user_menu_choice == "Exit"):
         print("\n")
         print("+--------------------------------------------------------------------------------------------------+")
         print("| See you again! Make sure you action your work schedule before this Sunday to secure your roster. |")
@@ -149,6 +171,7 @@ while user_menu_choice != "5":
         print("\n")
         # clear data in csv file when exit program
         os.system("rm schedule_record.csv")
+        os.system("rm ua_record.csv")
         continue
     
     else:
