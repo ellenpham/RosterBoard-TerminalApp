@@ -145,7 +145,7 @@ Day 3: Complete Create Roster Function and update Readme file, start working on 
 This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request. 
 
 |Checklist |                                        Task                                                                                    |  Timeline      | 
-|----------|------------------------------------------------------------------------------------|-------------------------------------------|----------------|
+|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
 |1         |Unavailability records is stored in a separate CSV file and is deleted when exit program                                        |28 Apr - 29 Apr |
 |2         |Users can not select two same days but can select as many unavailable shifts as possible                                        |28 Apr - 29 Apr |
 |3         |Users input for shifts will be stored in a set with no duplicate items, including letter "Q" to quit or any invalid input.      |28 Apr - 29 Apr |
