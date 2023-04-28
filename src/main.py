@@ -1,8 +1,10 @@
 import os
 import re
+import datetime
 
 from create_roster_function import create_roster
 from add_unavailability_function import add_unavailability
+from view_roster_function import view_schedule
 
 # Start the program with a welcome banner
 
@@ -48,11 +50,15 @@ def input_name():
         user_last_name = re.findall(r"^[a-zA-Z]+$", last_name)
 
         if user_first_name and user_last_name:
-            print(f'\nHello {first_name}, we hope you are doing good!')
-            break
+            user_first_name = ''.join(user_first_name)
+            user_last_name = ''.join(user_last_name)
+            return user_first_name, user_last_name
+        
         else:
             print("Invalid input! Please try again.\n")
-input_name()
+
+full_name = ' '.join(input_name())
+print(f'\nHello {full_name}, we hope you are doing good!')
 
 print("\n")
 # Department selection
@@ -75,15 +81,19 @@ def department_choice():
         else:
             break
     
-    if department == 1: 
-        print("Operation")
+    if department == 1:
+        user_department = "Operation"
+        return (user_department)
     
     elif department == 2:
-        print ("Inventory")
+        user_department = "Inventory"
+        return (user_department)
     else:
-        print("Distribution")
+        user_department = "Distribution"
+        return (user_department)
 
-department_choice()
+user_department_choice = department_choice()
+print(user_department_choice)
 
 print("-------------------------------------------------------------------------------------------------------------------------")
 
@@ -153,7 +163,17 @@ while user_menu_choice != "Exit":
 
     # Prompt 3
     elif(user_menu_choice == "3"):
-        print("View roster")
+        action_date = datetime.datetime.now().strftime("%A %B %d %-Y")
+        print("\n")
+        print("+---------------------------------------------------------------------------------------------------------------------------+")
+        print("|                                                    FINAL WORK SCHEDULE                                                    |")
+        print("+---------------------------------------------------------------------------------------------------------------------------+")
+        print(f'  EMPLOYEE    : {full_name}')
+        print(f'  DEPARTMENT  : {user_department_choice}')
+        print(f'  ACTION DATE : {action_date}')
+        print("-----------------------------------------------------------------------------------------------------------------------------")
+        
+        view_schedule()
     
     # Prompt 4
     elif(user_menu_choice == "4"):
