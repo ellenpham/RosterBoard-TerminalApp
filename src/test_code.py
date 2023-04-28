@@ -301,14 +301,37 @@
     
     # original_file.close()
     # final_file.close()
-import datetime
-from zoneinfo import ZoneInfo
-import zoneinfo
 
-tz = ZoneInfo("Australia/Victoria")
-action_date = datetime.datetime.now(tz).strftime("%A %B %d %-Y")
-today = datetime.datetime.now()
+# import datetime
+# from zoneinfo import ZoneInfo
+# import zoneinfo
 
-# print(zoneinfo.available_timezones())
-print(action_date)
-print(today)
+# tz = ZoneInfo("Australia/Victoria")
+# action_date = datetime.datetime.now(tz).strftime("%A %B %d %-Y")
+# today = datetime.datetime.now()
+
+# # print(zoneinfo.available_timezones())
+# print(action_date)
+# print(today)
+
+
+# with open("test_file.csv", 'r') as file:
+#     csvreader = csv.reader(file)
+#     csvreader.__next__()
+    
+#     for (i, row) in enumerate(csvreader, start = 1):
+#         row_string = ' --'.join(row)
+#         print(f'{i}. {row_string}')
+    
+
+# selection_index = int()
+# users_modification = str(input())
+
+# df = pd.read_csv("test_file.csv")
+# #df.loc[1, 'Shift'] = 'PM'
+# #df.to_csv("test_file.csv", index=False)
+# print(df)
+# df.loc[selection_index, "Rostered_days"] = users_modification
+# df['Status'] = df['Status'].replace({'Added': 'Modified'})
+
+# df.to_csv("test_file.csv", index = False)

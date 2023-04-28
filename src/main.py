@@ -1,11 +1,12 @@
 import os
 import re
 import datetime
+import csv
 
 from create_roster_function import create_roster
 from add_unavailability_function import add_unavailability
 from view_roster_function import view_schedule
-from modify_roster import modify_roster
+from modify_roster_function import modify_schedule
 
 # Start the program with a welcome banner
 
@@ -156,11 +157,31 @@ while user_menu_choice != "Exit":
 
     # Prompt 1
     if(user_menu_choice == "1"):
-        create_roster(file_name)
+        with open(file_name, "r") as schedule_record:
+            existing_record = csv.reader(schedule_record)
+            row = len(list(existing_record))
+            if row >= 2:
+                print("\n")
+                print("Your roster is already existed!")
+                print("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.")
+                print("\n")
+                continue
+            else: 
+                create_roster(file_name)
     
     # Prompt 2
     elif(user_menu_choice == "2"):
-        add_unavailability(ua_file_name)
+        with open(ua_file_name, "r") as ua_record:
+            ua_existing_record = csv.reader(ua_record)
+            ua_row = len(list(ua_existing_record))
+            if ua_row >= 2:
+                print("\n")
+                print("Your unavailability record is already existed!")
+                print("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.")
+                print("\n")
+                continue
+            else: 
+                add_unavailability(ua_file_name)
 
     # Prompt 3
     elif(user_menu_choice == "3"):
@@ -178,7 +199,7 @@ while user_menu_choice != "Exit":
     
     # Prompt 4
     elif(user_menu_choice == "4"):
-        modify_roster()
+        modify_schedule()
     
     # Prompt 5
     elif(user_menu_choice == "Exit"):

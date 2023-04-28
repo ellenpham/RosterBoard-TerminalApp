@@ -1,5 +1,5 @@
 from prettytable import from_csv
-from modify_roster import modify_roster
+from modify_roster_function import modify_schedule
 
 def view_schedule():
    
@@ -29,7 +29,7 @@ def view_schedule():
             exit()
 
         elif confirm_or_not == "No":
-            modify_roster()
+            modify_schedule()
             break
 
         else:
