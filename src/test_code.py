@@ -302,10 +302,5 @@
     # original_file.close()
     # final_file.close()
 
-# sample_list is defined list
-sample_list = [1,2,3,'seeker',3,7.5]
-# set() to convert list to set
-sample_set  = set(sample_list)
-print(sample_set) #printing set
                
                 

@@ -112,19 +112,19 @@ Day 1: Create project management plan, design control flow program, create mocki
 
 **Create Roster Function**
 
-This section includes getting users' input for their name and their department. 
+This section allows users to choose their available days during the following week. Users are required to choose more than 3 days of work and only ONE shift per day. Their inputs will be used to form their roster.
 
 
-|Checklist |                                        Task                                        |  Timeline      | 
-|----------|------------------------------------------------------------------------------------|----------------|
-|1         |Available days are automatically generated from a given roster release date         |26 Apr - 28 Apr |
-|2         |When users choose a date, it get recorded in the schedule_record.csv                |26 Apr - 28 Apr |
-|3         |User can keep selecting available days until they hit 8 to end                      |26 Apr - 28 Apr |
-|4         |A chosen day can not be duplicated in the schedule_record.csv file                  |26 Apr - 28 Apr|
+|Checklist |                                        Task                                                                                   |  Timeline      | 
+|----------|-------------------------------------------------------------------------------------------------------------------------------|----------------|
+|1         |Available days are automatically generated from a given roster release date                                                    |26 Apr - 28 Apr |
+|2         |When users choose a date, it get recorded in the schedule_record.csv                                                           |26 Apr - 28 Apr |
+|3         |User can keep selecting available days until they hit 8 to end                                                                 |26 Apr - 28 Apr |
+|4         |A chosen day can not be duplicated in the schedule_record.csv file                                                             |26 Apr - 28 Apr |
 |5         |User is required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered    |26 Apr - 28 Apr |
-|6         |No duplication in schedule_record.csv file. Only ONE shift per day is valid         |26 Apr - 28 Apr |
-|6         |User is prompted to choose shifts after each time they choose an available day.     |26 Apr - 28 Apr |
-|6         |CSV file is deleted once exit program and recreated when program starts             |26 Apr - 28 Apr |
+|6         |No duplication in schedule_record.csv file. Only ONE shift per day is valid                                                    |26 Apr - 28 Apr |
+|7         |User is prompted to choose shifts after each time they choose an available day.                                                |26 Apr - 28 Apr |
+|8         |CSV file is deleted once exit program and recreated when Home Menu is started                                                  |26 Apr - 28 Apr |
 
 
 Day 2: Develop Create Roster Function for when Prompt 1 in Home Menu is selected, including formatting, data flow, file handling and error handling. 
@@ -138,4 +138,18 @@ Day 3: Complete Create Roster Function and update Readme file, start working on 
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
 ![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
 
-to be continued...
+
+
+**Add Future Unavailability Function**
+
+This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request. 
+
+|Checklist |                                        Task                                                                                    |  Timeline      | 
+|----------|------------------------------------------------------------------------------------|-------------------------------------------|----------------|
+|1         |Unavailability records is stored in a separate CSV file and is deleted when exit program                                        |28 Apr - 29 Apr |
+|2         |Users can not select two same days but can select as many unavailable shifts as possible                                        |28 Apr - 29 Apr |
+|3         |Users input for shifts will be stored in a set with no duplicate items, including letter "Q" to quit or any invalid input.      |28 Apr - 29 Apr |
+|4         |If user accidently chooses a day but no shift is chose. The chosen day will not be counted as their unavailable day.            |28 Apr - 29 Apr |
+|5         |Error handling for all user input                                                                                               |28 Apr - 29 Apr |
+
+to be continued ....

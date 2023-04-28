@@ -121,8 +121,6 @@ except FileNotFoundError as e:
     print("UA record is not existed, create records")
         
 
-
-
 def main_menu():
     print("+-------------+")
     print("|  HOME MENU  |")

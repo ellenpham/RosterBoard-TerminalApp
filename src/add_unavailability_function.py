@@ -1,6 +1,7 @@
 import csv
 import datetime
 from datetime import timedelta
+import create_roster_function
 
 def add_unavailability(ua_file_name):
     print("-------------------------------------------------------------------------------------------------------------------------")
@@ -23,6 +24,9 @@ def add_unavailability(ua_file_name):
     print("Enter index in the [] to select or enter Q to finish.")
 
     # Thursday of the following week
+
+    #release_date_following_week + timedelta(days = 7))
+
     d=int(1)
     m=int(6)
     y=int(2023)
@@ -84,8 +88,9 @@ def add_unavailability(ua_file_name):
             print("THANK YOU! You have finished adding your unvailability.")
             print("\n")
             break
-
+        
         elif unavailable_day in unavailable_days_dict:
+            # this method is to prompt user to select another day if the day they choose is already chosen previously
             if unavailable_day in selected_unavailable_days:
                 print("--> Sorry you have selected this day! Please try again.")
                 continue
@@ -103,20 +108,22 @@ def add_unavailability(ua_file_name):
 
             while unavailable_shift != "Q":
                 unavailable_shift = input("Please select your unavailable shifts: ")
-                
-                unavailable_shift_list.append(unavailable_shift)
 
+                # only valid shift inputs (AM, PM, Night) are added in the list
                 if unavailable_shift == "AM":
+                    unavailable_shift_list.append(unavailable_shift)
                     pass
 
                 elif unavailable_shift == "PM":
+                    unavailable_shift_list.append(unavailable_shift)
                     pass
                 
                 elif unavailable_shift == "Night":
+                    unavailable_shift_list.append(unavailable_shift)
                     pass
-
+                
+                # Once all shift inputs are stored in a list, the list is changed to a set to remove duplication if any
                 elif unavailable_shift == "Q":
-                    unavailable_shift_list.remove("Q")
                     unavailable_shift_set = set(unavailable_shift_list)
                     print("--> You have finished seleting your unavailable shifts.")
                     break
@@ -124,12 +131,13 @@ def add_unavailability(ua_file_name):
                     print("--> Invalid input! Please try again.")
 
         
+            # If users select an unavailable day but no shift is selected. The chosen day will not be marked as unavailable. 
             with open(ua_file_name, "a") as ua_record:
-                writer = csv.writer(ua_record)
-                writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift, " Added"])
-                if unavailable_shift_set == {''}:
-                    print(f'--> You are NOT marked as unavalable on {unavailable_days_dict[unavailable_day]}')
+                if len(unavailable_shift_set) == 0:
+                    print(f'--> You are NOT marked as unavailable on {unavailable_days_dict[unavailable_day]}')
                 else:
+                    writer = csv.writer(ua_record)
+                    writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_set, " Added"])
                     print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_set}')
 
         else:
