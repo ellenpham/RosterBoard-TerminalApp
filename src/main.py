@@ -114,7 +114,7 @@ try:
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
-    roster_file.write("Rostered days, Shifts, Actions\n")
+    roster_file.write("Rostered days, Shift, Action\n")
     roster_file.close()
     print("Record is not existed, create records")
 
@@ -126,7 +126,7 @@ try:
 
 except FileNotFoundError as e:
     ua_file = open(ua_file_name, "w")
-    ua_file.write("Unavailable days, Shifts, Actions\n")
+    ua_file.write("Unavailable days, Shifts, Action\n")
     ua_file.close()
     print("UA record is not existed, create records")
         

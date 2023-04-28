@@ -107,7 +107,7 @@ def create_roster(file_name):
                 print("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?")
                 # Error handling for users input for continue-or-not prompt
                 while True:
-                    continue_or_not = input ("--> Enter Yes to continue or No to quit: ")
+                    continue_or_not = input ("--> Enter 'Yes' to continue or 'No' to quit: ")
                     if continue_or_not == "No":
                         user_day_selection = False
                         print("---------------------------------------------------------------------------------")

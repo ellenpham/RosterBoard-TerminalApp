@@ -1,7 +1,6 @@
 import csv
 import datetime
 from datetime import timedelta
-import create_roster_function
 
 def add_unavailability(ua_file_name):
     print("-------------------------------------------------------------------------------------------------------------------------")
@@ -136,9 +135,11 @@ def add_unavailability(ua_file_name):
                 if len(unavailable_shift_set) == 0:
                     print(f'--> You are NOT marked as unavailable on {unavailable_days_dict[unavailable_day]}')
                 else:
+                    unavailable_shift_string = ' '.join(unavailable_shift_set)  
                     writer = csv.writer(ua_record)
-                    writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_set, " Added"])
-                    print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_set}')
+                    writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_string, " Added"]) 
+                    print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_string}')
 
         else:
             print("--> Invalid input! Please try again.")
+            
