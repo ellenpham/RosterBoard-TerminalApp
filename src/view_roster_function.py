@@ -18,8 +18,8 @@ def view_schedule():
 
     print("If you are happy with the above work schedule, please enter 'Yes' to confirm or 'No' if you wish to make changes.")
     while True: 
-        confirm_or_not = input("Would like to confirm your work schedule? ")
-        if confirm_or_not == "Yes":
+        confirm_or_not = input("Would you like to confirm your work schedule? ")
+        if confirm_or_not == "Yes": 
             print("\n")
             print("+--------------------------------------------------------------------------------------------------+")
             print("| Thank you for your coorporation! You have completed your work schedule for the next 2 weeks!     |")
@@ -31,7 +31,7 @@ def view_schedule():
         elif confirm_or_not == "No":
             modify_roster()
             break
-        
+
         else:
             print("Invalid input! Please try again.")
 

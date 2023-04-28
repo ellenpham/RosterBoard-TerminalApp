@@ -139,7 +139,7 @@ def add_unavailability(ua_file_name):
                     writer = csv.writer(ua_record)
                     writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_string, " Added"]) 
                     print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_string}')
+                    print("-------------------------------------------------------------------------------------------------------------------------\n")
 
         else:
             print("--> Invalid input! Please try again.")
-            

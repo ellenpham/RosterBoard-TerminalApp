@@ -5,6 +5,7 @@ import datetime
 from create_roster_function import create_roster
 from add_unavailability_function import add_unavailability
 from view_roster_function import view_schedule
+from modify_roster import modify_roster
 
 # Start the program with a welcome banner
 
@@ -177,7 +178,7 @@ while user_menu_choice != "Exit":
     
     # Prompt 4
     elif(user_menu_choice == "4"):
-        print("Modify roster")
+        modify_roster()
     
     # Prompt 5
     elif(user_menu_choice == "Exit"):
@@ -188,8 +189,8 @@ while user_menu_choice != "Exit":
         print("+--------------------------------------------------------------------------------------------------+")
         print("\n")
         # clear data in csv file when exit program
-        os.system("rm schedule_record.csv")
-        os.system("rm ua_record.csv")
+        #os.system("rm schedule_record.csv")
+        #os.system("rm ua_record.csv")
         continue
     
     else:

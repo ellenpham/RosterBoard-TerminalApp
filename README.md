@@ -119,11 +119,11 @@ This section allows users to choose their available days during the following we
 |----------|-------------------------------------------------------------------------------------------------------------------------------|----------------|
 |1         |Available days are automatically generated from a given roster release date                                                    |26 Apr - 28 Apr |
 |2         |When users choose a date, it get recorded in the schedule_record.csv                                                           |26 Apr - 28 Apr |
-|3         |User can keep selecting available days until they hit 8 to end                                                                 |26 Apr - 28 Apr |
+|3         |Users can keep selecting available days until they hit Q to end                                                                 |26 Apr - 28 Apr |
 |4         |A chosen day can not be duplicated in the schedule_record.csv file                                                             |26 Apr - 28 Apr |
-|5         |User is required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered    |26 Apr - 28 Apr |
+|5         |Users are required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered    |26 Apr - 28 Apr |
 |6         |No duplication in schedule_record.csv file. Only ONE shift per day is valid                                                    |26 Apr - 28 Apr |
-|7         |User is prompted to choose shifts after each time they choose an available day.                                                |26 Apr - 28 Apr |
+|7         |Users are prompted to choose shifts after each time they choose an available day.                                                |26 Apr - 28 Apr |
 |8         |CSV file is deleted once exit program and recreated when Home Menu is started                                                  |26 Apr - 28 Apr |
 
 
@@ -146,10 +146,25 @@ This section allows users to choose their unavailable days during week after the
 
 |Checklist |                                        Task                                                                                    |  Timeline      | 
 |----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
-|1         |Unavailability records is stored in a separate CSV file and is deleted when exit program                                        |28 Apr - 29 Apr |
+|1         |Unavailability records are stored in a separate CSV file and the file is deleted when exit program                              |28 Apr - 29 Apr |
 |2         |Users can not select two same days but can select as many unavailable shifts as possible                                        |28 Apr - 29 Apr |
-|3         |Users input for shifts will be stored in a set with no duplicate items, including letter "Q" to quit or any invalid input.      |28 Apr - 29 Apr |
-|4         |If user accidently chooses a day but no shift is chose. The chosen day will not be counted as their unavailable day.            |28 Apr - 29 Apr |
-|5         |Error handling for all user input                                                                                               |28 Apr - 29 Apr |
+|3         |Users' input for shifts will be stored in a set with no duplicate items, including letter "Q" to quit or any invalid input.     |28 Apr - 29 Apr |
+|4         |If users accidently choose a day but no shift is chose. The chosen day will not be counted as their unavailable day.            |28 Apr - 29 Apr |
+|5         |Error handling for all users' input                                                                                             |28 Apr - 29 Apr |
 
-to be continued ....
+
+**View Roster Function**
+
+This section allows users to view their work schedule which has been recorded from their previous inputs. Their final work schedule includes users' name, department, action date, followed by their rostered days and unavailability records. 
+
+|Checklist |                                        Task                                                                                    |  Timeline      | 
+|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
+|1         |Users' name, department and action date are displayed when users choose View Roster from Home Menu.                             |29 Apr - 29 Apr |
+|2         |Users' input for availability and unavailability are arranged in a table format                                                 |29 Apr - 29 Apr |
+|3         |A prompt to request users to confirm the listed records of work schedule and error handling for users' input                    |29 Apr - 29 Apr |
+|4         |If users change their mind, they are prompted to modify the recorded work schedule                                              |29 Apr - 29 Apr |
+
+Day 4: Complete Add Future Unavailability Function and View Roster Function
+
+![Trello_Day4_1](./docs/Trello_Day4_1.png)
+![Trello_Day4_2](./docs/Trello_Day4_2.png)

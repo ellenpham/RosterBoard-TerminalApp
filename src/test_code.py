@@ -301,4 +301,14 @@
     
     # original_file.close()
     # final_file.close()
+import datetime
+from zoneinfo import ZoneInfo
+import zoneinfo
 
+tz = ZoneInfo("Australia/Victoria")
+action_date = datetime.datetime.now(tz).strftime("%A %B %d %-Y")
+today = datetime.datetime.now()
+
+# print(zoneinfo.available_timezones())
+print(action_date)
+print(today)
