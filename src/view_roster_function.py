@@ -5,11 +5,13 @@ def view_schedule():
     print("\nRoster for the following week: \n")
     with open('schedule_record.csv') as table_file:
         roster_tab = from_csv(table_file)
+        table_file.close()
     print(roster_tab)
 
     print("\nUnavailability record: \n")
     with open('ua_record.csv') as ua_table_file:
         ua_tab = from_csv(ua_table_file)
+        table_file.close()
     print(ua_tab)
 
     

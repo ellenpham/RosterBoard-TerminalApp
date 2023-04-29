@@ -2,6 +2,14 @@ import datetime
 from datetime import timedelta
 import csv 
 
+# Function to check if user put in correct shifts
+def check_valid_shift(shift):
+    if shift == "AM" or shift == "PM" or shift == "Night":
+        return True
+    else:
+        print("Invalid input! Please try again.")
+        return False
+
 def create_roster(file_name):
     print("-------------------------------------------------------------------------------------------------------------------------")
     print("You are about to create your roster for the following week...")
@@ -110,6 +118,15 @@ def create_roster(file_name):
                     continue_or_not = input ("--> Enter 'Yes' to continue or 'No' to quit: ")
                     if continue_or_not == "No":
                         user_day_selection = False
+                        # clear all records in the roster
+                        with open('schedule_record.csv', 'w') as f:
+                            writer = csv.writer(f)
+                            writer.writerows([" "])
+                            f.close()
+
+                        with open('schedule_record.csv', 'w') as f:
+                            f.write("Rostered days, Shift, Action\n")
+                            f.close()
                         print("---------------------------------------------------------------------------------")
                         print("You have no roster for the following week.")
                         print("If you need further discussion, please contact our HR department on 1300 123 456.")
@@ -130,17 +147,17 @@ def create_roster(file_name):
            
             # Prompt to choose shifts
             # Error handling for users input for shifts
-            while True:
-                available_shift = input("Enter your available shifts (AM, PM or Night): ")
-                if available_shift == "AM" or available_shift == "PM" or available_shift == "Night":
-                    break
+            while True: 
+                available_shift = input("Enter the shift you want to change to: ")
+                if not check_valid_shift(available_shift):
+                    pass
                 else:
-                    print("Invalid input! Please try again.")
-
-            with open(file_name, "a") as schedule_record:
-                 writer = csv.writer(schedule_record)
-                 writer.writerow([days_dict[available_day], available_shift, " Added"])
-            print(f'--> {days_dict[available_day]} - {available_shift} is added to your roster.')
+                    with open(file_name, "a") as schedule_record:
+                        writer = csv.writer(schedule_record)
+                        writer.writerow([days_dict[available_day], available_shift, " Added"])
+                        schedule_record.close()
+                    print(f'--> {days_dict[available_day]} - {available_shift} is added to your roster.')
+                    break
 
         else:
             print("--> Invalid input! Please try again.")

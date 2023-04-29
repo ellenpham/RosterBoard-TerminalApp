@@ -357,3 +357,121 @@
 #     print("You raised a NameError, but we caught it!")
 # except ValueError:
 #     print("You raised a ValueError, but we caught it!")
+
+# import random
+# def play_game():
+
+#     print("Enter the upper limit for the range of numbers: ")
+#     limit = int(input())
+#     number = random.randint(1, limit)
+#     print("I'm thinking of a number from 1 to " + str(limit) + "\n")
+#     count = 1
+#     while True:
+#         guess = int(input("Your guess: "))
+#         if guess < number:
+#             print("Too low.")
+#         elif guess > number:
+#             print("Too high.")
+#         elif guess == number:
+#             print("You guessed it in " + str(count) + " tries.\n")
+#             return
+#         count+=1
+# play_game()
+
+
+
+# with open("schedule_record.csv", "r") as schedule_record:
+#     csv_reader = csv.reader(schedule_record)
+   
+# with open("schedule_record.csv", "w") as schedule_record:
+#     writer = csv.writer(schedule_record)
+#     writer.writerows([])
+
+# print(schedule_record)
+
+# import csv
+
+# # with open('schedule_record.csv', 'r') as f:
+# #     reader = csv.reader(f)
+# #     reader.__next__()
+# #     for row in reader:
+# #         print(row)
+
+# with open('schedule_record.csv', 'w') as f:
+#     writer = csv.writer(f)
+#     writer.writerows([" "])
+#     f.close()
+
+# with open('schedule_record.csv', 'w') as f:
+#     f.write("Rostered days, Shift, Action\n")
+#     f.close()
+
+# import datetime
+
+# def is_date(string, fmt="%A %B %d %Y"):
+#     try:
+#         datetime.datetime.strptime(string, fmt)
+#         return True
+#     except ValueError:
+#         return False
+
+# print(is_date("Monday May 29 2023")) 
+
+# user_input = input ("Enter a day: ")
+# if not is_date(user_input):
+#     print("Invalid")
+# else:
+
+# import datetime
+
+# action_date = datetime.datetime.now().strftime("%A %B %d %-Y")
+
+# today = datetime.datetime.now()
+
+# print(action_date)
+
+# def check_valid_shift(shift):
+#     if shift == "AM" or shift == "PM" or shift == "Night":
+#         return True
+#     else:
+#         print("Invalid input! Please try again.")
+#         return False
+
+# shift_input = input("Enter a shift: ")
+# check_valid_shift(shift_input)
+
+# def check_valid_shift(shift):
+#     if shift == "AM" or shift == "PM" or shift == "Night":
+#         return True
+#     else:
+#         print("Invalid input! Please try again.")
+#         return False
+
+# while True: 
+#     modified_shift = input("Enter the shift you want to change to: ")
+#     if not check_valid_shift(modified_shift):
+#         pass
+#     else:
+#         print("pass")
+#         break
+
+import csv
+
+def check_existed_day(day):
+    file_name = "schedule_record.csv"
+    selected_day = []
+    with open(file_name, "r") as schedule_record:
+        reader = csv.reader(schedule_record)
+        selected_day == list(reader)
+
+        if day in selected_day:
+            return True
+        else:             
+            return False
+
+while True: 
+    added_day = input("Enter a day: ")
+    if check_existed_day(added_day):
+        print("--> Sorry you have selected this day! You can only select ONE shift per day.")
+    else:
+        print("pass")   
