@@ -44,6 +44,7 @@ def modify_schedule():
             print ("[3] Enter 3 to Add")
             print ("[Q] Enter Q to finish modifying your roster")
             modify_option = input("Enter your selection: ")
+            print("\n")
 
             if modify_option == "1":
                 modify(file_name)
@@ -95,8 +96,9 @@ def modify_schedule():
         modified_rostered_day =str()
 
         while modified_rostered_day != "Q":
+            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             modified_rostered_day = input("Enter the day you want to modify or enter Q to finish: ")
-
+            
             if modified_rostered_day == "Q":
                 break
 
@@ -105,7 +107,7 @@ def modify_schedule():
 
             else:
                 while True: 
-                    modified_shift = input("Enter the shift you want to change to: ")
+                    modified_shift = input("Enter the shift you want to change to (AM, PM or Night): ")
                     if not check_valid_shift(modified_shift):
                         pass
                     else:
@@ -127,12 +129,13 @@ def modify_schedule():
                         print(f'--> Your shift on {modified_rostered_day} has been changed to {modified_shift}.\n')
                         break
 
-        # ---> still print if users choose a day this not in roster --> need to fix
+        # ---> still print if users choose a day this not in roster --> NEED TO FIX
         
     # To remove chosen rostered day
     def remove(file_name):
         removed_day = str()
         while removed_day != "Q":
+            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             removed_day = input("Enter the day you want to remove or enter Q to finish: ")
 
             if removed_day == "Q":
@@ -166,6 +169,7 @@ def modify_schedule():
         added_day = str()
            
         while added_day != "Q":
+            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             added_day = input("Enter the day you want to add or enter Q to finish: ")
             
             if added_day == "Q":
@@ -181,7 +185,7 @@ def modify_schedule():
                     modify_roster()
                 else:
                     while True: 
-                        added_shift = input("Enter the shift you want to add: ")
+                        added_shift = input("Enter the shift you want to add (AM, PM or Night): ")
                         if not check_valid_shift(added_shift):
                             pass
                         else:            

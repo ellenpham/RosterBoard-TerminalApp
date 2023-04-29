@@ -119,11 +119,11 @@ This section allows users to choose their available days during the following we
 |----------|-------------------------------------------------------------------------------------------------------------------------------|----------------|
 |1         |Available days are automatically generated from a given roster release date                                                    |26 Apr - 28 Apr |
 |2         |When users choose a date, it get recorded in the schedule_record.csv                                                           |26 Apr - 28 Apr |
-|3         |Users can keep selecting available days until they hit Q to end                                                                 |26 Apr - 28 Apr |
+|3         |Users can keep selecting available days until they hit Q to end                                                                |26 Apr - 28 Apr |
 |4         |A chosen day can not be duplicated in the schedule_record.csv file                                                             |26 Apr - 28 Apr |
-|5         |Users are required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered    |26 Apr - 28 Apr |
+|5         |Users are required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered  |26 Apr - 28 Apr |
 |6         |No duplication in schedule_record.csv file. Only ONE shift per day is valid                                                    |26 Apr - 28 Apr |
-|7         |Users are prompted to choose shifts after each time they choose an available day.                                                |26 Apr - 28 Apr |
+|7         |Users are prompted to choose shifts after each time they choose an available day.                                              |26 Apr - 28 Apr |
 |8         |CSV file is deleted once exit program and recreated when Home Menu is started                                                  |26 Apr - 28 Apr |
 
 
@@ -164,7 +164,32 @@ This section allows users to view their work schedule which has been recorded fr
 |3         |A prompt to request users to confirm the listed records of work schedule and error handling for users' input                    |29 Apr - 29 Apr |
 |4         |If users change their mind, they are prompted to modify the recorded work schedule                                              |29 Apr - 29 Apr |
 
-Day 4: Complete Add Future Unavailability Function and View Roster Function
+Day 4: Complete Add Future Unavailability Function and View Roster Function 
 
 ![Trello_Day4_1](./docs/Trello_Day4_1.png)
 ![Trello_Day4_2](./docs/Trello_Day4_2.png)
+
+<br>
+
+**Modify Roster Function**
+
+This section allows user to modify their current roster or modify their current unavailability records. 
+1. Modify current roster: Here users have options to modify the shift of a current rostered day, to remove a current rostered day or to add a new day to the roster. 
+
+2. Modify current unavailability records: the initial idea is to allow users manipulate the records in the same way as above. Later on, I decided to simplify it by prompting users to redo their unavailability from the scratch using the `add_unavailability()` function. 
+
+|Checklist |                                        Task                                                                                    |  Timeline      | 
+|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
+|1         |Prompt users to 2 options: 1/ Modify their roster or 2/ Modify their unavailability record                                      |30 Apr - 02 Apr |
+|2         |User have 3 options on how they can manipulate their current roster: 1/to modify, 2/to remove and 3/to add                      |30 Apr - 02 Apr |
+|3         |Requirement when adding a day: if the day is already existed --> have to choose another day.                                    |30 Apr - 02 Apr |
+|4         |Requirement when modifying or removing a day: if the day is not existed --> have to choose another day                          |30 Apr - 02 Apr |
+|5         |Requirement when removing a day: re-check if there are less than THREE rostered days                                            |30 Apr - 02 Apr |
+|6         |Error handling for users input: inputs for any modified days need to be in a given format                                       |30 Apr - 02 Apr |
+|7         |Error handling for users input: inputs for any shifts must be either AM, PM or Night                                            |30 Apr - 02 Apr |
+|8         |Prompt users to redo their unavailability from the scratch if they decide to modify the current unavailability record           |30 Apr - 02 Apr |
+
+![Trello_Day5_1](./docs/Trello_Day5_1.png)
+![Trello_Day5_2](./docs/Trello_Day5_2.png)
+
+Day 5: Work on Modify Roster Function 
