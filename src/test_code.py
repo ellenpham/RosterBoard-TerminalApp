@@ -335,3 +335,25 @@
 # df['Status'] = df['Status'].replace({'Added': 'Modified'})
 
 # df.to_csv("test_file.csv", index = False)
+
+# def raise_an_exception(exception_type):
+#     if exception_type == "1":
+#         raise KeyError
+#     if exception_type == "2":
+#         raise NameError
+#     raise ValueError
+
+# prompt = """SELECT AN EXCEPTION:
+# - enter 1 for KeyError
+# - enter 2 for NameError
+# - give any other input for ValueError  
+# """
+
+# try:
+#     raise_an_exception(input(prompt))
+# except KeyError:
+#     print("You raised a KeyError, but we caught it!")
+# except NameError:
+#     print("You raised a NameError, but we caught it!")
+# except ValueError:
+#     print("You raised a ValueError, but we caught it!")

@@ -1,5 +1,4 @@
 from prettytable import from_csv
-from modify_roster_function import modify_schedule
 
 def view_schedule():
    
@@ -22,14 +21,16 @@ def view_schedule():
         if confirm_or_not == "Yes": 
             print("\n")
             print("+--------------------------------------------------------------------------------------------------+")
-            print("| Thank you for your coorporation! You have completed your work schedule for the next 2 weeks!     |")
+            print("| Thank you for your coorporation! You have completed your work schedule for the next two weeks!   |")
             print("|                                    See you at work!                                              |")
             print("+--------------------------------------------------------------------------------------------------+")
             print("\n")
             exit()
 
         elif confirm_or_not == "No":
-            modify_schedule()
+            print("\n")
+            print("You have the option to modify your work schedule. Please keep following the prompts.")
+            print("\n")
             break
 
         else:
