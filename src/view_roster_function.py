@@ -27,7 +27,6 @@ def view_schedule():
             print("\n")
             print(f'+{"-"*126}+')
             print(f'|{16*" "}Thank you for your coorporation! You have completed your work schedule for the next two weeks!{16*" "}|')
-            print(f'|{55*" "}See you at work!{55*" "}|')
             print(f'+{"-"*126}+')
             print("\n")
             exit()

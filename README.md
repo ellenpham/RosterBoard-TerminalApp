@@ -17,27 +17,30 @@
 
 ## Description
 
-NKG Corp. is a warehousing and distribution company. They have a large number of staff working across rotating shifts. **RosterBoard** is an application that help the company collect the availability and unavailability from rostered staff in order to prepare the workforce plan. The application also allows the staff to view their upcoming roster and flexibly schedule their work. 
+NKG Corp. is a warehousing and distribution company. They have a large number of staff working across rotating shifts. **RosterBoard** is an internal application that allows company staff to provide their availability and unavailability in the two weeks time, which are used for roster building and workforce planning. 
 
 
 ## Main features
-1. Users (the company staff) are asked to provide their name and their department before starting their work schedule. If all answers are valid, they get prompted to the home menu. 
-2. The main menu has 5 prompts : Create Roster, Add Future Unavailability, View Roster, Modify Roster and Exit Program. 
-3. In the Create Roster function, users are requested to create their roster for the following week based on a list of questions:
-    - Choose their available days for the following week (Monday to Sunday).
-    - Choose their available shifts for the chosen day.
+1. Users (the company staff) are asked to provide their name and their department before starting their work schedule. If all answers are valid, they get prompted to the Home Menu. 
+2. The Home Menu has 5 prompts : Create Roster, Add Future Unavailability, View Roster, Modify Roster and Exit Program. 
+3. In the Create Roster Function, users are requested to create their roster for the following week based on a list of questions:
+    - Select available days for the following week (Monday to Sunday).
+    - Select available shifts for the chosen day.
 
-    There are a few criterias when creating the roster. First, if the numbers of available day is less than THREE days, users will be prompted to choose 1 more available day or if they can not provide more days, they will be informed that they have no roster for the following week and the program ends here. Second, users can only choose ONE shift per available day. 
+    There are some criterias when creating the roster. First, if available days are less than THREE days, users are required to select more days, if not, they have no roster for the following week and prompted back to Home Menu. Second, users can only choose ONE shift per available day. 
 
-4. In the Add Future Unavailability function, users are requested to manually input their unavailability for ONE week after the following week according to a given format. Here they can input as many days or shifts as they wish to be their unavailability. If they have no unavailability, this will not get recorded. 
+4. In the Add Future Unavailability Function, users are requested to  select their unavailable days for the ONE week after the following week. Here they can input as many days or shifts as they wish. If they have no unavailability, there will be no record.  
 
-5. In the View Roster function, users' final work schedule is displayed, including staff name, department, the roster for the following week and unavailable days for the week after the following week. Users can confirm if the work schedule is correct or they can change their schedule, in which users will be prompted to the next function.
+5. In the View Roster Function, users' final work schedule is displayed. Users can confirm this work schedule or if they change their mind, they can have option to modify the current schedule. Note that once users finish providing their availability and unavailability in the last two functions, they can not go back and restart the procedure. They can only modify the schedule records by using Modify Roster Function. 
 
-6. In the Modify Roster function, users can change their availability/unavailability if they change their mind, these modified information will get updated in their final roster and users can go back to the Main Menu to view the modified schedule.
+6. In the Modify Roster Function, users have two options.
+
+    - Modify the current roster: options include changing shift, removing a current day or adding a new day. 
+    - Modify unavailability: users will have to redo their unavailability from the scratch if they do not wish to keep their current record. 
 
 ## Control Flow Diagram
 
-The below diagram illustrates how the flow of data and how users are prompted to action different tasks while accessing different functions of the app. 
+The below diagram illustrates how the flow of data and the application's logic. 
 
 ![Control Flow Diagram](./docs/RosteringApp_ControlFlowDiagram.png)
 (Diagram created using diagram.net.io)
@@ -46,125 +49,254 @@ The below diagram illustrates how the flow of data and how users are prompted to
 
 # Implementation Plan
 
-### Overall process
+### Overall implementation process
 
-1. The project management plan is outlined with the kanban board format using Trello (screenshots and a link to Trello will be proved later on).
+1. The project management plan is outlined with the kanban board format using Trello.
 
-2. After the idea got approved by educator, a control flow diagram is created to visualize the flow of data in the app. The diagram reflects the overall logic of the app. The diagram was slightly modified along the way due to little compromised changes in the development process. 
+2. Created a control flow diagram to visualize the flow of data in the app. The diagram was slightly modified along the way due to little compromised changes in the development process. 
 
-3. A mock output is written using notepad to help visualizing the expected output when the app is run successfully and without errors. The mock output was created according to the designed control flow diagram. 
+3. Created a mock output using notepad to help visualizing the expected output when the app is run successfully and without errors. 
 
-4. Start writing the source code. Define a range of Classes, Functions, Modules and Methods used for each listed feature. 
+4. Start writing the source code. Define a range of `Classes`, `Functions`, `Modules` and `Methods` used for each listed feature. 
 
-5. Errors were handled when each function's tasks were carried out during the development process.
+5. Errors were handled along the way during the coding process.
 
-6. Develop a testing plan, including manual tests and tests using Pytest.
+6. Develop a testing plan, including manual tests and tests using `pytest`.
 
 7. Write scripts for app execution and develop help documentation. 
 
-8. Reporting documentation (Readme file) was updated along the way whenever a task was finished.  
+8. Readme file was updated along the way whenever a task was finished.  
 
 9. Summarise the project with slide deck and presentation 
 
 <br>
 
-### The implementation of each feature and task priority. 
+### The development of each feature and timeline. 
 
-The development steps were based on the control flow diagram. This is because the purpose of the app is to develop a range of prompts to get information from the users (the staff company) and build a work schedule that allows users to manipulate in their own way by using different app functions. 
+The development steps are listed as below:
 
-There are only a few in-built criteria applied to users selection, which can be considered as company's policy. Because of this design, error handling is varied as users will be prompted to re-enter their inputs if the criteria are not met. 
-
-Once the app has the data needed, it will process the collected data and display the data or modify the data upon users's request. 
-
-Therefore, the implementation priority is listed as below:
-
-1. Users registration
+1. Getting users' information
 2. Create Roster Function
 3. Add Future Unavailability Function
-3. View Roster Function
-4. Modify Roster Function
+4. View Roster Function
+5. Modify Roster Function
+6. Test cases
+7. Write scripts
 
 <br>
 
-Below are checklists of tasks for each features and a short brief of work progress for each day during development process, followed by screenshots of project management platform (Trello).
+**Getting users' information**
 
-**Users registration**
+This section includes getting users' input for their name and their department. This section is included in `main.py` file. The `main.py` file also include a section for Home Menu, which use `while` loop with `if` `elif` `else` to keep prompting users back to Home Menu after each completed task. Main classes and functions are arranged in separated files and get imported in the `main.py` file for modularised purpose.
 
-This section includes getting users' input for their name and their department. 
+<table>
+    <thead>
+        <tr>
+            <th>Checklist</th>
+            <th>Items</th>
+            <th>Timeline</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</th>
+            <td>A function to return users' name</th>
+            <td>25-26 Apr</th>
+        </tr>
+        <tr>
+            <td>2</th>
+            <td>Error handling: name input must be all letters, using `re` module</th>
+            <td>25-26 Apr</th>
+        </tr>
+        <tr>
+            <td>3</th>
+            <td>A function to return users's department</th>
+            <td>25-26 Apr</th>
+        </tr>
+        <tr>
+            <td>4</th>
+            <td>Error handling: department selection must be in the given list, using `try` `except`</th>
+            <td>25-26 Apr</th>
+        </tr>
+        <tr>
+            <td>5</th>
+            <td>A greeter is displayed once users finish registering, followed by the Home Menu</th>
+            <td>25-26 Apr</th>
+        </tr>
+        </tr>
+        <tr>
+            <td>6</th>
+            <td>Home Menu is displayed with FIVE main prompts</th>
+            <td>25-26 Apr</th>
+        </tr>
+    </tbody>
+</table>
 
 
-|Checklist |                                        Task                                        |  Timeline      | 
-|----------|------------------------------------------------------------------------------------|----------------|
-|1         |A prompt to request users' name                                                     |25 Apr - 26 Apr |
-|2         |Error handling conducted: name input must be all letters.                           |25 Apr - 26 Apr |
-|3         |A prompt to request users's selection for their department                          |25 Apr - 26 Apr |
-|4         |Error handling conducted: selection must be in the given list                       |25 Apr - 26 Apr |
-|5         |A greeter is displayed once users finish registering, followed by the Home Menu     |25 Apr - 26 Apr |
-|6         |A Home Menu is displayed with 5 main prompts                                        |25 Apr - 26 Apr |
-
-
-Day 1: Create project management plan, design control flow program, create mocking output, create GitHub repo and main.py file, complete welcome banner, introduction and instructions, push the first commit. 
+**Day 1**: Create project management plan, design control flow diagram, create mocking output, create welcome banner, introduction and instructions, research on `datetime` module, start on functions to get users' information.
 
 ![Trello_Day1_1](./docs/Trello_Day1_1.png)
 ![Trello_Day1_2](./docs/Trello_Day1_2.png)
 
-
+<br>
 
 **Create Roster Function**
 
-This section allows users to choose their available days during the following week. Users are required to choose more than 3 days of work and only ONE shift per day. Their inputs will be used to form their roster.
+This section allows users to choose their available days during the following week. Users are required to choose more than THREE days of work and only ONE shift per day. Their inputs will be used to form their roster.
+
+<table>
+    <thead>
+        <tr>
+            <th>Checklist</th>
+            <th>Items</th>
+            <th>Timeline</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</th>
+            <td>A function that always returns dates for Mon to Sun of the following week using `weekday()`</th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>2</th>
+            <td>User's chosen days get recorded in csv file using `csv.writer`</th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>3</th>
+            <td>Checking list of input to make sure a chosen day can not be selected again </th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>4</th>
+            <td>Use `while` to looping users to keep selecting days until they hit Q to end</th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>5</th>
+            <td>Using `csv.reader` and using `len()` to count if users select less than 3 days. If yes, prompt to add more days. If not, users have no roster, clear all input in csv file using `csv.writer`</th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>6</th>
+            <td>A function to check valid shift input and make sure only ONE shift is selected</th>
+            <td>26-28 Apr</th>
+        </tr>
+        <tr>
+            <td>7</th>
+            <td>Using `len()` to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
+            <td>26-28 Apr</th>
+        </tr>
+    </tbody>
+</table>
 
 
-|Checklist |                                        Task                                                                                   |  Timeline      | 
-|----------|-------------------------------------------------------------------------------------------------------------------------------|----------------|
-|1         |Available days are automatically generated from a given roster release date                                                    |26 Apr - 28 Apr |
-|2         |When users choose a date, it get recorded in the schedule_record.csv                                                           |26 Apr - 28 Apr |
-|3         |Users can keep selecting available days until they hit Q to end                                                                |26 Apr - 28 Apr |
-|4         |A chosen day can not be duplicated in the schedule_record.csv file                                                             |26 Apr - 28 Apr |
-|5         |Users are required to choose more than 3 days - if less than 3 they will be prompted to add more days or not getting rostered  |26 Apr - 28 Apr |
-|6         |No duplication in schedule_record.csv file. Only ONE shift per day is valid                                                    |26 Apr - 28 Apr |
-|7         |Users are prompted to choose shifts after each time they choose an available day.                                              |26 Apr - 28 Apr |
-|8         |CSV file is deleted once exit program and recreated when Home Menu is started                                                  |26 Apr - 28 Apr |
-
-
-Day 2: Develop Create Roster Function for when Prompt 1 in Home Menu is selected, including formatting, data flow, file handling and error handling. 
+**Day 2**: Complete functions for getting users' information, start working on Create Roster Function, research on OOP, research on file handling and `csv` module, research on `RegEx`.
 
 ![Trello_Day2_2](./docs/Trello_Day2_2.png)
 ![Trello_Day2_3](./docs/Trello_Day2_3.png)
 
 <br>
 
-Day 3: Complete Create Roster Function and update Readme file, start working on Add Future Unavailability Function. 
+**Day 3**: Complete Create Roster Function and start reporting on Readme file, start working on Add Future Unavailability Function. 
+
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
 ![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
 
-
+<br>
 
 **Add Future Unavailability Function**
 
-This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request. 
+This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request.
 
-|Checklist |                                        Task                                                                                    |  Timeline      | 
-|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
-|1         |Unavailability records are stored in a separate CSV file and the file is deleted when exit program                              |28 Apr - 29 Apr |
-|2         |Users can not select two same days but can select as many unavailable shifts as possible                                        |28 Apr - 29 Apr |
-|3         |Users' input for shifts will be stored in a set with no duplicate items, including letter "Q" to quit or any invalid input.     |28 Apr - 29 Apr |
-|4         |If users accidently choose a day but no shift is chose. The chosen day will not be counted as their unavailable day.            |28 Apr - 29 Apr |
-|5         |Error handling for all users' input                                                                                             |28 Apr - 29 Apr |
+<table>
+    <thead>
+        <tr>
+            <th>Checklist</th>
+            <th>Items</th>
+            <th>Timeline</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</th>
+            <td>Unavailability records are stored in a separate CSV file </th>
+            <td>28-29 Apr</th>
+        </tr>
+        <tr>
+            <td>2</th>
+            <td>Users can not select two same days but can select more than one shift, using `list.append()` to allow multiple shifts </th>
+            <td>28-29 Apr</th>
+        </tr>
+        <tr>
+            <td>3</th>
+            <td>Chosen shifts are stored in `set()` to eliminate duplication </th>
+            <td>28-29 Apr</th>
+        </tr>
+        <tr>
+            <td>4</th>
+            <td>If users accidently select a day but no shift is chose. The chosen day will not be counted as their unavailable day, using `len()` to check set items</th>
+            <td>28-29 Apr</th>
+        </tr>
+        <tr>
+            <td>5</th>
+            <td>Error handling for all users' input using `while` loop and `if` `elif` `else`</th>
+            <td>28-29 Apr</th>
+        </tr>
+        <tr>
+            <td>6</th>
+            <td>Using `len()` to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
+            <td>28-29 Apr</th>
+        </tr>
+    </tbody>
+</table>
 
+<br>
 
 **View Roster Function**
 
-This section allows users to view their work schedule which has been recorded from their previous inputs. Their final work schedule includes users' name, department, action date, followed by their rostered days and unavailability records. 
+This section allows users to view their work schedule which has been recorded from their previous inputs. Their final work schedule includes users' name, department, action date, followed by their rostered days and unavailability records.
 
-|Checklist |                                        Task                                                                                    |  Timeline      | 
-|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
-|1         |Users' name, department and action date are displayed when users choose View Roster from Home Menu.                             |29 Apr - 29 Apr |
-|2         |Users' input for availability and unavailability are arranged in a table format                                                 |29 Apr - 29 Apr |
-|3         |A prompt to request users to confirm the listed records of work schedule and error handling for users' input                    |29 Apr - 29 Apr |
-|4         |If users change their mind, they are prompted to modify the recorded work schedule                                              |29 Apr - 29 Apr |
+<table>
+    <thead>
+        <tr>
+            <th>Checklist</th>
+            <th>Items</th>
+            <th>Timeline</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</th>
+            <td>Users' name, department and action date are displayed by importing from `main.py` </th>
+            <td>29 Apr</th>
+        </tr>
+        <tr>
+            <td>2</th>
+            <td>Users' input for availability and unavailability are arranged in a table format using `prettytable`</th>
+            <td>29 Apr</th>
+        </tr>
+        <tr>
+            <td>3</th>
+            <td>A prompt to request users to confirm their current work schedule</th>
+            <td>29 Apr</th>
+        </tr>
+        <tr>
+            <td>4</th>
+            <td>If users do not confirm, they are prompted back to Home Menu and choose Modify Roster Function</th>
+            <td>29 Apr</th>
+        </tr>
+        <tr>
+            <td>5</th>
+            <td>Error handling for users' input using `while` loop and `if` `elif` `else`</th>
+            <td>29 Apr</th>
+        </tr>
+    </tbody>
+</table>
 
-Day 4: Complete Add Future Unavailability Function and View Roster Function 
+
+Day 4: Complete Add Future Unavailability Function and View Roster Function
 
 ![Trello_Day4_1](./docs/Trello_Day4_1.png)
 ![Trello_Day4_2](./docs/Trello_Day4_2.png)
@@ -176,21 +308,62 @@ Day 4: Complete Add Future Unavailability Function and View Roster Function
 This section allows user to modify their current roster or modify their current unavailability records. 
 1. Modify current roster: Here users have options to modify the shift of a current rostered day, to remove a current rostered day or to add a new day to the roster. 
 
-2. Modify current unavailability records: the initial idea is to allow users manipulate the records in the same way as above. Later on, I decided to simplify it by prompting users to redo their unavailability from the scratch using the `add_unavailability()` function. 
+2. Modify current unavailability records: the initial idea is to allow users manipulate the records in the same way as above. Later on, I decided to simplify it by prompting users to redo their unavailability from the scratch.
 
-|Checklist |                                        Task                                                                                    |  Timeline      | 
-|----------|--------------------------------------------------------------------------------------------------------------------------------|----------------|
-|1         |Prompt users to 2 options: 1/ Modify their roster or 2/ Modify their unavailability record                                      |30 Apr - 02 Apr |
-|2         |User have 3 options on how they can manipulate their current roster: 1/to modify, 2/to remove and 3/to add                      |30 Apr - 02 Apr |
-|3         |Requirement when adding a day: if the day is already existed --> have to choose another day.                                    |30 Apr - 02 Apr |
-|4         |Requirement when modifying or removing a day: if the day is not existed --> have to choose another day                          |30 Apr - 02 Apr |
-|5         |Requirement when removing a day: re-check if there are less than THREE rostered days                                            |30 Apr - 02 Apr |
-|6         |Error handling for users input: inputs for any modified days need to be in a given format                                       |30 Apr - 02 Apr |
-|7         |Error handling for users input: inputs for any shifts must be either AM, PM or Night                                            |30 Apr - 02 Apr |
-|8         |Prompt users to redo their unavailability from the scratch if they decide to modify the current unavailability record           |30 Apr - 02 Apr |
-
+<table>
+    <thead>
+        <tr>
+            <th>Checklist</th>
+            <th>Items</th>
+            <th>Timeline</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</th>
+            <td>Prompt users to two options: 1/ Modify their current roster or 2/ Modify their unavailability record</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+        <tr>
+            <td>2</th>
+            <td>User have three options on how they can manipulate their current roster: 1/to modify, 2/to remove and 3/to add</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+        <tr>
+            <td>3</th>
+            <td>Requirement when adding a day: if the day is already existed --> have to choose another day.</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+        <tr>
+            <td>4</th>
+            <td>Requirement when modifying or removing a day: if the day is not existed --> have to choose another day</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+        <tr>
+            <td>5</th>
+            <td>Requirement when removing a day: re-check if there are less than THREE rostered days, using `csv.reader` and `len()` to read and count</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+         <tr>
+            <td>6</th>
+            <td>Error handling for users input: inputs for any modified days need to be in a given format, using `strptime()`</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+         <tr>
+            <td>7</th>
+            <td>A function for checking valid shifts input to reuse whenever users are required to input their shifts</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+         <tr>
+            <td>8</th>
+            <td>Prompt users to redo their unavailability by importing `add_unavailability()` function</th>
+            <td>30 Apr - 02 May</th>
+        </tr>
+    </tbody>
+</table>
 
 Day 5: Work on Modify Roster Function 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
+to be continued...
