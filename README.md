@@ -49,7 +49,7 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 # Implementation Plan
 
-### Overall implementation process
+## Overall implementation process
 
 1. The project management plan is outlined with the kanban board format using Trello.
 
@@ -71,7 +71,7 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 <br>
 
-### The development of each feature and timeline. 
+## The development of each feature and timeline. 
 
 The development steps are listed as below:
 
@@ -362,8 +362,31 @@ This section allows user to modify their current roster or modify their current 
     </tbody>
 </table>
 
-Day 5: Work on Modify Roster Function 
+**Day 5 and Day 6**: Complete Modify Roster Function, research on `pytest` and  plan test cases, work on reporting documentation. 
+
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
-to be continued...
+<br>
+
+# Installation
+
+## Steps to install the app
+
+1. In your computer, open terminal or command prompt:
+
+    - For Window users: Go to Start menu, in the search bar, search for Terminal or Command Prompt app, type in `bash` then hit Enter
+
+    - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
+
+2.  Next, follow the below commands in the Terminal:
+
+    - Change the directory to a folder where you want to download the app using `cd <directory>`
+
+    - Clone this repository using `git clone git@github.com:ellenpham/RosterBoard_app.git`
+
+    - Change the directory to the src folder using `cd RosterBoard_app/src`
+
+    - Execute Bash script `chmod +x RosterBoard_App.sh`
+
+    - Run the app `./RosterBoard_app.sh`

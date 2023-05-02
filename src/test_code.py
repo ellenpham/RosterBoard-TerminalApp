@@ -618,3 +618,5 @@
 #     number_inputs = StringIO('2\n3\n')
 #     monkeypatch.setattr('sys.stdin', number_inputs)
 #     assert adding() == 5
+
+
