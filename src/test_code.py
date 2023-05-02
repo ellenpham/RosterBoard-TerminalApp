@@ -539,3 +539,55 @@
 # print(f'|{55*" "}See you at work!{55*" "}|')
 # print(f'+{"-"*126}+')
 
+# import datetime
+
+# # Function using weekday() method and datetime.timedelta() to always get next week's Monday
+# # i is the parameter, if i = 7 then function will return results of next week 
+# # if i = 14 then function will return results of the week after next week 
+
+# def get_next_monday(i):
+#     today  = datetime.date.today()
+#     days_to_next_monday = i - today.weekday()
+#     next_monday = today + datetime.timedelta(days = days_to_next_monday)
+#     return next_monday
+
+# # get_next_monday(7)
+
+# def list_of_days(i):
+#     mon = get_next_monday(i).strftime("%A %B %d %-Y")
+#     print("[1]", mon) 
+
+#     # get next Tuesday
+#     next_tue = get_next_monday(i) + datetime.timedelta(days = 1)
+#     tue = next_tue.strftime("%A %B %d %-Y")
+#     print("[2]", tue) 
+
+#     # get next Wednesday
+#     next_wed = get_next_monday(i) + datetime.timedelta(days = 2)
+#     wed = next_wed.strftime("%A %B %d %-Y")
+#     print("[3]", wed) 
+
+#     # get next Thursday
+#     next_thu = get_next_monday(i) + datetime.timedelta(days = 3)
+#     thu = next_thu.strftime("%A %B %d %-Y")
+#     print("[4]", thu) 
+
+#     # get next Friday
+#     next_fri = get_next_monday(i) + datetime.timedelta(days = 4)
+#     fri = next_fri.strftime("%A %B %d %-Y")
+#     print("[5]", fri) 
+
+#     # get next Saturday
+#     next_sat = get_next_monday(i) + datetime.timedelta(days = 5)
+#     sat = next_sat.strftime("%A %B %d %-Y")
+#     print("[6]", sat) 
+
+#     # get next Sunday
+#     next_sun = get_next_monday(i) + datetime.timedelta(days = 6)
+#     sun = next_sun.strftime("%A %B %d %-Y")
+#     print("[7]", sun)
+
+# list_of_days(7)
+
+# list_of_days(14)
+

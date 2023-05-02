@@ -10,6 +10,86 @@ def check_valid_shift(shift):
         print("Invalid input! Please try again.")
         return False
 
+# Function using weekday() method and datetime.timedelta() to always get next week's Monday
+# i is the parameter, if i = 7 then function will return results of next week 
+# if i = 14 then function will return results of the week after next week 
+def get_next_monday(i):
+    today  = datetime.date.today()
+    days_to_next_monday = i - today.weekday()
+    next_monday = today + datetime.timedelta(days = days_to_next_monday)
+    return next_monday
+
+# Print out a list of available days for users selection
+def list_of_days(i):
+    mon = get_next_monday(i).strftime("%A %B %d %-Y")
+    print("[1]", mon) 
+
+    # get next Tuesday
+    next_tue = get_next_monday(i) + datetime.timedelta(days = 1)
+    tue = next_tue.strftime("%A %B %d %-Y")
+    print("[2]", tue) 
+
+    # get next Wednesday
+    next_wed = get_next_monday(i) + datetime.timedelta(days = 2)
+    wed = next_wed.strftime("%A %B %d %-Y")
+    print("[3]", wed) 
+
+    # get next Thursday
+    next_thu = get_next_monday(i) + datetime.timedelta(days = 3)
+    thu = next_thu.strftime("%A %B %d %-Y")
+    print("[4]", thu) 
+
+    # get next Friday
+    next_fri = get_next_monday(i) + datetime.timedelta(days = 4)
+    fri = next_fri.strftime("%A %B %d %-Y")
+    print("[5]", fri) 
+
+    # get next Saturday
+    next_sat = get_next_monday(i) + datetime.timedelta(days = 5)
+    sat = next_sat.strftime("%A %B %d %-Y")
+    print("[6]", sat) 
+
+    # get next Sunday
+    next_sun = get_next_monday(i) + datetime.timedelta(days = 6)
+    sun = next_sun.strftime("%A %B %d %-Y")
+    print("[7]", sun)
+
+    # Finish creating roster
+    print("[Q] Enter Q to finish your selection\n")
+
+# Put days in a dictionary
+def days_dict(i):
+    mon = get_next_monday(i).strftime("%A %B %d %-Y")
+
+    next_tue = get_next_monday(i) + datetime.timedelta(days = 1)
+    tue = next_tue.strftime("%A %B %d %-Y")
+
+    next_wed = get_next_monday(i) + datetime.timedelta(days = 2)
+    wed = next_wed.strftime("%A %B %d %-Y")
+
+    next_thu = get_next_monday(i) + datetime.timedelta(days = 3)
+    thu = next_thu.strftime("%A %B %d %-Y")
+
+    next_fri = get_next_monday(i) + datetime.timedelta(days = 4)
+    fri = next_fri.strftime("%A %B %d %-Y")
+
+    next_sat = get_next_monday(i) + datetime.timedelta(days = 5)
+    sat = next_sat.strftime("%A %B %d %-Y")
+
+    next_sun = get_next_monday(i) + datetime.timedelta(days = 6)
+    sun = next_sun.strftime("%A %B %d %-Y")
+
+    dict = {
+        "1": mon,
+        "2": tue,
+        "3": wed,
+        "4": thu,
+        "5": fri,
+        "6": sat,
+        "7": sun,
+    }
+    return dict
+
 # Main function for creating roster
 def create_roster(file_name):
     print("-" * 130)
@@ -32,59 +112,13 @@ def create_roster(file_name):
     # Start creating roster
     print("Enter index in the [] to select or enter Q to finish.")
 
-    # Roster release date
-    d=int(25)
-    m=int(5)
-    y=int(2023)
-        
-    release_date = datetime.datetime(y, m, d) 
-
-    # Monday to Sunday of the following week based on roster release date
-    # Monday
-    mon = (release_date + timedelta(days = 4)).strftime("%A %B %d %-Y")
-    print("[1]", mon) 
-
-    # Tuesday
-    tue = (release_date + timedelta(days = 5)).strftime("%A %B %d %-Y")
-    print("[2]", tue) 
-
-    # Wednesday
-    wed = (release_date + timedelta(days = 6)).strftime("%A %B %d %-Y")
-    print("[3]", wed) 
-
-    # Thursday
-    thu = (release_date + timedelta(days = 7)).strftime("%A %B %d %-Y")
-    print("[4]", thu) 
-
-    # Friday
-    fri = (release_date + timedelta(days = 8)).strftime("%A %B %d %-Y")
-    print("[5]", fri) 
-
-    # Saturday
-    sat = (release_date + timedelta(days = 9)).strftime("%A %B %d %-Y")
-    print("[6]", sat) 
-
-    # Sunday
-    sun = (release_date + timedelta(days = 10)).strftime("%A %B %d %-Y")
-    print("[7]", sun)
-
-    # Finish creating roster
-    print("[Q] Enter Q to finish your selection\n")
-
-    days_dict = {
-        "1": mon,
-        "2": tue,
-        "3": wed,
-        "4": thu,
-        "5": fri,
-        "6": sat,
-        "7": sun,
-    }    
-
+    list_of_days(7)
+    
     # Get users' input for available days
     available_day = str()
     user_day_selection = True
     selected_day = []
+    file_name = "schedule_record.csv"
 
     while user_day_selection:
         available_day = input("Please select your available days: ")
@@ -111,7 +145,7 @@ def create_roster(file_name):
                 print("-" * 130)
                 print("\n")
                 break
-           
+        
 
             else: # if less than 3 available days, users can choose to continue adding more days or have no roster at all
                 print("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?")
@@ -139,27 +173,27 @@ def create_roster(file_name):
                     else:
                         print("Invalid input! Please try again.")
 
-        elif available_day in days_dict:
+        elif available_day in days_dict(7):
             # Restrict users' selection of 2 same days. 
             if available_day in selected_day:
                 print("--> Sorry you have selected this day! You can only select ONE shift per day.")
                 continue
             else:             
                 selected_day.append(available_day)
-           
+        
             # Prompt to choose shifts
             # Error handling for users input for shifts
             while True: 
-                available_shift = input("Enter the shift you want to change to: ")
+                available_shift = input("Enter your available shift: ")
                 if not check_valid_shift(available_shift):
                     pass
                 else:
                     # If all conditions are met, start appending users' input 
                     with open(file_name, "a") as schedule_record:
                         writer = csv.writer(schedule_record)
-                        writer.writerow([days_dict[available_day], available_shift, " Added"])
+                        writer.writerow([days_dict(7)[available_day], available_shift, " Added"])
                         schedule_record.close()
-                    print(f'--> {days_dict[available_day]} - {available_shift} is added to your roster.')
+                    print(f'--> {days_dict(7)[available_day]} - {available_shift} is added to your roster.')
                     break
 
         # Return warning for invalid input if users' selection for days are not listed in Prompt 1 or not equal to "Q"
@@ -169,4 +203,4 @@ def create_roster(file_name):
 
 
 
-        
+            
