@@ -189,7 +189,8 @@ This section allows user to modify their current roster or modify their current 
 |7         |Error handling for users input: inputs for any shifts must be either AM, PM or Night                                            |30 Apr - 02 Apr |
 |8         |Prompt users to redo their unavailability from the scratch if they decide to modify the current unavailability record           |30 Apr - 02 Apr |
 
+
+Day 5: Work on Modify Roster Function 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
-Day 5: Work on Modify Roster Function 

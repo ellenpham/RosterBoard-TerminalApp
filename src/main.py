@@ -10,25 +10,25 @@ from modify_roster_function import modify_schedule
 
 # Start the program with a welcome banner
 
-print("+-----------*****-----------******----------*****----------*****----------*****----------*****----------*****-----------+")
-print("|                                               WELCOME TO ROSTERBOARD                                                  |")
-print("+                            A work scheduling platform for all rostered staff of NKG Corp.                             +")
-print("|                        A centralized space to monitor your roster and put your schedule in place.                     |")
-print("+------------*****-----------******----------*****----------*****----------*****----------*****----------*****----------+")
+print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+print(f'|{50*" "}WELCOME TO ROSTERBOARD{50*" "}|')
+print(f'+{30*" "}A work scheduling platform for all rostered staff of NKG Corp.{30*" "}+')
+print(f'|{24*" "}A centralized space to monitor your roster and put your schedule in place.{24*" "}|')
+print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
 print("\n")
-print("-------------------------------------------------------------------------------------------------------------------------")
+print("-" * 125)
 print("Please note that every second Thursday, we will release a new request. Turn on the notification to receive the request.")
 print("You are required to action your work schedule by 12pm on the Sunday of the same week.")
 print("Please contact our HR department on 1300 123 456 if you have any questions.")
-print("-------------------------------------------------------------------------------------------------------------------------")
+print("-" * 125)
 print("\n")
 print("Please hit Enter to move on to the the application instructions...")
 input()
 
 # Instructions
-print("+------------+")
+print(f'+{12*"-"}+')
 print("|INSTRUCTIONS|")
-print("+------------+")
+print(f'+{12*"-"}+')
 print("\n")
 print("Once you Start the work schedule process, you will be prompted to action the below requests:")
 print("- Create your roster for the following week.")
@@ -38,11 +38,11 @@ print("\n")
 print("Are you ready to Start your work schedule? Please hit Enter to start...")
 input()
 os.system('clear')
-print("-------------------------------------------------------------------------------------------------------------------------")
+print("-" * 130)
 
-# Employee information
+# Get employee information
 
-# Input name
+# Name input
 def input_name():
     while True: 
         #Check if the string has any characters from a to z lower case, and A to Z upper case:
@@ -97,7 +97,7 @@ def department_choice():
 user_department_choice = department_choice()
 print(user_department_choice)
 
-print("-------------------------------------------------------------------------------------------------------------------------")
+print("-" * 130)
 
 print("Let's start scheduling! Hit Enter to begin...")
 input()
@@ -108,35 +108,31 @@ file_name = "schedule_record.csv"
 ua_file_name = "ua_record.csv"
 
 # File handling
-# CSV file for store availability
+# CSV file for storing availability
 try:
     roster_file = open(file_name, "r")
     roster_file.close()
-    print("Record existed")
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
     roster_file.write("Rostered days, Shift, Action\n")
     roster_file.close()
-    print("Record is not existed, create records")
 
-# CSV file for store unavailability
+# CSV file for storing unavailability
 try:
     ua_file = open(ua_file_name, "r")
     ua_file.close()
-    print("UA record existed")
 
 except FileNotFoundError as e:
     ua_file = open(ua_file_name, "w")
     ua_file.write("Unavailable days, Shifts, Action\n")
     ua_file.close()
-    print("UA record is not existed, create records")
         
 
 def main_menu():
-    print("+-------------+")
-    print("|  HOME MENU  |")
-    print("+-------------+")
+    print(f'+{11*"-"}+')
+    print("| HOME MENU |")
+    print(f'+{11*"-"}+')
 
  
     # Start Home Menu selection 
@@ -157,6 +153,7 @@ while user_menu_choice != "Exit":
 
     # Prompt 1
     if(user_menu_choice == "1"):
+        # Below code is to check if roster is already existed --> if yes, users must go to Prompt 4 to modify if needed
         with open(file_name, "r") as schedule_record:
             existing_record = csv.reader(schedule_record)
             row = len(list(existing_record))
@@ -171,6 +168,7 @@ while user_menu_choice != "Exit":
     
     # Prompt 2
     elif(user_menu_choice == "2"):
+        # Below code is to check if unavailability record is already existed --> if yes, users must go to Prompt 4 to modify if needed
         with open(ua_file_name, "r") as ua_record:
             ua_existing_record = csv.reader(ua_record)
             ua_row = len(list(ua_existing_record))
@@ -187,13 +185,13 @@ while user_menu_choice != "Exit":
     elif(user_menu_choice == "3"):
         action_date = datetime.datetime.now().strftime("%A %B %d %-Y")
         print("\n")
-        print("+---------------------------------------------------------------------------------------------------------------------------+")
-        print("|                                                    FINAL WORK SCHEDULE                                                    |")
-        print("+---------------------------------------------------------------------------------------------------------------------------+")
+        print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+        print(f'|{52*" "}FINAL WORK SCHEDULE{51*" "}|')
+        print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
         print(f'  EMPLOYEE    : {full_name}')
         print(f'  DEPARTMENT  : {user_department_choice}')
         print(f'  ACTION DATE : {action_date}')
-        print("-----------------------------------------------------------------------------------------------------------------------------")
+        print("-"*124)
         
         view_schedule()
     
@@ -204,10 +202,9 @@ while user_menu_choice != "Exit":
     # Prompt 5
     elif(user_menu_choice == "Exit"):
         print("\n")
-        print("+--------------------------------------------------------------------------------------------------+")
-        print("| See you again! Make sure you action your work schedule before this Sunday to secure your roster. |")
-        print("| Please contact our HR department on 1300 123 456 if you have any questions.                      |")
-        print("+--------------------------------------------------------------------------------------------------+")
+        print(f'+{"-"*122}+')
+        print(f'|{13*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster.{13*" "}|')
+        print(f'+{"-"*122}+')
         print("\n")
         # clear data in csv file when exit program
         #os.system("rm schedule_record.csv")

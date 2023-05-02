@@ -30,10 +30,10 @@ def modify_schedule():
     file_name ="schedule_record.csv"
     ua_file_name = "ua_record.csv"
 
-    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("-" * 130)
     print("You are about to modify your work schedule....")
     
-    # To modify their roster
+    # Function to modify roster(availability)
     def modify_roster():
         modify_option = str()
 
@@ -56,7 +56,7 @@ def modify_schedule():
                 add(file_name)
 
             elif modify_option == "Q":
-                # Checking again if rostered day are more than 3 days
+                # Checking again if rostered days are more than 3 days after modification
                 reader = csv.reader(open("schedule_record.csv"))
                 line_count = len(list(reader))
                 if line_count >= 4:
@@ -68,7 +68,7 @@ def modify_schedule():
                     while True:
                         continue_or_not = input ("--> Enter 'Yes' to continue or 'No' to quit: ")
                         if continue_or_not == "No":
-                            # clear all records in the roster
+                            # clear all records in the roster due to less than 3 available days
                             with open('schedule_record.csv', 'w') as f:
                                 writer = csv.writer(f)
                                 writer.writerows([" "])
@@ -76,10 +76,10 @@ def modify_schedule():
                             with open('schedule_record.csv', 'w') as f:
                                 f.write("Rostered days, Shift, Action\n")
                                 f.close()
-                            print("---------------------------------------------------------------------------------")
+                            print("-" * 110)
                             print("You have no roster for the following week.")
                             print("Please review and confirm your up-to-date work schedule")
-                            print("-------------------------------------------------------------------------------- ")
+                            print("-" * 110)
                             view_schedule()
                             break
                         elif continue_or_not == "Yes":
@@ -88,6 +88,8 @@ def modify_schedule():
                             break
                         else:
                             print("Invalid input! Please try again.")
+
+            # Return warning for invalid input if users' selection are not listed in the prompt to Modfy, Remove or Add or not equal to "Q"
             else:
                 print("Invalid input! Please try again.")
 
@@ -101,7 +103,8 @@ def modify_schedule():
             
             if modified_rostered_day == "Q":
                 break
-
+            
+            # check if users' input is in give date format
             elif not is_date(modified_rostered_day):
                 print ("Invalid input! Please try again")
 
@@ -110,6 +113,7 @@ def modify_schedule():
                     modified_shift = input("Enter the shift you want to change to (AM, PM or Night): ")
                     if not check_valid_shift(modified_shift):
                         pass
+                    # if all conditions are met, start reading the csv file then overriding the old records
                     else:
                         rostered_days_list = []
                         with open(file_name, "r") as schedule_record:
@@ -141,9 +145,11 @@ def modify_schedule():
             if removed_day == "Q":
                 break
 
+            # check if users' input is in give date format
             elif not is_date(removed_day):
                 print ("Invalid input! Please try again")
             
+            # if all conditions are met, start reading the csv file then removing the old records
             else:
                 removed_days_list = []
                 with open(file_name, "r") as schedule_record:
@@ -154,7 +160,7 @@ def modify_schedule():
                             if day == removed_day:
                                 removed_days_list.remove(row)
                     schedule_record.close()
-                print(removed_days_list)
+                print(removed_days_list) # --> delete when complete
                 with open(file_name, "w") as schedule_record:
                     writer = csv.writer(schedule_record)
                     writer.writerows(removed_days_list)
@@ -174,20 +180,25 @@ def modify_schedule():
             
             if added_day == "Q":
                 break
-
+            
+            # check if users' input is in give date format
             elif not is_date(added_day):
                 print ("Invalid input! Please try again")
         
             else:
                 # ---> still can not detect duplicated days --> NEED TO FIX
+                # check if users' chosen day is already existed in the csv file --> then they need to choose another day to add
                 if check_existed_day(added_day):
                     print("--> Sorry you have selected this day! You can only select ONE shift per day.")
                     modify_roster()
+
                 else:
                     while True: 
                         added_shift = input("Enter the shift you want to add (AM, PM or Night): ")
                         if not check_valid_shift(added_shift):
                             pass
+
+                        # if all conditions are met, start reading the csv file then adding the new records
                         else:            
                             with open(file_name, "a") as schedule_record:
                                 added_day_list.append(added_day)
@@ -198,7 +209,7 @@ def modify_schedule():
                             break
 
 
-    # To update unavailability
+    # To modify unavailability record
     def modify_unavailabilty():
         print("\n")
         print("If you choose to modify your unavailability, your old record will be cleared.")
@@ -214,8 +225,8 @@ def modify_schedule():
 
             elif redo_or_not == "Yes":
 
-                # can create a function??
-                # clear data in the csv file so users can rewrite
+                # can create a function?? ---> NEED TO FIX
+                # clear data in the csv file so users can rewrite from the scratch
                 with open('ua_record.csv', 'w') as f:
                     writer = csv.writer(f)
                     writer.writerows([" "])
@@ -231,6 +242,7 @@ def modify_schedule():
                 print("Invalid input! Please try again.")
 
     # Prompt users to choose their option of what to modify
+    # This is placed in the bottom because the imported functions are defined above
     modify_selection = str()
 
     while modify_selection != "Q":

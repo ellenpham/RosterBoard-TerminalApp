@@ -455,23 +455,87 @@
 #         print("pass")
 #         break
 
-import csv
+# import csv
 
-def check_existed_day(day):
-    file_name = "schedule_record.csv"
-    selected_day = []
-    with open(file_name, "r") as schedule_record:
-        reader = csv.reader(schedule_record)
-        selected_day == list(reader)
+# def check_existed_day(day):
+#     file_name = "schedule_record.csv"
+#     selected_day = []
+#     with open(file_name, "r") as schedule_record:
+#         reader = csv.reader(schedule_record)
+#         selected_day == list(reader)
 
-        if day in selected_day:
-            return True
-        else:             
-            return False
+#         if day in selected_day:
+#             return True
+#         else:             
+#             return False
 
-while True: 
-    added_day = input("Enter a day: ")
-    if check_existed_day(added_day):
-        print("--> Sorry you have selected this day! You can only select ONE shift per day.")
-    else:
-        print("pass")   
+# while True: 
+#     added_day = input("Enter a day: ")
+#     if check_existed_day(added_day):
+#         print("--> Sorry you have selected this day! You can only select ONE shift per day.")
+#     else:
+#         print("pass")   
+
+# print("-" * 130)
+# print("-------------------------------------------------------------------------------------------------------------------------")
+
+
+# print("+-----------*****-----------******----------*****----------*****----------*****----------*****----------*****-----------+")
+# print("|                                               WELCOME TO ROSTERBOARD                                                  |")
+# print("+                            A work scheduling platform for all rostered staff of NKG Corp.                             +")
+# print("|                        A centralized space to monitor your roster and put your schedule in place.                     |")
+# print("+------------*****-----------******----------*****----------*****----------*****----------*****----------*****----------+")
+
+# print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+# print(f'|{50*" "}WELCOME TO ROSTERBOARD{50*" "}|')
+# print(f'+{30*" "}A work scheduling platform for all rostered staff of NKG Corp.{30*" "}+')
+# print(f'|{24*" "}A centralized space to monitor your roster and put your schedule in place.{24*" "}|')
+# # print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+
+# print("+------------+")
+# print("|INSTRUCTIONS|")
+# print("+------------+")
+
+# print(f'+{11*"-"}+')
+# print("| HOME MENU |")
+# print(f'+{11*"-"}+')
+
+# #print("+---------------------------------------------------------------------------------------------------------------------------+")
+# print("|                                                    FINAL WORK SCHEDULE                                                    |")
+# print("+---------------------------------------------------------------------------------------------------------------------------+")
+# # print(f'  EMPLOYEE    : {full_name}')
+# # print(f'  DEPARTMENT  : {user_department_choice}')
+# # print(f'  ACTION DATE : {action_date}')
+# # print("-----------------------------------------------------------------------------------------------------------------------------")
+
+# print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+# print(f'|{52*" "}FINAL WORK SCHEDULE{51*" "}|')
+# print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+# print("-"*124)
+
+# # print("+--------------------------------------------------------------------------------------------------+")
+# # print(f'|{2*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster. |')
+# # print("+--------------------------------------------------------------------------------------------------+")
+
+# print(f'+{"-"*122}+')
+# print(f'|{13*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster.{13*" "}|')
+# # print(f'+{"-"*122}+')
+
+# print("+--------------+")
+# print("| AVAILABILITY |")
+# print("+--------------+")
+
+# print(f'+{16*"-"}+')
+# print("| UNAVAILABILITY |")
+# # print(f'+{16*"-"}+')
+
+# print("+--------------------------------------------------------------------------------------------------+")
+# print("| Thank you for your coorporation! You have completed your work schedule for the next two weeks!   |")
+# print("|                                    See you at work!                                              |")
+# print("+--------------------------------------------------------------------------------------------------+")
+
+# print(f'+{"-"*126}+')
+# print(f'|{16*" "}Thank you for your coorporation! You have completed your work schedule for the next two weeks!{16*" "}|')
+# print(f'|{55*" "}See you at work!{55*" "}|')
+# print(f'+{"-"*126}+')
+

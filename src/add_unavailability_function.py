@@ -2,21 +2,22 @@ import csv
 import datetime
 from datetime import timedelta
 
+# Main function to add unavailability 
 def add_unavailability(ua_file_name):
-    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("-" * 130)
     print("You are about to inform us of your unavailability for the week after the following week...")
     print("\n")
     print("**Important note**")
     print("\n")
     print("You can enter as many days and shifts as possible")
     print("By promptly notifying us if you have any planned leave, we can prepare a better workfore plan for our site.")
-    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("-" * 130)
     print("Hit enter to start...")
     input()
 
-    print("+----------------+")
+    print(f'+{16*"-"}+')
     print("| UNAVAILABILITY |")
-    print("+----------------+") 
+    print(f'+{16*"-"}+')
 
 
     # Start adding unavailability
@@ -79,6 +80,7 @@ def add_unavailability(ua_file_name):
     unavailable_day_selection = True
     selected_unavailable_days = []
 
+    # Get users' input for unavailable days
     while unavailable_day_selection:
         unavailable_day = input("Please select your unavailable days: ")
 
@@ -121,7 +123,7 @@ def add_unavailability(ua_file_name):
                     unavailable_shift_list.append(unavailable_shift)
                     pass
                 
-                # Once all shift inputs are stored in a list, the list is changed to a set to remove duplication if any
+                # Once all shift inputs are stored in a list, when users hit "Q" to quit the list is changed to a set to remove duplication if any
                 elif unavailable_shift == "Q":
                     unavailable_shift_set = set(unavailable_shift_list)
                     print("--> You have finished seleting your unavailable shifts.")
@@ -130,17 +132,21 @@ def add_unavailability(ua_file_name):
                     print("--> Invalid input! Please try again.")
 
         
-            # If users select an unavailable day but no shift is selected. The chosen day will not be marked as unavailable. 
-            with open(ua_file_name, "a") as ua_record:
+                # If users select an unavailable day but no shift is selected. The chosen day will not be marked as unavailable. 
                 if len(unavailable_shift_set) == 0:
                     print(f'--> You are NOT marked as unavailable on {unavailable_days_dict[unavailable_day]}')
+                
+                # If all conditions are met, start appending users' input
                 else:
-                    unavailable_shift_string = ' '.join(unavailable_shift_set)  
-                    writer = csv.writer(ua_record)
-                    writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_string, " Added"]) 
-                    print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_string}')
-                    print("-------------------------------------------------------------------------------------------------------------------------\n")
-                ua_record.close()
+                    with open(ua_file_name, "a") as ua_record:
+                        unavailable_shift_string = ' '.join(unavailable_shift_set)  
+                        writer = csv.writer(ua_record)
+                        writer.writerow([unavailable_days_dict[unavailable_day], unavailable_shift_string, " Added"]) 
+                        print(f'--> You have been marked as unavailable on {unavailable_days_dict[unavailable_day]} - {unavailable_shift_string}')
+                        print("-" * 130)
+                        print("\n")
+                    ua_record.close()
 
+        # Return warning for invalid input if users' selection for unavailable days are not listed in Prompt 2 or not equal to "Q"
         else:
             print("--> Invalid input! Please try again.")

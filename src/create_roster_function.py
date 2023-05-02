@@ -10,8 +10,9 @@ def check_valid_shift(shift):
         print("Invalid input! Please try again.")
         return False
 
+# Main function for creating roster
 def create_roster(file_name):
-    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("-" * 130)
     print("You are about to create your roster for the following week...")
     print("\n")
     print("**Important note**")
@@ -20,13 +21,13 @@ def create_roster(file_name):
     print("If you select less than THREE days of work, you will have no roster for the following week.")
     print("If you select THREE days or more, you will get rostered for all of the available days that you have chosen.")
     print("You can only select ONE available shift, shift duration is 5 hours, anything over will get counted to your overtime rate.")
-    print("-------------------------------------------------------------------------------------------------------------------------")
+    print("-" * 130)
     print("Hit enter to start...")
     input()
 
-    print("+--------------+")
+    print(f'+{14*"-"}+')
     print("| AVAILABILITY |")
-    print("+--------------+") 
+    print(f'+{14*"-"}+')
 
     # Start creating roster
     print("Enter index in the [] to select or enter Q to finish.")
@@ -80,7 +81,7 @@ def create_roster(file_name):
         "7": sun,
     }    
 
-    # Get users input
+    # Get users' input for available days
     available_day = str()
     user_day_selection = True
     selected_day = []
@@ -99,7 +100,7 @@ def create_roster(file_name):
         user_input_selection will keep looping until one of the above condition is met. 
         '''
         if (available_day == "Q"):
-            # count data from csv file to check how many available days get recorded
+            # count data from csv file to check how many available days are already recorded
             # if more than 3 available days then users have completed creating roster
             csv_reader = csv.reader(open("schedule_record.csv"))
             line_count = len(list(csv_reader))
@@ -107,7 +108,8 @@ def create_roster(file_name):
                 user_day_selection = False
                 print("\nTHANK YOU! You have completed your roster for the following week.")
                 print("You have the option to view your roster again in the Home Menu.\n")
-                print("-------------------------------------------------------------------------------------------------------------------------\n")
+                print("-" * 130)
+                print("\n")
                 break
            
 
@@ -118,7 +120,7 @@ def create_roster(file_name):
                     continue_or_not = input ("--> Enter 'Yes' to continue or 'No' to quit: ")
                     if continue_or_not == "No":
                         user_day_selection = False
-                        # clear all records in the roster
+                        # clear all records in the roster because if less than 3 days, users do not get rostered
                         with open('schedule_record.csv', 'w') as f:
                             writer = csv.writer(f)
                             writer.writerows([" "])
@@ -127,10 +129,10 @@ def create_roster(file_name):
                         with open('schedule_record.csv', 'w') as f:
                             f.write("Rostered days, Shift, Action\n")
                             f.close()
-                        print("---------------------------------------------------------------------------------")
+                        print("-" * 110)
                         print("You have no roster for the following week.")
                         print("If you need further discussion, please contact our HR department on 1300 123 456.")
-                        print("-------------------------------------------------------------------------------- ")
+                        print("-" * 110)
                         break
                     elif continue_or_not == "Yes":
                         break
@@ -152,6 +154,7 @@ def create_roster(file_name):
                 if not check_valid_shift(available_shift):
                     pass
                 else:
+                    # If all conditions are met, start appending users' input 
                     with open(file_name, "a") as schedule_record:
                         writer = csv.writer(schedule_record)
                         writer.writerow([days_dict[available_day], available_shift, " Added"])
@@ -159,6 +162,7 @@ def create_roster(file_name):
                     print(f'--> {days_dict[available_day]} - {available_shift} is added to your roster.')
                     break
 
+        # Return warning for invalid input if users' selection for days are not listed in Prompt 1 or not equal to "Q"
         else:
             print("--> Invalid input! Please try again.")
 
