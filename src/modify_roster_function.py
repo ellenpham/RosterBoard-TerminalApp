@@ -250,6 +250,7 @@ def modify_schedule():
                 print(stylize("There is no change made to your unavailability record.", notice_color()))
                 print("-" * 130)
                 view_schedule()
+                break
 
             # If yes, clear the current data in csv file
             elif redo_or_not == "Yes":

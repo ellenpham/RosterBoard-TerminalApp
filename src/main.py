@@ -41,6 +41,8 @@ def introduction():
     os.system('clear')
     print("-" * 130)
 
+introduction()
+
 # Get users' information
 # Name input
 def input_name():
