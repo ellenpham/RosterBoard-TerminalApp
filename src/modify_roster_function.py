@@ -2,7 +2,9 @@ import csv
 import datetime 
 from view_roster_function import view_schedule
 from add_unavailability_function import add_unavailability
-from create_roster_function import check_valid_shift
+from create_roster_function import check_valid_shift, get_days_dict, display_weekday
+from Roster import Roster
+from Item import Item
 
 # Function to check if users input is in correct date format
 def is_date(string, fmt="%A %B %d %Y"):
@@ -12,24 +14,13 @@ def is_date(string, fmt="%A %B %d %Y"):
     except ValueError:
         return False
 
-# Function to check if a day is already existed in the record ---> NEED TO FIX
-def check_existed_day(day):
-    file_name = "schedule_record.csv"
-    selected_day = []
-    with open(file_name, "r") as schedule_record:
-        reader = csv.reader(schedule_record)
-        selected_day == list(reader)
+file_name ="schedule_record.csv"
+ua_file_name = "ua_record.csv"
 
-        if day in selected_day:
-            return True
-        else:             
-            return False
+
 
 # Main function to modify both availability and unavailability 
 def modify_schedule():
-    file_name ="schedule_record.csv"
-    ua_file_name = "ua_record.csv"
-
     print("-" * 130)
     print("You are about to modify your work schedule....")
     
@@ -95,118 +86,114 @@ def modify_schedule():
 
     # To modify chosen rostered day
     def modify(file_name):
-        modified_rostered_day =str()
+        modified_rostered_day = str()
+        
+        # Initialize roster object
+        users_roster = Roster()
+        users_roster.load_from_file(file_name)
+        users_roster.display_roster()
+        currentitem_dict = dict()
+        i = 1
+        for item in users_roster.roster:
+            currentitem_dict[str(i)] = item
+            i += 1
 
         while modified_rostered_day != "Q":
-            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             modified_rostered_day = input("Enter the day you want to modify or enter Q to finish: ")
             
             if modified_rostered_day == "Q":
                 break
-            
-            # check if users' input is in give date format
-            elif not is_date(modified_rostered_day):
-                print ("Invalid input! Please try again")
 
             else:
                 while True: 
-                    modified_shift = input("Enter the shift you want to change to (AM, PM or Night): ")
-                    if not check_valid_shift(modified_shift):
-                        pass
-                    # if all conditions are met, start reading the csv file then overriding the old records
+                    if modified_rostered_day in currentitem_dict.keys():
+                        modified_shift = input("Enter the shift you want to change to (AM, PM or Night): ")
+                        if check_valid_shift(modified_shift):
+                            currentitem_dict[modified_rostered_day].shift = modified_shift
+                            currentitem_dict[modified_rostered_day].action = "Modified"
+                            users_roster.save_to_csv(file_name)
+                            str_date = currentitem_dict[modified_rostered_day].date.strftime("%a %B %d %Y")
+                            print(f'--> Your shift on {str_date} has been changed to {modified_shift}.\n')
+                            break
+                        else:
+                            print("Invalid input! Please try again.")
+                    
                     else:
-                        rostered_days_list = []
-                        with open(file_name, "r") as schedule_record:
-                            csv_reader = csv.reader(schedule_record)
-                            for row in csv_reader:
-                                if modified_rostered_day == row[0]:
-                                    rostered_days_list.append([modified_rostered_day, modified_shift, "Modified"])
-                                else:
-                                    rostered_days_list.append(row)
-                        schedule_record.close()
-                        print(rostered_days_list)  #---> Remove when complete
-            
-                        with open(file_name, "w") as schedule_record:
-                            writer = csv.writer(schedule_record)
-                            writer.writerows(rostered_days_list)
-                            schedule_record.close()
-                        print(f'--> Your shift on {modified_rostered_day} has been changed to {modified_shift}.\n')
+                        print ("Sorry your selection is not in the list!")
                         break
 
-        # ---> still print if users choose a day this not in roster --> NEED TO FIX
         
     # To remove chosen rostered day
     def remove(file_name):
         removed_day = str()
+
+        # Initialize roster object
+        users_roster = Roster()
+        users_roster.load_from_file(file_name)
+        users_roster.display_roster()
+        currentitem_dict = dict()
+        i = 1
+        for item in users_roster.roster:
+            currentitem_dict[str(i)] = item
+            i += 1
+
         while removed_day != "Q":
-            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             removed_day = input("Enter the day you want to remove or enter Q to finish: ")
 
             if removed_day == "Q":
                 break
-
-            # check if users' input is in give date format
-            elif not is_date(removed_day):
-                print ("Invalid input! Please try again")
-            
-            # if all conditions are met, start reading the csv file then removing the old records
+          
             else:
-                removed_days_list = []
-                with open(file_name, "r") as schedule_record:
-                    csv_reader = csv.reader(schedule_record)
-                    for row in csv_reader:
-                        removed_days_list.append(row)
-                        for day in row:
-                            if day == removed_day:
-                                removed_days_list.remove(row)
-                    schedule_record.close()
-                print(removed_days_list) # --> delete when complete
-                with open(file_name, "w") as schedule_record:
-                    writer = csv.writer(schedule_record)
-                    writer.writerows(removed_days_list)
-                    schedule_record.close()
-                print(f'--> {removed_day} has been removed from your roster.\n')
-                    
-    # ---> still print if users choose a day this not in roster --> NEED TO FIX
+                if removed_day in currentitem_dict.keys():
+                    users_roster.roster.remove(currentitem_dict[removed_day])
+                    users_roster.save_to_csv(file_name)
+                    str_date = currentitem_dict[removed_day].date.strftime("%a %B %d %Y")
+                    print(f'--> Your shift on {str_date} has been removed\n')
+                else:
+                    print ("Sorry your selection is not in the list!")
+                
 
     # To add more days to roster
     def add(file_name):
-        added_day_list =[]
         added_day = str()
+        
+        # Initialize roster object
+        users_roster = Roster()
+        users_roster.load_from_file(file_name)
+
+        days_dict = get_days_dict(1)
+        display_weekday(days_dict)
            
         while added_day != "Q":
-            print("Please follow this example format to enter day: 'Monday May 01 2023'")
             added_day = input("Enter the day you want to add or enter Q to finish: ")
             
             if added_day == "Q":
                 break
-            
-            # check if users' input is in give date format
-            elif not is_date(added_day):
-                print ("Invalid input! Please try again")
-        
+
+            elif added_day not in days_dict:
+                print ("Sorry your selection is not in the list!")
+                break
+
             else:
-                # ---> still can not detect duplicated days --> NEED TO FIX
-                # check if users' chosen day is already existed in the csv file --> then they need to choose another day to add
-                if check_existed_day(added_day):
-                    print("--> Sorry you have selected this day! You can only select ONE shift per day.")
-                    modify_roster()
+                existed_day = False
 
-                else:
-                    while True: 
-                        added_shift = input("Enter the shift you want to add (AM, PM or Night): ")
-                        if not check_valid_shift(added_shift):
-                            pass
-
-                        # if all conditions are met, start reading the csv file then adding the new records
-                        else:            
-                            with open(file_name, "a") as schedule_record:
-                                added_day_list.append(added_day)
-                                writer = csv.writer(schedule_record)
-                                writer.writerow([added_day, added_shift, " Modified"])
-                                print(f'--> {added_day} - {added_shift} is added to your roster.\n')
-                                schedule_record.close()
-                            break
+                for item in users_roster.roster:
+                    if item.date == days_dict[added_day]:
+                        print("--> Sorry this day has been chosen! Please choose another day.")
+                        existed_day = True
+                        break
+                       
+                while not existed_day:
+                    added_shift = input("Enter the shift you want to add (AM, PM or Night): ")
+                    if check_valid_shift(added_shift):
+                        new_item = Item(days_dict[added_day], added_shift, action= "Added")
+                        users_roster.roster.append(new_item)
+                        users_roster.save_to_csv(file_name)
+                        str_date = new_item.date.strftime("%a %B %d %Y")
+                        print(f'--> {str_date} - {added_shift} is added to your roster.\n')
+                        break
+                    else:
+                        print("Invalid input! Please try again.")   
 
 
     # To modify unavailability record

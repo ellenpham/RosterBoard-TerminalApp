@@ -2,6 +2,10 @@
 
 # References
 
+https://peps.python.org/pep-0405/#specification
+
+
+
 # Links
 1. GitHub repository:
 2. Presentation:
@@ -375,7 +379,7 @@ This section allows user to modify their current roster or modify their current 
 
 1. In your computer, open terminal or command prompt:
 
-    - For Window users: Go to Start menu, in the search bar, search for Terminal or Command Prompt app, type in `bash` then hit Enter
+    - For Window/WSL users: Go to Start menu, in the search bar, search for Terminal or Command Prompt app, type in `bash` then hit Enter
 
     - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
 
@@ -390,3 +394,16 @@ This section allows user to modify their current roster or modify their current 
     - Execute Bash script `chmod +x RosterBoard_App.sh`
 
     - Run the app `./RosterBoard_app.sh`
+
+3. Dependencies
+
+4. System prerequisites: 
+
+    - Python Version 3 is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
+
+    - For Window users, WSL2 is required to run the application, please install WSL2 by following [this link](https://learn.microsoft.com/en-us/windows/wsl/install). A latest version of Windows is also required for the WSL setup. 
+
+
+
+
+

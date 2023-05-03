@@ -619,4 +619,28 @@
 #     monkeypatch.setattr('sys.stdin', number_inputs)
 #     assert adding() == 5
 
+# return the next Monday
+import datetime
 
+def get_next_monday(num):
+    today  = datetime.date.today()
+    days_to_next_monday = num - today.weekday()
+    next_monday = today + datetime.timedelta(days = days_to_next_monday)
+    return next_monday
+
+
+# initialize the dictionary of days in the next week
+def get_days_dict(num):
+    days_dict = dict()
+
+    first_day = get_next_monday(num)
+
+    for i in range(7):
+        days_dict[f"{i}"] = first_day
+        first_day = first_day + datetime.timedelta(days = 1)
+        day_str = days_dict[f"{i}"].strftime("%A %B %d %Y")
+        print(f"[{i+1}] {day_str}")
+    
+    return days_dict
+
+get_days_dict(7)
