@@ -2,9 +2,6 @@
 
 # References
 
-https://peps.python.org/pep-0405/#specification
-
-
 
 # Links
 1. GitHub repository:
@@ -17,23 +14,25 @@ https://peps.python.org/pep-0405/#specification
 
 2. Goodger, D., Rossum, G. (2001) PEP 257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
 
+3. https://peps.python.org/pep-0405/#specification
+
 # Functionalities
 
 ## Description
 
-NKG Corp. is a warehousing and distribution company. They have a large number of staff working across rotating shifts. **RosterBoard** is an internal application that allows company staff to provide their availability and unavailability in the two weeks time, which are used for roster building and workforce planning. 
+NKG Corp. is a warehousing and distribution company. They have a large number of staff working across rotating shifts. **RosterBoard** is an internal application that allows company staff to provide their availability and unavailability, which are used for roster building and workforce planning. 
 
 
 ## Main features
 1. Users (the company staff) are asked to provide their name and their department before starting their work schedule. If all answers are valid, they get prompted to the Home Menu. 
-2. The Home Menu has 5 prompts : Create Roster, Add Future Unavailability, View Roster, Modify Roster and Exit Program. 
+2. The Home Menu has FIVE prompts : Create Roster, Add Future Unavailability, View Roster, Modify Roster and Exit Program. 
 3. In the Create Roster Function, users are requested to create their roster for the following week based on a list of questions:
     - Select available days for the following week (Monday to Sunday).
-    - Select available shifts for the chosen day.
+    - Select available shift for the each chosen available day.
 
-    There are some criterias when creating the roster. First, if available days are less than THREE days, users are required to select more days, if not, they have no roster for the following week and prompted back to Home Menu. Second, users can only choose ONE shift per available day. 
+    There are some criteria when creating the roster. First, if available days are less than THREE days, users are required to select more days, if not, they have no roster for the following week and get prompted back to Home Menu. Second, users can only choose ONE shift per available day. 
 
-4. In the Add Future Unavailability Function, users are requested to  select their unavailable days for the ONE week after the following week. Here they can input as many days or shifts as they wish. If they have no unavailability, there will be no record.  
+4. In the Add Future Unavailability Function, users are requested to select their unavailable days for the ONE week after the following week. Here they can input as many days or shifts as they wish. If they have no unavailability, there will be no record.  
 
 5. In the View Roster Function, users' final work schedule is displayed. Users can confirm this work schedule or if they change their mind, they can have option to modify the current schedule. Note that once users finish providing their availability and unavailability in the last two functions, they can not go back and restart the procedure. They can only modify the schedule records by using Modify Roster Function. 
 
@@ -75,29 +74,64 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 <br>
 
-## The development of each feature and timeline. 
+## The development of each feature and timeline
 
-The development steps are listed as below:
+The task priority are listed as below:
 
-1. Getting users' information
-2. Create Roster Function
-3. Add Future Unavailability Function
-4. View Roster Function
-5. Modify Roster Function
-6. Test cases
-7. Write scripts
+1. Define classes and common functions. 
+2. Functions to get users' information
+3. `create_roster` function
+4. `add_unavailability` function
+5. `view_schedule` function 
+6. `modify_schedule` function
+7. Error handling and testing
+8. Installation scripts
+
+
+<br>
+
+**Files arrangement**
+
+- **main.py** is the main file which stores simple functions like `input_name()`, `department_choice()` and `main_menu()`
+
+- **Roster.py**, **Unavailability.py** and **Item.py** are the files that store code for classes, the functions within these classes get imported in different files when needed. 
+
+- **common_functions.py** is the file which store all common functions that are used accross files.
+
+- **create_roster_function.py** is the file which contains `create_roster` function, it gets imported in **main.py** as Prompt 1.
+
+- **add_unavailability_function.py** is the file which contains `add_unavailability` function, it gets imported in **main.py** as Prompt 2.
+
+- **view_roster_function.py** is the file which contains `view_schedule` function, it gets imported in **main.py** as Prompt 3.
+
+- **modify_roster_function.py** is the file which contains `modify_schedule` function, it gets imported in **main.py** as Prompt 4.
+
+<br>
+
+**Classes and common functions**
+
+1. The class named `Roster` is used to represents a roster object, it contains a few functions that belong to the relevant roster object. The functions within this class are listed as below:
+    - `load_from_file()`: this function is used to load data from a csv file to a temporary list for easy manipulation on memory. 
+    - `save_to_csv()`: this function is called to save the data to csv file for final display when the above list of data are met with all criteria.
+    - `display_roster()`: this function is called when the list of data need to be displayed.
+   
+2. The class named `Unavailability` was created with the same approach as `Roster`, it is used to represents an unavailability object. It has the same functions, which are `load_from_file()`, `save_to_csv()` and `display_unavailability()`. 
+
+3. The class named `Item` is used to represents an item object. Here the item means each available day or unavailable day in the csv files, the parameters in an item object including day, shift and action (or status). 
+
+4. `common_functions.py` file is used to store all functions that are used across files in source code, including functions for text color and `check_valid_shift()` function to check valid input for shifts. 
 
 <br>
 
 **Getting users' information**
 
-This section includes getting users' input for their name and their department. This section is included in `main.py` file. The `main.py` file also include a section for Home Menu, which use `while` loop with `if` `elif` `else` to keep prompting users back to Home Menu after each completed task. Main classes and functions are arranged in separated files and get imported in the `main.py` file for modularised purpose.
+This code section includes getting users' input for their name and their department. 
 
 <table>
     <thead>
         <tr>
             <th>Checklist</th>
-            <th>Items</th>
+            <th>Tasks</th>
             <th>Timeline</th>
         </tr>
     </thead>
@@ -144,7 +178,7 @@ This section includes getting users' input for their name and their department. 
 
 <br>
 
-**Create Roster Function**
+**`create_roster` function**
 
 This section allows users to choose their available days during the following week. Users are required to choose more than THREE days of work and only ONE shift per day. Their inputs will be used to form their roster.
 
@@ -210,7 +244,7 @@ This section allows users to choose their available days during the following we
 
 <br>
 
-**Add Future Unavailability Function**
+**`add_unavailability` function**
 
 This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request.
 
@@ -258,7 +292,7 @@ This section allows users to choose their unavailable days during week after the
 
 <br>
 
-**View Roster Function**
+**`view_schedule` function**
 
 This section allows users to view their work schedule which has been recorded from their previous inputs. Their final work schedule includes users' name, department, action date, followed by their rostered days and unavailability records.
 
@@ -300,14 +334,14 @@ This section allows users to view their work schedule which has been recorded fr
 </table>
 
 
-Day 4: Complete Add Future Unavailability Function and View Roster Function
+**Day 4**: Complete Add Future Unavailability Function and View Roster Function
 
 ![Trello_Day4_1](./docs/Trello_Day4_1.png)
 ![Trello_Day4_2](./docs/Trello_Day4_2.png)
 
 <br>
 
-**Modify Roster Function**
+**`modify_schedule` function**
 
 This section allows user to modify their current roster or modify their current unavailability records. 
 1. Modify current roster: Here users have options to modify the shift of a current rostered day, to remove a current rostered day or to add a new day to the roster. 
@@ -371,6 +405,12 @@ This section allows user to modify their current roster or modify their current 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
+
+**Day 7 and Day 8**: Review source code and optimize by applying OOP, redo some pieces of code that execute the same tasks, so that it can be reuse when needed.
+
+![Trello_Day7&8_1](./docs/Trello_Day7&8_1.png)
+![Trello_Day7&8_2](./docs/Trello_Day7&8_2.png)
+
 <br>
 
 # Installation
@@ -389,11 +429,11 @@ This section allows user to modify their current roster or modify their current 
 
     - Clone this repository using `git clone git@github.com:ellenpham/RosterBoard_app.git`
 
-    - Change the directory to the src folder using `cd RosterBoard_app/src`
+    - Change the directory to the src folder using `cd src`
 
-    - Execute Bash script `chmod +x RosterBoard_App.sh`
+    - Execute Bash script `chmod +x run.sh`
 
-    - Run the app `./RosterBoard_app.sh`
+    - Run the app `source run.sh`
 
 3. Dependencies
 
