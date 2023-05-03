@@ -60,7 +60,7 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 3. Created a mock output using notepad to help visualizing the expected output when the app is run successfully and without errors. 
 
-4. Start writing the source code. Define a range of `Classes`, `Functions`, `Modules` and `Methods` used for each listed feature. 
+4. Start writing the source code.
 
 5. Errors were handled along the way during the coding process.
 
@@ -417,31 +417,37 @@ This section allows user to modify their current roster or modify their current 
 
 ## Steps to install the app
 
-1. In your computer, open terminal or command prompt:
-
-    - For Window/WSL users: Go to Start menu, in the search bar, search for Terminal or Command Prompt app, type in `bash` then hit Enter
-
-    - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
-
-2.  Next, follow the below commands in the Terminal:
-
+1. Step 1:
     - Change the directory to a folder where you want to download the app using `cd <directory>`
 
     - Clone this repository using `git clone git@github.com:ellenpham/RosterBoard_app.git`
 
     - Change the directory to the src folder using `cd src`
 
+2. In your computer, open terminal or command prompt:
+    
+    For Mac/Linux users
+
     - Execute Bash script `chmod +x run.sh`
 
     - Run the app `source run.sh`
 
+    For Window users: 
+
+    - Run the app with `run.cmd`
+
 3. Dependencies
+
 
 4. System prerequisites: 
 
     - Python Version 3 is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
 
-    - For Window users, WSL2 is required to run the application, please install WSL2 by following [this link](https://learn.microsoft.com/en-us/windows/wsl/install). A latest version of Windows is also required for the WSL setup. 
+    - Setup Git
+
+    - 
+
+
 
 
 
