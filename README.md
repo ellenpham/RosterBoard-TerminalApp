@@ -76,16 +76,16 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 ## The development of each feature and timeline
 
-The task priority are listed as below:
+Below is the task priority during source code development process:
 
-1. Define classes and common functions. 
+1. Define classes and common functions
 2. Functions to get users' information
 3. `create_roster` function
 4. `add_unavailability` function
 5. `view_schedule` function 
 6. `modify_schedule` function
-7. Error handling and testing
-8. Installation scripts
+7. Error handling
+8. Testing
 
 
 <br>
@@ -143,7 +143,7 @@ This code section includes getting users' input for their name and their departm
         </tr>
         <tr>
             <td>2</th>
-            <td>Error handling: name input must be all letters, using `re` module</th>
+            <td>Error handling: name input must be all letters, using RegEx </th>
             <td>25-26 Apr</th>
         </tr>
         <tr>
@@ -153,7 +153,7 @@ This code section includes getting users' input for their name and their departm
         </tr>
         <tr>
             <td>4</th>
-            <td>Error handling: department selection must be in the given list, using `try` `except`</th>
+            <td>Exception handling: department selection must be in the given list, using try, except statement</th>
             <td>25-26 Apr</th>
         </tr>
         <tr>
@@ -170,9 +170,6 @@ This code section includes getting users' input for their name and their departm
     </tbody>
 </table>
 
-
-**Day 1**: Create project management plan, design control flow diagram, create mocking output, create welcome banner, introduction and instructions, research on `datetime` module, start on functions to get users' information.
-
 ![Trello_Day1_1](./docs/Trello_Day1_1.png)
 ![Trello_Day1_2](./docs/Trello_Day1_2.png)
 
@@ -186,19 +183,19 @@ This section allows users to choose their available days during the following we
     <thead>
         <tr>
             <th>Checklist</th>
-            <th>Items</th>
+            <th>Tasks</th>
             <th>Timeline</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>1</th>
-            <td>A function that always returns dates for Mon to Sun of the following week using `weekday()`</th>
+            <td>A function that always returns dates for Mon to Sun of the following week using weekday()</th>
             <td>26-28 Apr</th>
         </tr>
         <tr>
             <td>2</th>
-            <td>User's chosen days get recorded in csv file using `csv.writer`</th>
+            <td>After being processed, list of chosen days is saved in csv file using csv.writer() for displaying final schedule (schedule_record.csv) </th>
             <td>26-28 Apr</th>
         </tr>
         <tr>
@@ -223,21 +220,17 @@ This section allows users to choose their available days during the following we
         </tr>
         <tr>
             <td>7</th>
-            <td>Using `len()` to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
+            <td>Using len() to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
             <td>26-28 Apr</th>
         </tr>
     </tbody>
 </table>
 
 
-**Day 2**: Complete functions for getting users' information, start working on Create Roster Function, research on OOP, research on file handling and `csv` module, research on `RegEx`.
-
 ![Trello_Day2_2](./docs/Trello_Day2_2.png)
 ![Trello_Day2_3](./docs/Trello_Day2_3.png)
 
 <br>
-
-**Day 3**: Complete Create Roster Function and start reporting on Readme file, start working on Add Future Unavailability Function. 
 
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
 ![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
@@ -246,45 +239,45 @@ This section allows users to choose their available days during the following we
 
 **`add_unavailability` function**
 
-This section allows users to choose their unavailable days during week after the following week. Users can choose as many days and shifts as they wish and they all get record as their unavailability request.
+This section allows users to choose their unavailable days for the week after the following week. Users can choose as many days and shifts as they wish and they are all saved as their unavailability record.
 
 <table>
     <thead>
         <tr>
             <th>Checklist</th>
-            <th>Items</th>
+            <th>Tasks</th>
             <th>Timeline</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>1</th>
-            <td>Unavailability records are stored in a separate CSV file </th>
+            <td>List of unavailability record is saved in a separate CSV file (ua_record.csv) </th>
             <td>28-29 Apr</th>
         </tr>
         <tr>
             <td>2</th>
-            <td>Users can not select two same days but can select more than one shift, using `list.append()` to allow multiple shifts </th>
+            <td>Users can not select two same days but can select more than one shift, using list.append() to allow multiple shifts added </th>
             <td>28-29 Apr</th>
         </tr>
         <tr>
             <td>3</th>
-            <td>Chosen shifts are stored in `set()` to eliminate duplication </th>
+            <td>Chosen shifts are converted from a list to a set to eliminate duplication </th>
             <td>28-29 Apr</th>
         </tr>
         <tr>
             <td>4</th>
-            <td>If users accidently select a day but no shift is chose. The chosen day will not be counted as their unavailable day, using `len()` to check set items</th>
+            <td>If users accidently select a day but no shift is chose. The chosen day will not be counted as their unavailable day, using len() to check set items</th>
             <td>28-29 Apr</th>
         </tr>
         <tr>
             <td>5</th>
-            <td>Error handling for all users' input using `while` loop and `if` `elif` `else`</th>
+            <td>Error handling for all users' input using while loop and if elif else</th>
             <td>28-29 Apr</th>
         </tr>
         <tr>
             <td>6</th>
-            <td>Using `len()` to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
+            <td>Using len() to check existed record in csv file. If existed, prompt users to Modify Roster Function if they need to make changes</th>
             <td>28-29 Apr</th>
         </tr>
     </tbody>
@@ -307,12 +300,12 @@ This section allows users to view their work schedule which has been recorded fr
     <tbody>
         <tr>
             <td>1</th>
-            <td>Users' name, department and action date are displayed by importing from `main.py` </th>
+            <td>Users' name, department and action date are displayed by importing from main.py file </th>
             <td>29 Apr</th>
         </tr>
         <tr>
             <td>2</th>
-            <td>Users' input for availability and unavailability are arranged in a table format using `prettytable`</th>
+            <td>Users' input for availability and unavailability are arranged in a table format using Prettytable module</th>
             <td>29 Apr</th>
         </tr>
         <tr>
@@ -322,19 +315,17 @@ This section allows users to view their work schedule which has been recorded fr
         </tr>
         <tr>
             <td>4</th>
-            <td>If users do not confirm, they are prompted back to Home Menu and choose Modify Roster Function</th>
+            <td>If users do not confirm, they are prompted back to Home Menu, where they can select Prompt 4 to modify the schedule</th>
             <td>29 Apr</th>
         </tr>
         <tr>
             <td>5</th>
-            <td>Error handling for users' input using `while` loop and `if` `elif` `else`</th>
+            <td>Error handling for users' input using while loop and if elif else</th>
             <td>29 Apr</th>
         </tr>
     </tbody>
 </table>
 
-
-**Day 4**: Complete Add Future Unavailability Function and View Roster Function
 
 ![Trello_Day4_1](./docs/Trello_Day4_1.png)
 ![Trello_Day4_2](./docs/Trello_Day4_2.png)
@@ -352,7 +343,7 @@ This section allows user to modify their current roster or modify their current 
     <thead>
         <tr>
             <th>Checklist</th>
-            <th>Items</th>
+            <th>Tasks</th>
             <th>Timeline</th>
         </tr>
     </thead>
@@ -364,27 +355,27 @@ This section allows user to modify their current roster or modify their current 
         </tr>
         <tr>
             <td>2</th>
-            <td>User have three options on how they can manipulate their current roster: 1/to modify, 2/to remove and 3/to add</th>
+            <td>User have three options on how they can manipulate their current roster: 1/to modify or change current shift, 2/to remove and 3/to add</th>
             <td>30 Apr - 02 May</th>
         </tr>
         <tr>
             <td>3</th>
-            <td>Requirement when adding a day: if the day is already existed --> have to choose another day.</th>
+            <td>Requirement when adding a day: users can not add an existing day. Achieved by define boolean values for the existed_day variable </th>
             <td>30 Apr - 02 May</th>
         </tr>
         <tr>
             <td>4</th>
-            <td>Requirement when modifying or removing a day: if the day is not existed --> have to choose another day</th>
+            <td>Requirement when modifying or removing a day: users can not select a day that is not existed. Achieved by define a dictionary for day items and checking the values</th>
             <td>30 Apr - 02 May</th>
         </tr>
         <tr>
             <td>5</th>
-            <td>Requirement when removing a day: re-check if there are less than THREE rostered days, using `csv.reader` and `len()` to read and count</th>
+            <td>Requirement when removing a day: re-check if there are less than THREE rostered days, using csv.reader and len() to read and count</th>
             <td>30 Apr - 02 May</th>
         </tr>
          <tr>
             <td>6</th>
-            <td>Error handling for users input: inputs for any modified days need to be in a given format, using `strptime()`</th>
+            <td>Error handling for users' input using while loop and if elif else</th>
             <td>30 Apr - 02 May</th>
         </tr>
          <tr>
@@ -394,19 +385,17 @@ This section allows user to modify their current roster or modify their current 
         </tr>
          <tr>
             <td>8</th>
-            <td>Prompt users to redo their unavailability by importing `add_unavailability()` function</th>
+            <td>Prompt users to redo their unavailability by importing add_unavailability() function</th>
             <td>30 Apr - 02 May</th>
         </tr>
     </tbody>
 </table>
 
-**Day 5 and Day 6**: Complete Modify Roster Function, research on `pytest` and  plan test cases, work on reporting documentation. 
 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
 
-**Day 7 and Day 8**: Review source code and optimize by applying OOP, redo some pieces of code that execute the same tasks, so that it can be reuse when needed.
 
 ![Trello_Day7&8_1](./docs/Trello_Day7&8_1.png)
 ![Trello_Day7&8_2](./docs/Trello_Day7&8_2.png)
@@ -415,40 +404,67 @@ This section allows user to modify their current roster or modify their current 
 
 # Installation
 
+## System prerequisites: 
+
+- Python Version 3x is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
+
+- Git Setup is required to be able to clone the repo to your computer, follow [this link](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) to set up Git. Alternatively, you can download zip file to your computer by going to my [GitHub repo](https://github.com/ellenpham/RosterBoard_app), click into **Code**, then **Download ZIP**. 
+
+- For Window users, a latest version of Windows is required with WSL2/Ubuntu installed. If you have not had WSL2/Ubuntu set up, please follow [this link](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+
 ## Steps to install the app
 
-1. Step 1:
+1. In your computer, open terminal or command prompt:
+
+    - For Window users: Go to Start menu, in the search bar, search for Terminal app, type in `bash` then hit Enter
+
+    - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
+
+2. In your computer, open terminal or command prompt:
+    
     - Change the directory to a folder where you want to download the app using `cd <directory>`
 
     - Clone this repository using `git clone https://github.com/ellenpham/RosterBoard_app.git`
 
-    - Change the directory to the src folder using `cd src`
-
-2. In your computer, open terminal or command prompt:
-    
-    For Mac/Linux users
+    - Change the directory to the src folder using `cd .\RosterBoard_app\src`
 
     - Execute Bash script `chmod +x run.sh`
 
     - Run the app `source run.sh`
 
-    For Window users: 
 
-    - Run the app with `run.cmd`
+## Dependencies
 
-3. Dependencies
+These modules will be automatically intalled when running the program. 
 
+colored==1.4.4
+exceptiongroup==1.1.1
+iniconfig==2.0.0
+packaging==23.1
+pluggy==1.0.0
+prettytable==3.7.0
+pytest==7.3.1
+tomli==2.0.1
+wcwidth==0.2.6
 
-4. System prerequisites: 
+## Command lines arguments
 
-    - Python Version 3 is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
+Instructions are included when running the application to help users perform each task. 
 
-    - Setup Git
+The below command lines are commonly used:
 
-    - 
+- Users' selection options are mainly formatted in a numbered list, corresponding numbers should be entered to be considered valid input. 
 
+- Users are guided with option to quit by enter "Q" whenever each task is finished.
 
+- Users only can completely exit the program in TWO cases: 1/ Enter "Exit" at Home Menu or 2/ Confirm when reviewing the final work schedule.
 
+- Follow guideline while running the app for the validity of other text-based input.
+
+<br>
+
+# Test cases
 
 
 

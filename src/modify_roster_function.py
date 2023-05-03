@@ -7,17 +7,9 @@ from Roster import Roster
 from Item import Item
 from common_functions import *
 
-# Function to check if users input is in correct date format
-def is_date(string, fmt="%A %B %d %Y"):
-    try:
-        datetime.datetime.strptime(string, fmt)
-        return True
-    except ValueError:
-        return False
 
 file_name ="schedule_record.csv"
 ua_file_name = "ua_record.csv"
-
 
 
 # Main function to modify both availability and unavailability 

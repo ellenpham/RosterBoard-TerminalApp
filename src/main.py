@@ -10,39 +10,38 @@ from modify_roster_function import modify_schedule
 from common_functions import *
 
 # Start the program with a welcome banner
+def introduction():
+    print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+    print(f'|{50*" "}WELCOME TO ROSTERBOARD{50*" "}|')
+    print(f'+{30*" "}A work scheduling platform for all rostered staff of NKG Corp.{30*" "}+')
+    print(f'|{24*" "}A centralized space to monitor your roster and put your schedule in place.{24*" "}|')
+    print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
+    print("\n")
+    print("-" * 124)
+    print("Please note that every second Thursday, we will release a new request. Turn on the notification to receive the request.")
+    print("You are required to action your work schedule by 12pm on the Sunday of the same week.")
+    print("Please contact our HR department on 1300 123 456 if you have any questions.")
+    print("-" * 124)
+    print("\n")
+    print("Please hit Enter to move on to the the application instructions...")
+    input()
 
-print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
-print(f'|{50*" "}WELCOME TO ROSTERBOARD{50*" "}|')
-print(f'+{30*" "}A work scheduling platform for all rostered staff of NKG Corp.{30*" "}+')
-print(f'|{24*" "}A centralized space to monitor your roster and put your schedule in place.{24*" "}|')
-print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
-print("\n")
-print("-" * 124)
-print("Please note that every second Thursday, we will release a new request. Turn on the notification to receive the request.")
-print("You are required to action your work schedule by 12pm on the Sunday of the same week.")
-print("Please contact our HR department on 1300 123 456 if you have any questions.")
-print("-" * 124)
-print("\n")
-print("Please hit Enter to move on to the the application instructions...")
-input()
-
-# Instructions
-print(f'+{12*"-"}+')
-print("|INSTRUCTIONS|")
-print(f'+{12*"-"}+')
-print("\n")
-print("Once you Start the work schedule process, you will be prompted to action the below requests:")
-print("- Create your roster for the following week.")
-print("- Inform us your unavailability for the next ONE week after the following week.")
-print("- Modify your schedule if needed.")
-print("\n")
-print("Are you ready to Start your work schedule? Please hit Enter to start...")
-input()
-os.system('clear')
-print("-" * 130)
+    # Instructions
+    print(f'+{12*"-"}+')
+    print("|INSTRUCTIONS|")
+    print(f'+{12*"-"}+')
+    print("\n")
+    print("Once you Start the work schedule process, you will be prompted to action the below requests:")
+    print("- Create your roster for the following week.")
+    print("- Inform us your unavailability for the next ONE week after the following week.")
+    print("- Modify your schedule if needed.")
+    print("\n")
+    print("Are you ready to Start your work schedule? Please hit Enter to start...")
+    input()
+    os.system('clear')
+    print("-" * 130)
 
 # Get employee information
-
 # Name input
 def input_name():
     while True: 
