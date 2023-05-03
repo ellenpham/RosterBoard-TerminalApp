@@ -7,6 +7,7 @@ from create_roster_function import create_roster
 from add_unavailability_function import add_unavailability
 from view_roster_function import view_schedule
 from modify_roster_function import modify_schedule
+from common_functions import *
 
 # Start the program with a welcome banner
 
@@ -57,10 +58,11 @@ def input_name():
             return user_first_name, user_last_name
         
         else:
-            print("Invalid input! Please try again.\n")
+            invalid_input_message()
 
 full_name = ' '.join(input_name())
-print(f'\nHello {full_name}, we hope you are doing good!')
+print("\n")
+print(stylize(f'Hello {full_name}, we hope you are doing good!', notice_color()))
 
 print("\n")
 # Department selection
@@ -74,25 +76,25 @@ def department_choice():
         try:
             department = int(input("Please enter your selection: "))
         except ValueError:
-            print("Invalid input! Please try again.\n")
+            invalid_input_message()
             continue
 
         if department != 1 and department != 2 and department != 3:
-            print("Sorry, your selection is not in the list.\n")
+            selection_not_in_list()
             continue
         else:
             break
     
     if department == 1:
         user_department = "Operation"
-        return (user_department)
+        return user_department
     
     elif department == 2:
         user_department = "Inventory"
-        return (user_department)
+        return user_department
     else:
         user_department = "Distribution"
-        return (user_department)
+        return user_department
 
 user_department_choice = department_choice()
 print(user_department_choice)
@@ -107,25 +109,22 @@ os.system('clear')
 file_name = "schedule_record.csv"
 ua_file_name = "ua_record.csv"
 
-# File handling
-# CSV file for storing availability
+# Check if roster file is existed
 try:
     roster_file = open(file_name, "r")
     roster_file.close()
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
-    roster_file.write("Rostered days, Shift, Action\n")
     roster_file.close()
 
-# CSV file for storing unavailability
+# Check if unavailability file is existed 
 try:
     ua_file = open(ua_file_name, "r")
     ua_file.close()
 
 except FileNotFoundError as e:
     ua_file = open(ua_file_name, "w")
-    ua_file.write("Unavailable days, Shifts, Action\n")
     ua_file.close()
         
 
@@ -139,9 +138,9 @@ def main_menu():
     print("Please select your option: ")
 
     print("[1] Enter 1 to create your roster for the following week")
-    print("[2] Enter 2 to add your unavailability for ONE week after the following week")
+    print("[2] Enter 2 to add your unavailability for the week after the following week")
     print("[3] Enter 3 to view your current work schedule")
-    print("[4] Enter 4 to modify your work schedule")
+    print("[4] Enter 4 to modify your current work schedule")
     print("[Exit] Enter Exit to exit the program")
     menu_choice = input("Enter your selection: ")
     return menu_choice
@@ -159,8 +158,8 @@ while user_menu_choice != "Exit":
             row = len(list(existing_record))
             if row >= 2:
                 print("\n")
-                print("Your roster is already existed!")
-                print("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.")
+                print(stylize("Your roster is already existed!", warning_color()))
+                print(stylize("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.", warning_color()))
                 print("\n")
                 continue
             else: 
@@ -174,8 +173,8 @@ while user_menu_choice != "Exit":
             ua_row = len(list(ua_existing_record))
             if ua_row >= 2:
                 print("\n")
-                print("Your unavailability record is already existed!")
-                print("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.")
+                print(stylize("Your unavailability record is already existed!", warning_color()))
+                print(stylize("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.", warning_color()))
                 print("\n")
                 continue
             else: 
@@ -207,10 +206,10 @@ while user_menu_choice != "Exit":
         print(f'+{"-"*122}+')
         print("\n")
         # clear data in csv file when exit program
-        #os.system("rm schedule_record.csv")
-        #os.system("rm ua_record.csv")
+        os.system("rm schedule_record.csv")
+        os.system("rm ua_record.csv")
         continue
     
     else:
-        print("Invalid input! Please try again.")
+        invalid_input_message()
 

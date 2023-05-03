@@ -5,6 +5,7 @@ from add_unavailability_function import add_unavailability
 from create_roster_function import check_valid_shift, get_days_dict, display_weekday
 from Roster import Roster
 from Item import Item
+from common_functions import *
 
 # Function to check if users input is in correct date format
 def is_date(string, fmt="%A %B %d %Y"):
@@ -29,13 +30,12 @@ def modify_schedule():
         modify_option = str()
 
         while modify_option != "Q":
-            print ("\nDo you wish to modify, remove your chosen availability or add a new availability?")
+            print ("\nDo you wish to modify or remove your chosen availability or add new availability?")
             print ("[1] Enter 1 to Modify")
             print ("[2] Enter 2 to Remove")
             print ("[3] Enter 3 to Add")
             print ("[Q] Enter Q to finish modifying your roster")
             modify_option = input("Enter your selection: ")
-            print("\n")
 
             if modify_option == "1":
                 modify(file_name)
@@ -54,10 +54,10 @@ def modify_schedule():
                     pass
 
                 else: # if less than 3 available days, users can choose to continue adding more days or have no roster at all
-                    print("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?")
+                    print(stylize("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?", warning_color()))
                     # Error handling for users input for continue-or-not prompt
                     while True:
-                        continue_or_not = input ("--> Enter 'Yes' to continue or 'No' to quit: ")
+                        continue_or_not = input(stylize(f"--> Enter 'Yes' to continue or 'No' to quit: ", warning_color()))
                         if continue_or_not == "No":
                             # clear all records in the roster due to less than 3 available days
                             with open('schedule_record.csv', 'w') as f:
@@ -75,14 +75,14 @@ def modify_schedule():
                             break
                         elif continue_or_not == "Yes":
                             print("\n")
-                            print("You have option to continue adding your available days. Please follow the prompts.")
+                            print(stylize("You have option to continue adding your available days. Please follow the prompts.", notice_color()))
                             break
                         else:
-                            print("Invalid input! Please try again.")
+                            invalid_input_message()
 
             # Return warning for invalid input if users' selection are not listed in the prompt to Modfy, Remove or Add or not equal to "Q"
             else:
-                print("Invalid input! Please try again.")
+                invalid_input_message()
 
     # To modify chosen rostered day
     def modify(file_name):
@@ -112,14 +112,14 @@ def modify_schedule():
                             currentitem_dict[modified_rostered_day].shift = modified_shift
                             currentitem_dict[modified_rostered_day].action = "Modified"
                             users_roster.save_to_csv(file_name)
-                            str_date = currentitem_dict[modified_rostered_day].date.strftime("%a %B %d %Y")
-                            print(f'--> Your shift on {str_date} has been changed to {modified_shift}.\n')
+                            str_day = currentitem_dict[modified_rostered_day].day.strftime("%a %d/%m/%Y")
+                            print(stylize(f'--> Your shift on {str_day} has been changed to {modified_shift}.', notice_color()))
                             break
                         else:
-                            print("Invalid input! Please try again.")
+                            invalid_input_message()
                     
                     else:
-                        print ("Sorry your selection is not in the list!")
+                        selection_not_in_list()
                         break
 
         
@@ -147,10 +147,10 @@ def modify_schedule():
                 if removed_day in currentitem_dict.keys():
                     users_roster.roster.remove(currentitem_dict[removed_day])
                     users_roster.save_to_csv(file_name)
-                    str_date = currentitem_dict[removed_day].date.strftime("%a %B %d %Y")
-                    print(f'--> Your shift on {str_date} has been removed\n')
+                    str_day = currentitem_dict[removed_day].day.strftime("%a %d/%m/%Y")
+                    print(stylize(f'--> Your shift on {str_day} has been removed.', notice_color()))
                 else:
-                    print ("Sorry your selection is not in the list!")
+                    selection_not_in_list()
                 
 
     # To add more days to roster
@@ -161,6 +161,7 @@ def modify_schedule():
         users_roster = Roster()
         users_roster.load_from_file(file_name)
 
+        print("Please select a day in the below list: ")
         days_dict = get_days_dict(1)
         display_weekday(days_dict)
            
@@ -171,15 +172,15 @@ def modify_schedule():
                 break
 
             elif added_day not in days_dict:
-                print ("Sorry your selection is not in the list!")
-                break
+                selection_not_in_list()
+                pass
 
             else:
                 existed_day = False
 
                 for item in users_roster.roster:
-                    if item.date == days_dict[added_day]:
-                        print("--> Sorry this day has been chosen! Please choose another day.")
+                    if item.day == days_dict[added_day]:
+                        print(stylize("--> Sorry this day has been chosen! Please choose another day.", warning_color()))
                         existed_day = True
                         break
                        
@@ -189,25 +190,26 @@ def modify_schedule():
                         new_item = Item(days_dict[added_day], added_shift, action= "Added")
                         users_roster.roster.append(new_item)
                         users_roster.save_to_csv(file_name)
-                        str_date = new_item.date.strftime("%a %B %d %Y")
-                        print(f'--> {str_date} - {added_shift} is added to your roster.\n')
+                        str_day = new_item.day.strftime("%a %d/%m/%Y")
+                        print(stylize(f'--> {str_day} - {added_shift} is added to your roster.', notice_color()))
                         break
                     else:
-                        print("Invalid input! Please try again.")   
+                        invalid_input_message()
 
 
     # To modify unavailability record
     def modify_unavailabilty():
         print("\n")
         print("If you choose to modify your unavailability, your old record will be cleared.")
-        print("You will have to redo your unavailability from the sratch.")
+        print("You will have to redo your unavailability from the scratch.")
         print("Do you wish to continue to modify your unavailability?")
         while True:
             redo_or_not = input("Enter 'Yes' to redo or 'No' to keep your old record: ")
             
             if redo_or_not == "No":
                 print('\n')
-                print("There is no change made to your unavailability record.")
+                print(stylize("There is no change made to your unavailability record.", notice_color()))
+                print("-" * 130)
                 view_schedule()
 
             elif redo_or_not == "Yes":
@@ -226,7 +228,7 @@ def modify_schedule():
                 break
             
             else:
-                print("Invalid input! Please try again.")
+                invalid_input_message()
 
     # Prompt users to choose their option of what to modify
     # This is placed in the bottom because the imported functions are defined above
@@ -235,8 +237,8 @@ def modify_schedule():
     while modify_selection != "Q":
         print("\n")
         print("Please select your modification option: ")
-        print("[1] Enter 1 to modify your roster for the following week")
-        print("[2] Enter 2 to modify your recorded unavailability for the week after the following week")
+        print("[1] Enter 1 to modify your current roster")
+        print("[2] Enter 2 to modify your current unavailability record")
         print("[Q] Enter Q to back to Home Menu")
         modify_selection = input("Enter your selection: ")
 
@@ -248,12 +250,12 @@ def modify_schedule():
         
         elif modify_selection == "Q":
             print("\n")
-            print("You have completed the modification!")
-            print("Please Enter 3 in the Home Menu to review and confirm your up-to-date work schedule.")
+            print(stylize("You have completed the modification!", notice_color()))
+            print(stylize("Please Enter 3 in the Home Menu to review and confirm your up-to-date work schedule.", notice_color()))
             print("\n")
             break
         else:
-            print("Invalid input! Please try again.")
+            invalid_input_message()
 
 
 

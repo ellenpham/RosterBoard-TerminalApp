@@ -1,14 +1,15 @@
 import csv 
 from Item import Item
+from common_functions import *
 
 file_name = "schedule_record.csv"
 
-# define the Roster class that represent the roster
+# Define Roster class that represents the roster
 class Roster:
     def __init__(self):
         self.roster = []
     
-    # Load data from file to a list
+    # Load data from file to a list for temporary memory
     def load_from_file(self, file_name): 
         try:
             with open(file_name,"r") as file:
@@ -18,9 +19,9 @@ class Roster:
                     item = Item.from_str(data[i])
                     self.roster.append(item)
         except FileNotFoundError:
-            print("Error reading file.")
+            print(stylize("Error found! There is no file to be read.", warning_color()))
         except Exception:
-            print("Something went wrong!")
+            print(stylize("It seems like something went wrong!", warning_color()))
     
     # Write to csv file
     def save_to_csv(self, file_name):
@@ -29,21 +30,22 @@ class Roster:
                 csv_writer = csv.writer(file)
                 csv_writer.writerow(["Rostered Day", "Shift", "Action"])
                 for item in self.roster:
-                    full_date = item.date.strftime("%a %d/%m/%Y")
+                    full_date = item.day.strftime("%a %d/%m/%Y")
                     csv_writer.writerow([full_date, item.shift, item.action])
         except Exception:
-            print("Can not save to file.")
+            print(stylize("Something happens! Data can not be saved to file.", warning_color()))
     
     # Display data from roster
     def display_roster(self):
         if not self.roster:
-            print("The roster is empty")
-        else:            
+            print("Error found! The roster is empty.")
+        else:
+            print("Here is your current roster:")            
             print("Rostered days\t\tShift\tAction")
             i = 1
             for item in self.roster:
-                date_str = item.date.strftime("%a %d/%m/%Y")
-                print(f"[{i}] {date_str}\t{item.shift}\t{item.action}")
+                day_str = item.day.strftime("%a %d/%m/%Y")
+                print(f"[{i}] {day_str}\t{item.shift}\t{item.action}")
                 i += 1
 
     

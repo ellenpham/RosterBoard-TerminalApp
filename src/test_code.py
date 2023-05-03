@@ -7,7 +7,7 @@
 #             except:
 #                 pass
 #             else:
-#                 print("Invalid input!")
+#                 print("--> Invalid input!")
 # name()
 
 # print("continue")
@@ -27,7 +27,7 @@
 #         print(f'Hello {first_name}, we hope you are doing good!')
 #         break
 #     else:
-#         print("Invalid input! Please try again.")
+#         print("invalid_input_message()")
 
 # from datetime import datetime as dt
 # now = dt.now()
@@ -434,7 +434,7 @@
 #     if shift == "AM" or shift == "PM" or shift == "Night":
 #         return True
 #     else:
-#         print("Invalid input! Please try again.")
+#         print("invalid_input_message()")
 #         return False
 
 # shift_input = input("Enter a shift: ")
@@ -444,7 +444,7 @@
 #     if shift == "AM" or shift == "PM" or shift == "Night":
 #         return True
 #     else:
-#         print("Invalid input! Please try again.")
+#         print("invalid_input_message()")
 #         return False
 
 # while True: 
@@ -620,27 +620,48 @@
 #     assert adding() == 5
 
 # return the next Monday
-import datetime
+# import datetime
 
-def get_next_monday(num):
-    today  = datetime.date.today()
-    days_to_next_monday = num - today.weekday()
-    next_monday = today + datetime.timedelta(days = days_to_next_monday)
-    return next_monday
+# def get_next_monday(num):
+#     today  = datetime.date.today()
+#     days_to_next_monday = num - today.weekday()
+#     next_monday = today + datetime.timedelta(days = days_to_next_monday)
+#     return next_monday
 
 
-# initialize the dictionary of days in the next week
-def get_days_dict(num):
-    days_dict = dict()
+# # initialize the dictionary of days in the next week
+# def get_days_dict(num):
+#     days_dict = dict()
 
-    first_day = get_next_monday(num)
+#     first_day = get_next_monday(num)
 
-    for i in range(7):
-        days_dict[f"{i}"] = first_day
-        first_day = first_day + datetime.timedelta(days = 1)
-        day_str = days_dict[f"{i}"].strftime("%A %B %d %Y")
-        print(f"[{i+1}] {day_str}")
+#     for i in range(7):
+#         days_dict[f"{i}"] = first_day
+#         first_day = first_day + datetime.timedelta(days = 1)
+#         day_str = days_dict[f"{i}"].strftime("%A %B %d %Y")
+#         print(f"[{i+1}] {day_str}")
     
-    return days_dict
+#     return days_dict
 
-get_days_dict(7)
+# get_days_dict(7)
+
+import colored
+from colored import fg, bg, attr
+from colored import stylize
+
+# print(f'{fg(1)} Hello World !!! {attr(0)}')
+
+
+# print(f'{fg(1)}{bg(15)} Hello World !!! {attr(0)}')
+
+# warning = colored.fg("green") + colored.attr("bold")
+
+# print(stylize("This is VERY angry text.", warning))
+
+
+sum = 3*4
+
+notice = colored.fg("magenta") + colored.attr("bold")
+
+input(stylize(f"--> Enter 'Yes' to continue or 'No' to quit: ", notice))
+print("Hello")

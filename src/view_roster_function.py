@@ -1,4 +1,5 @@
 from prettytable import from_csv
+from common_functions import *
 
 # Main function to view full work schedule
 def view_schedule():
@@ -19,7 +20,8 @@ def view_schedule():
 
     print("\n")
 
-    # Prompt users to confirm or modify the work schedule 
+    # Prompt users to confirm or modify the work schedule
+    print("-" * 130)
     print("If you are happy with the above work schedule, please enter 'Yes' to confirm or 'No' if you wish to make changes.")
     while True: 
         confirm_or_not = input("Would you like to confirm your work schedule? ")
@@ -33,12 +35,12 @@ def view_schedule():
 
         elif confirm_or_not == "No":
             print("\n")
-            print("You have the option to modify your work schedule. Please keep following the prompts.")
+            print(stylize("You have the option to modify your work schedule. Please keep following the prompts.", notice_color()))
             print("\n")
             break
 
         else:
-            print("Invalid input! Please try again.")
+            invalid_input_message()
 
 
     
