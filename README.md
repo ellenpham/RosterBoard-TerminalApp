@@ -54,7 +54,7 @@ The below diagram illustrates how the flow of data and the application's logic.
 
 ## Overall implementation process
 
-1. The project management plan is outlined with the kanban board format using Trello.
+1. The project management plan was created using kanban board in Trello.
 
 2. Created a control flow diagram to visualize the flow of data in the app. The diagram was slightly modified along the way due to little compromised changes in the development process. 
 
@@ -110,7 +110,7 @@ Below is the task priority during source code development process:
 
 **Classes and common functions**
 
-1. The class named `Roster` is used to represents a roster object, it contains a few functions that belong to the relevant roster object. The functions within this class are listed as below:
+1. The class named `Roster` represents a roster object, it contains a few functions that belong to the relevant roster object. The functions within this class are listed as below:
     - `load_from_file()`: this function is used to load data from a csv file to a temporary list for easy manipulation on memory. 
     - `save_to_csv()`: this function is called to save the data to csv file for final display when the above list of data are met with all criteria.
     - `display_roster()`: this function is called when the list of data need to be displayed.
@@ -170,6 +170,8 @@ This code section includes getting users' input for their name and their departm
     </tbody>
 </table>
 
+**Day 1**: Create project management plan, design control flow diagram, create mocking output, create welcome banner, introduction and instructions, research on `datetime` module, start on functions to get users' information.
+
 ![Trello_Day1_1](./docs/Trello_Day1_1.png)
 ![Trello_Day1_2](./docs/Trello_Day1_2.png)
 
@@ -226,11 +228,14 @@ This section allows users to choose their available days during the following we
     </tbody>
 </table>
 
+**Day 2**: Complete functions for getting users' information, start working on `create_roster` function, research on OOP, research on file handling and `csv` module, research on `RegEx`.
 
 ![Trello_Day2_2](./docs/Trello_Day2_2.png)
 ![Trello_Day2_3](./docs/Trello_Day2_3.png)
 
 <br>
+
+**Day 3**: Complete `create_roster` function and start reporting on Readme file, start working on `add_unavailability` function. 
 
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
 ![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
@@ -326,6 +331,7 @@ This section allows users to view their work schedule which has been recorded fr
     </tbody>
 </table>
 
+**Day 4**: Complete `add_unavailability` function and `view_schedule` function
 
 ![Trello_Day4_1](./docs/Trello_Day4_1.png)
 ![Trello_Day4_2](./docs/Trello_Day4_2.png)
@@ -391,14 +397,35 @@ This section allows user to modify their current roster or modify their current 
     </tbody>
 </table>
 
+**Day 5**: Working on Modify Roster Function, do more research on OOP and planning on optimizing the code. 
 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
 ![Trello_Day5_2](./docs/Trello_Day5_2.png)
 
+<br>
 
+**Day 6 and Day 7**: Review source code and optimize by applying OOP, redo some pieces of code that execute the same tasks, so that it can be reused when needed. Also, data manipulation is more achievable by applying OOP. 
 
-![Trello_Day7&8_1](./docs/Trello_Day7&8_1.png)
-![Trello_Day7&8_2](./docs/Trello_Day7&8_2.png)
+![Trello_Day67_1](./docs/Trello_Day67_1.png)
+![Trello_Day67_2](./docs/Trello_Day67_2.png)
+
+<br>
+
+**Day 8**: More research on `pytest` and develop test cases using unit test. Also, do manual tests on main features for error detection. 
+
+![Trello_Day8_1](./docs/Trello_Day8_1.png)
+
+<br>
+
+**Day 9**: Write Bash script and help documentation
+
+![Trello_Day9_1](./docs/Trello_Day9_1.png)
+
+<br>
+
+**Day 10**: Create slide deck and prepare presentation 
+
+![Trello_Day10_1](./docs/Trello_Day10_1.png)
 
 <br>
 

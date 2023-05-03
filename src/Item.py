@@ -1,8 +1,7 @@
 import datetime
 from common_functions import *
 
-# Define the Item class that represents an item in the roster or unavailability record
-# Each item is users' input of each available day with available shift or unavailable days with available shifts
+# Define the Item class that represents an item object
 class Item:
     
     # initialize an Item object from input parameters
@@ -10,12 +9,8 @@ class Item:
         self.day = day
         self.shift = shift
         self.action = action
-        
-    '''
-    Initialize an Item object from an input string
-    A class method to create a day object by a string of 
-    Day(including year, month, date), Shift and Action
-    '''
+    
+    # Initialize an Item object from an input string
     @classmethod
     def from_str(self, str_data):
         try:
@@ -35,4 +30,4 @@ class Item:
     
     # this is how the item is represented in string    
     def __str__(self):
-        return f"{self.day} -  {self.shift} - {self.action}"
+        return f"{self.day}, {self.shift}, {self.action}"

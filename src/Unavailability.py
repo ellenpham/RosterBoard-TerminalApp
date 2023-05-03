@@ -9,7 +9,7 @@ class Unavailability:
     def __init__(self):
         self.unavailability = []
     
-    # Load data from file to a list for temporary memory
+    # Load data from file to a list 
     def load_from_file(self, file_name): 
         try:
             with open(file_name,"r") as file:
