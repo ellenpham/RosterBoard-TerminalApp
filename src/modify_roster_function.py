@@ -191,7 +191,7 @@ def modify_schedule():
                 while not existed_day:
                     added_shift = input("Enter the shift you want to add (AM, PM or Night): ")
                     if check_valid_shift(added_shift):
-                        new_item = Item(days_dict[added_day], added_shift, action= "Added")
+                        new_item = Item(days_dict[added_day], added_shift, action= "Modified")
                         users_roster.roster.append(new_item)
                         users_roster.save_to_csv(file_name)
                         str_day = new_item.day.strftime("%a %d/%m/%Y")

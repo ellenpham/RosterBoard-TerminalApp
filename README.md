@@ -45,7 +45,7 @@ NKG Corp. is a warehousing and distribution company. They have a large number of
 
 The below diagram illustrates how the flow of data and the application's logic. 
 
-![Control Flow Diagram](./docs/RosteringApp_ControlFlowDiagram.png)
+![Control Flow Diagram](./docs/ControlFlowDiagram.png)
 (Diagram created using diagram.net.io)
 
 <br>
@@ -420,7 +420,7 @@ This section allows user to modify their current roster or modify their current 
 1. Step 1:
     - Change the directory to a folder where you want to download the app using `cd <directory>`
 
-    - Clone this repository using `git clone git@github.com:ellenpham/RosterBoard_app.git`
+    - Clone this repository using `git clone https://github.com/ellenpham/RosterBoard_app.git`
 
     - Change the directory to the src folder using `cd src`
 
