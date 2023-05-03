@@ -19,7 +19,7 @@ def warning_color():
     return warning
 
 
-# Function to check if user put in correct shifts
+# Function to check if user input correct shifts
 def check_valid_shift(shift):
     if shift == "AM" or shift == "PM" or shift == "Night":
         return True
