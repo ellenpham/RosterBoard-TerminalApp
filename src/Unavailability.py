@@ -4,7 +4,7 @@ from common_functions import *
 
 file_name = "ua_record.csv"
 
-# define the Unavailability class that represents unavailability record
+# Define the Unavailability class that represents unavailability record
 class Unavailability:
     def __init__(self):
         self.unavailability = []

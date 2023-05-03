@@ -28,6 +28,6 @@ class Item:
         except ValueError:
             invalid_input_message()
     
-    # this is how the item is represented in string    
+    # This is how the item is represented in string    
     def __str__(self):
         return f"{self.day}, {self.shift}, {self.action}"

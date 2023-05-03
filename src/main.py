@@ -26,7 +26,7 @@ def introduction():
     print("Please hit Enter to move on to the the application instructions...")
     input()
 
-    # Instructions
+    # App instructions
     print(f'+{12*"-"}+')
     print("|INSTRUCTIONS|")
     print(f'+{12*"-"}+')
@@ -41,7 +41,7 @@ def introduction():
     os.system('clear')
     print("-" * 130)
 
-# Get employee information
+# Get users' information
 # Name input
 def input_name():
     while True: 
@@ -62,8 +62,8 @@ def input_name():
 full_name = ' '.join(input_name())
 print("\n")
 print(stylize(f'Hello {full_name}, we hope you are doing good!', notice_color()))
-
 print("\n")
+
 # Department selection
 def department_choice():
     print("Please select your department:")
@@ -71,6 +71,7 @@ def department_choice():
     print("[2] Enter 2 for Inventory")
     print("[3] Enter 3 for Distribution")
 
+    # Exception handling
     while True:
         try:
             department = int(input("Please enter your selection: "))
@@ -104,7 +105,7 @@ print("Let's start scheduling! Hit Enter to begin...")
 input()
 os.system('clear')
 
-
+# Define csv files
 file_name = "schedule_record.csv"
 ua_file_name = "ua_record.csv"
 
@@ -127,15 +128,15 @@ except FileNotFoundError as e:
     ua_file = open(ua_file_name, "w")
     ua_file.write("Unavailable Days, Shifts, Action")
     ua_file.close()
-        
 
+
+# Main function for Home Menu
 def main_menu():
     print(f'+{11*"-"}+')
     print("| HOME MENU |")
     print(f'+{11*"-"}+')
 
- 
-    # Start Home Menu selection 
+    # Start Home Menu prompt selection 
     print("Please select your option: ")
 
     print("[1] Enter 1 to create your roster for the following week")
@@ -148,12 +149,14 @@ def main_menu():
 
 user_menu_choice = str()
 
+# Keep looping user to select until they enter Exit
 while user_menu_choice != "Exit":
     user_menu_choice = main_menu()
 
-    # Prompt 1
+    # Prompt 1 - Create Roster
     if(user_menu_choice == "1"):
-        # Below code is to check if roster is already existed --> if yes, users must go to Prompt 4 to modify if needed
+
+        # Check if roster is already existed --> if yes, users must go to Prompt 4 to modify if needed
         with open(file_name, "r") as schedule_record:
             existing_record = csv.reader(schedule_record)
             row = len(list(existing_record))
@@ -163,12 +166,14 @@ while user_menu_choice != "Exit":
                 print(stylize("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.", warning_color()))
                 print("\n")
                 continue
+            # If not existed, then users can start creating 
             else: 
                 create_roster(file_name)
     
-    # Prompt 2
+    # Prompt 2 - Add Unavailability
     elif(user_menu_choice == "2"):
-        # Below code is to check if unavailability record is already existed --> if yes, users must go to Prompt 4 to modify if needed
+
+        # Check if unavailability record is already existed --> if yes, users must go to Prompt 4 to modify if needed
         with open(ua_file_name, "r") as ua_record:
             ua_existing_record = csv.reader(ua_record)
             ua_row = len(list(ua_existing_record))
@@ -178,11 +183,14 @@ while user_menu_choice != "Exit":
                 print(stylize("If you wish to make changes, please enter 4 in the Home Menu to modify your work schedule.", warning_color()))
                 print("\n")
                 continue
+            # If not existed, then users can start creating 
             else: 
                 add_unavailability(ua_file_name)
 
-    # Prompt 3
+    # Prompt 3 - View work schedule
     elif(user_menu_choice == "3"):
+
+        # Print out header for work schedule
         action_date = datetime.datetime.now().strftime("%A %B %d %-Y")
         print("\n")
         print(f'+{7*(("-"*10)+("*"*6))+("-"*10)}+')
@@ -193,12 +201,14 @@ while user_menu_choice != "Exit":
         print(f'  ACTION DATE : {action_date}')
         print("-"*124)
         
+        # Then display the current schedule
         view_schedule()
     
-    # Prompt 4
+    # Prompt 4 - Modify work schedule
     elif(user_menu_choice == "4"):
-        # Below code is to check if there is any existed schedule record 
-        # --> if not need to go back to Prompt 1 or 2 to add availability or unavailability
+
+        # Check if there is any existed schedule record 
+        # If not existed, need to go back to Prompt 1 or 2 to create one
         with open(file_name, "r") as schedule_record, open(ua_file_name, "r") as ua_record:
             existing_roster_record = csv.reader(schedule_record)
             existing_ua_record = csv.reader(ua_record)
@@ -210,21 +220,23 @@ while user_menu_choice != "Exit":
                 print(stylize("Please go to Prompt 1 and 2 to create your work schedule.", warning_color()))
                 print("\n")
                 continue
+            # If existed, then users can start modifying
             else: 
                 modify_schedule()
     
-    # Prompt 5
+    # Prompt 5 - Exit program completely
     elif(user_menu_choice == "Exit"):
         print("\n")
         print(f'+{"-"*122}+')
         print(f'|{13*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster.{13*" "}|')
         print(f'+{"-"*122}+')
         print("\n")
-        # delete csv files when exit program
+        # Delete csv files when exit program
         os.system("rm schedule_record.csv")
         os.system("rm ua_record.csv")
         continue
     
+    # Invalid input if users' prompt selection is not listed or is not "Exit"
     else:
         invalid_input_message()
 

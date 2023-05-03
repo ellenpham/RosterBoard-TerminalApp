@@ -7,10 +7,8 @@ from Roster import Roster
 from Item import Item
 from common_functions import *
 
-
 file_name ="schedule_record.csv"
 ua_file_name = "ua_record.csv"
-
 
 # Main function to modify both availability and unavailability 
 def modify_schedule():
@@ -21,6 +19,7 @@ def modify_schedule():
     def modify_roster():
         modify_option = str()
 
+        # Keep looping users to select until they hit Q
         while modify_option != "Q":
             print ("\nDo you wish to modify or remove your chosen availability or add new availability?")
             print ("[1] Enter 1 to Modify")
@@ -30,29 +29,36 @@ def modify_schedule():
             modify_option = input("Enter your selection: ")
             print("\n")
 
+            # Option 1: To modify a current availability
             if modify_option == "1":
                 modify(file_name)
             
+            # Option 2: To remove a current availability
             elif modify_option == "2":
                 remove(file_name)
 
+            # Option 3: To add a new availability
             elif modify_option == "3":
                 add(file_name)
-
+            
+            # Enter Q to finish modification
             elif modify_option == "Q":
-                # Checking again if rostered days are more than 3 days after modification
+                # Checking again if rostered days are more than 3 after modification
                 reader = csv.reader(open("schedule_record.csv"))
                 line_count = len(list(reader))
                 if line_count >= 4:
                     pass
-
-                else: # if less than 3 available days, users can choose to continue adding more days or have no roster at all
+                
+                # If less than 3 days, notfy users of criteria for creating roster
+                else: 
                     print(stylize("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?", warning_color()))
-                    # Error handling for users input for continue-or-not prompt
+
+                    # Keep looping until users enter invalid answer
                     while True:
                         continue_or_not = input(stylize(f"--> Enter 'Yes' to continue or 'No' to quit: ", warning_color()))
+
+                        # If no, clear all previously saved date in csv file  --> no roster recorded
                         if continue_or_not == "No":
-                            # clear all records in the roster due to less than 3 available days
                             with open('schedule_record.csv', 'w') as f:
                                 writer = csv.writer(f)
                                 writer.writerows([" "])
@@ -66,6 +72,8 @@ def modify_schedule():
                             print("-" * 110)
                             view_schedule()
                             break
+
+                        # If yes, users are prompted back to continue add more days
                         elif continue_or_not == "Yes":
                             print("\n")
                             print(stylize("You have option to continue adding your available days. Please follow the prompts.", notice_color()))
@@ -73,11 +81,11 @@ def modify_schedule():
                         else:
                             invalid_input_message()
 
-            # Return warning for invalid input if users' selection are not listed in the prompt to Modfy, Remove or Add or not equal to "Q"
+            # Invalid input if users' selection is not listed or is not "Q"
             else:
                 invalid_input_message()
 
-    # To modify chosen rostered day
+    # Function to change a current rostered day's shift
     def modify(file_name):
         modified_rostered_day = str()
         
@@ -85,33 +93,42 @@ def modify_schedule():
         users_roster = Roster()
         users_roster.load_from_file(file_name)
         users_roster.display_roster()
+
+        # Create a dictionary for storing day item and its index
         currentitem_dict = dict()
         i = 1
         for item in users_roster.roster:
             currentitem_dict[str(i)] = item
             i += 1
 
+        # Keep looping users to select until they hit Q
         while modified_rostered_day != "Q":
             print("Select the corresponding number in [] to choose the day you want to modify or enter Q to finish: ")
             modified_rostered_day = input("Enter your selection: ")
             
+            # Break the loop if users hit Q
             if modified_rostered_day == "Q":
                 break
-
+            
+            # If not Q, checking if the index selection is in dictionary's keys
             else:
                 while True: 
+                    # If yes, users can start change the current shift
                     if modified_rostered_day in currentitem_dict.keys():
                         modified_shift = input("Enter the shift you want to change to (AM, PM or Night): ")
+                        # If shift input is valid, start to form a new day item then save to csv file
                         if check_valid_shift(modified_shift):
                             currentitem_dict[modified_rostered_day].shift = modified_shift
                             currentitem_dict[modified_rostered_day].action = "Modified"
                             users_roster.save_to_csv(file_name)
+                            # Convert the date format to display a notice 
                             str_day = currentitem_dict[modified_rostered_day].day.strftime("%a %d/%m/%Y")
                             print(stylize(f'--> Your shift on {str_day} has been changed to {modified_shift}.', notice_color()))
                             break
+                        # Invalid shift input
                         else:
                             invalid_input_message()
-                    
+                    # If no, warn users that their day selection is not listed
                     else:
                         selection_not_in_list()
                         break

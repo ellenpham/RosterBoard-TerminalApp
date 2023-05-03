@@ -7,14 +7,14 @@ from Item import Item
 from common_functions import *
 
 
-# Function using weekday() method and datetime.timedelta() to always get next week's Monday
+# Function for getting next week's Monday
 def get_next_monday(week):
     today  = datetime.date.today()
     days_to_next_monday = week*7 - today.weekday()
     next_monday = today + datetime.timedelta(days = days_to_next_monday)
     return next_monday
 
-# Create a dictionation for weekdays
+# Function for putting days and their index in a dictionary
 def get_days_dict(week):
     days_dict = dict()
 
@@ -26,7 +26,7 @@ def get_days_dict(week):
     
     return days_dict
 
-# display a list of weekdays
+# Function for displaying a list of days for users selection
 def display_weekday(days_dict):
     for i in range(1,8):
         day_str = days_dict[f"{i}"].strftime("%a %d/%m/%Y")
@@ -57,10 +57,10 @@ def create_roster(file_name):
     # Start creating roster
     print("Enter index in the [] to select or enter Q to finish.")
 
+    # Display list of day selection for the next ONE week
     days_dict = get_days_dict(1)
     display_weekday(days_dict)
 
-    
     # Get users' input for building roster
     available_day = str()
     user_day_selection = True
@@ -70,23 +70,22 @@ def create_roster(file_name):
     # Initialize roster object
     users_roster = Roster()
 
+    # Start looping users for selection until they hit Q to quit
     while user_day_selection:
         available_day = input("Please select your available day: ")
 
-        '''
-        user_day_selection = False (it means users finish creating their roster) in the following cases:
-        1. Three or more days (no duplication) have been chosen before users hit 8 to quit 
+        """
+        user_day_selection = False in two cases:
+        1. Three or more days (no duplication) were chosen before users hit Q
             --> Successfully created roster --> Back to Home Menu
         2. users choose two available days but do not want to continue to add more days 
-            --> No roster is created --> Back to Home Menu
+            --> Any previous data are cleared, no roster --> Back to Home Menu
         
-        If users keep enter invalid input and none of the above cases is met.
-        user_input_selection will keep looping until one of the above condition is met. 
-        '''
-
+        """
+        
         if (available_day == "Q"):
-            # count data from csv file to check how many available days are already recorded
-            # if more than 3 available days then users have completed creating roster
+            # When users hit Q, count items in the roster list
+            # If more than 3 days then users have completed creating roster
 
             if len(users_roster.roster) >= 3:
                 user_day_selection = False
@@ -98,10 +97,13 @@ def create_roster(file_name):
                 print("\n")
                 break
 
-        
-            else: # if less than 3 available days, users can choose to continue adding more days or have no roster at all
+            # If less than 3 days, notify users of criteria for creating roster
+            else: 
                 print(stylize("--> You are required to be available for at least THREE days. Do you want to CONTINUE to select more days?", warning_color()))
-                # Error handling for users input for continue-or-not prompt
+
+                # Keep looping until users enter invalid answer
+                # If yes, users are prompted back to continue add more days
+                # If no, break out of main loop, no roster recorded
                 while True:
                     continue_or_not = input(stylize(f"--> Enter 'Yes' to continue or 'No' to quit: ", warning_color()))
                     if continue_or_not == "No":
@@ -116,20 +118,22 @@ def create_roster(file_name):
                     else:
                         invalid_input_message()
 
+        # If a chosen day is in the days dictionary
         elif available_day in days_dict:
-            # Restrict users' selection of 2 same days. 
+            # Check if the day is already chosen to prevent duplication
             if available_day in selected_day:
                 print(stylize("--> Sorry you have selected this day! You can only select ONE shift per day.", warning_color()))
                 continue
             else:             
                 selected_day.append(available_day)
         
-            # Prompt to choose shifts
-            # Error handling for users input for shifts
+            # Shifts selection comes after a day is successfully chosen
             while True: 
                 available_shift = input("Enter your available shift (AM, PM or Night): ")
+                # If not valid shift input, keep looping
                 if not check_valid_shift(available_shift):
                     invalid_input_message()
+                # If valid shift input, the item is good to add to the roster list
                 else: 
                     new_item = Item(days_dict[available_day], available_shift, action = "Added")
                     users_roster.roster.append(new_item)
@@ -137,7 +141,7 @@ def create_roster(file_name):
                     print(stylize(f'--> {day_str} - {available_shift} is added to your roster.', notice_color()))
                     break
 
-        # Return warning for invalid input if users' selection for days are not listed in Prompt 1 or not equal to "Q"
+        # Invalid input if users' days selection is not listed or is not "Q"
         else:
             invalid_input_message()
 

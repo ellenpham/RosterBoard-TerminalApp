@@ -1,12 +1,11 @@
 # **My Pham - T1A3 - Terminal Application**
 
-# References
-
-
 # Links
-1. GitHub repository:
-2. Presentation:
-3. Project management plan:
+[GitHub repository](https://github.com/ellenpham/RosterBoard_app.git)
+
+Presentation:
+
+[Project management plan](https://trello.com/b/eYtq1Thk/t1a3-terminal-application)
 
 # Code style guide and styling conventions
 
@@ -14,7 +13,6 @@
 
 2. Goodger, D., Rossum, G. (2001) PEP 257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
 
-3. https://peps.python.org/pep-0405/#specification
 
 # Functionalities
 
