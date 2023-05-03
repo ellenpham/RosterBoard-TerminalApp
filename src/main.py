@@ -116,6 +116,7 @@ try:
 
 except FileNotFoundError as e:
     roster_file = open(file_name, "w")
+    roster_file.write("Rostered Days, Shift, Action")
     roster_file.close()
 
 # Check if unavailability file is existed 
@@ -125,6 +126,7 @@ try:
 
 except FileNotFoundError as e:
     ua_file = open(ua_file_name, "w")
+    ua_file.write("Unavailable Days, Shifts, Action")
     ua_file.close()
         
 
@@ -196,7 +198,21 @@ while user_menu_choice != "Exit":
     
     # Prompt 4
     elif(user_menu_choice == "4"):
-        modify_schedule()
+        # Below code is to check if there is any existed schedule record 
+        # --> if not need to go back to Prompt 1 or 2 to add availability or unavailability
+        with open(file_name, "r") as schedule_record, open(ua_file_name, "r") as ua_record:
+            existing_roster_record = csv.reader(schedule_record)
+            existing_ua_record = csv.reader(ua_record)
+            roster_row = len(list(existing_roster_record))
+            ua_row = len(list(existing_ua_record))
+            if roster_row <= 1 and ua_row <= 1:
+                print("\n")
+                print(stylize("There is no record in your work schedule.", warning_color()))
+                print(stylize("Please go to Prompt 1 and 2 to create your work schedule.", warning_color()))
+                print("\n")
+                continue
+            else: 
+                modify_schedule()
     
     # Prompt 5
     elif(user_menu_choice == "Exit"):
@@ -205,7 +221,7 @@ while user_menu_choice != "Exit":
         print(f'|{13*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster.{13*" "}|')
         print(f'+{"-"*122}+')
         print("\n")
-        # clear data in csv file when exit program
+        # delete csv files when exit program
         os.system("rm schedule_record.csv")
         os.system("rm ua_record.csv")
         continue

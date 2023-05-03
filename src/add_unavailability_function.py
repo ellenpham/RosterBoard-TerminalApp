@@ -38,7 +38,7 @@ def add_unavailability(ua_file_name):
     users_unavailability = Unavailability()
 
     while unavailable_day_selection:
-        unavailable_day = input("Please select your unavailable days: ")
+        unavailable_day = input("Please select your unavailable day: ")
 
         if (unavailable_day == "Q"):
             print("-" * 130)

@@ -38,7 +38,7 @@ class Roster:
     # Display data from roster
     def display_roster(self):
         if not self.roster:
-            print("Error found! The roster is empty.")
+            print(stylize("Error found! The roster is empty.", warning_color()))
         else:
             print("Here is your current roster:")            
             print("Rostered days\t\tShift\tAction")

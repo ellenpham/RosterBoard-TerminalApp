@@ -71,7 +71,7 @@ def create_roster(file_name):
     users_roster = Roster()
 
     while user_day_selection:
-        available_day = input("Please select your available days: ")
+        available_day = input("Please select your available day: ")
 
         '''
         user_day_selection = False (it means users finish creating their roster) in the following cases:
@@ -128,7 +128,9 @@ def create_roster(file_name):
             # Error handling for users input for shifts
             while True: 
                 available_shift = input("Enter your available shift (AM, PM or Night): ")
-                if check_valid_shift(available_shift):
+                if not check_valid_shift(available_shift):
+                    invalid_input_message()
+                else: 
                     new_item = Item(days_dict[available_day], available_shift, action = "Added")
                     users_roster.roster.append(new_item)
                     day_str = days_dict[available_day].strftime("%a %d/%m/%Y")

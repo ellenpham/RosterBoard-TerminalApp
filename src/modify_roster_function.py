@@ -36,6 +36,7 @@ def modify_schedule():
             print ("[3] Enter 3 to Add")
             print ("[Q] Enter Q to finish modifying your roster")
             modify_option = input("Enter your selection: ")
+            print("\n")
 
             if modify_option == "1":
                 modify(file_name)
@@ -99,7 +100,8 @@ def modify_schedule():
             i += 1
 
         while modified_rostered_day != "Q":
-            modified_rostered_day = input("Enter the day you want to modify or enter Q to finish: ")
+            print("Select the corresponding number in [] to choose the day you want to modify or enter Q to finish: ")
+            modified_rostered_day = input("Enter your selection: ")
             
             if modified_rostered_day == "Q":
                 break
@@ -138,7 +140,8 @@ def modify_schedule():
             i += 1
 
         while removed_day != "Q":
-            removed_day = input("Enter the day you want to remove or enter Q to finish: ")
+            print("Select the corresponding number in [] to choose the day you want to remove or enter Q to finish: ")
+            removed_day = input("Enter your selection: ")
 
             if removed_day == "Q":
                 break
@@ -166,7 +169,8 @@ def modify_schedule():
         display_weekday(days_dict)
            
         while added_day != "Q":
-            added_day = input("Enter the day you want to add or enter Q to finish: ")
+            print("Select the corresponding number in [] to choose the day you want to add or enter Q to finish: ")
+            added_day = input("Enter your selection: ")
             
             if added_day == "Q":
                 break
