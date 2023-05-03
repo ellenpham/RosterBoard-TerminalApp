@@ -1,21 +1,11 @@
 import os
 import datetime
-import colored
-from colored import stylize
 
 from datetime import timedelta
 from Roster import Roster
 from Item import Item
 from common_functions import *
 
-
-
-# Function to check if user put in correct shifts
-def check_valid_shift(shift):
-    if shift == "AM" or shift == "PM" or shift == "Night":
-        return True
-    else:
-        return False
 
 # Function using weekday() method and datetime.timedelta() to always get next week's Monday
 def get_next_monday(week):

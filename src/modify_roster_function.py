@@ -2,7 +2,7 @@ import csv
 import datetime 
 from view_roster_function import view_schedule
 from add_unavailability_function import add_unavailability
-from create_roster_function import check_valid_shift, get_days_dict, display_weekday
+from create_roster_function import get_days_dict, display_weekday
 from Roster import Roster
 from Item import Item
 from common_functions import *
