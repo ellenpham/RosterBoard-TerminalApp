@@ -7,12 +7,77 @@ Presentation:
 
 [Project management plan](https://trello.com/b/eYtq1Thk/t1a3-terminal-application)
 
+<br>
+
 # Code style guide and styling conventions
 
 1. Rossum, G., Warsaw, B., Coghlan, N. (2001) PEP8 - Style Guide for Python Code [Styling Convention]. https://peps.python.org/pep-0008/
 
 2. Goodger, D., Rossum, G. (2001) PEP 257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
 
+<br>
+
+# Installation
+
+## System prerequisites: 
+
+- Python Version 3x is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
+
+- Git Setup is required to be able to clone the repo to your computer, follow [this link](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) to set up Git. Alternatively, you can download zip file to your computer by going to my [GitHub repo](https://github.com/ellenpham/RosterBoard_app), click into **Code**, then **Download ZIP**. 
+
+- For Window users, a latest version of Windows is required with WSL2/Ubuntu installed. If you have not had WSL2/Ubuntu set up, please follow [this link](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+
+## Steps to install the app
+
+1. In your computer, open terminal or command prompt:
+
+    - For Window users: Go to Start menu, in the search bar, search for Terminal app, type in `bash` then hit Enter
+
+    - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
+
+2. In your computer, open terminal or command prompt:
+    
+    - Change the directory to a folder where you want to download the app using `cd <directory>`
+
+    - Clone this repository using `git clone https://github.com/ellenpham/RosterBoard_app.git`
+
+    - Change the directory to the src folder using `cd .\RosterBoard_app\src`
+
+    - Execute Bash script `chmod +x run.sh`
+
+    - Run the app `source run.sh`
+
+
+## Dependencies
+
+These modules will be automatically intalled when running the program. 
+
+colored==1.4.4
+exceptiongroup==1.1.1
+iniconfig==2.0.0
+packaging==23.1
+pluggy==1.0.0
+prettytable==3.7.0
+pytest==7.3.1
+tomli==2.0.1
+wcwidth==0.2.6
+
+## Command lines arguments
+
+Instructions are included when running the application to help users perform each task. 
+
+The below command lines are commonly used:
+
+- Users' selection options are mainly formatted in a numbered list, corresponding numbers should be entered to be considered valid input. 
+
+- Users are guided with option to quit by enter "Q" whenever each task is finished.
+
+- Users only can completely exit the program in TWO cases: 1/ Enter "Exit" at Home Menu or 2/ Confirm when reviewing the final work schedule.
+
+- Follow guideline while running the app for the validity of other text-based input.
+
+<br>
 
 # Functionalities
 
@@ -38,6 +103,7 @@ NKG Corp. is a warehousing and distribution company. They have a large number of
 
     - Modify the current roster: options include changing shift, removing a current day or adding a new day. 
     - Modify unavailability: users will have to redo their unavailability from the scratch if they do not wish to keep their current record. 
+
 
 ## Control Flow Diagram
 
@@ -84,7 +150,6 @@ Below is the task priority during source code development process:
 6. `modify_schedule` function
 7. Error handling
 8. Testing
-
 
 <br>
 
@@ -168,6 +233,13 @@ This code section includes getting users' input for their name and their departm
     </tbody>
 </table>
 
+**Checklist Tasks in action**
+
+![Name_input](./docs/name_input.png)
+![Department_input](./docs/department.png)
+
+<br>
+
 **Day 1**: Create project management plan, design control flow diagram, create mocking output, create welcome banner, introduction and instructions, research on `datetime` module, start on functions to get users' information.
 
 ![Trello_Day1_1](./docs/Trello_Day1_1.png)
@@ -226,17 +298,18 @@ This section allows users to choose their available days during the following we
     </tbody>
 </table>
 
+**Checklist Tasks in action**
+
+![Available_day_input](./docs/available_day_input.png)
+![Check_3availabledays](./docs/check_3availabledays.png)
+![Check_roster_existed](./docs/check_roster_existed.png)
+
+<br>
+
 **Day 2**: Complete functions for getting users' information, start working on `create_roster` function, research on OOP, research on file handling and `csv` module, research on `RegEx`.
 
 ![Trello_Day2_2](./docs/Trello_Day2_2.png)
 ![Trello_Day2_3](./docs/Trello_Day2_3.png)
-
-<br>
-
-**Day 3**: Complete `create_roster` function and start reporting on Readme file, start working on `add_unavailability` function. 
-
-![Trello_Day3_1](./docs/Trello_Day3_1.png)
-![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
 
 <br>
 
@@ -288,6 +361,20 @@ This section allows users to choose their unavailable days for the week after th
 
 <br>
 
+**Checklist Tasks in action**
+
+![Unavailable_day_input](./docs/unavailable_day_input.png)
+![Check_unavailability_existed](./docs/check_unavailability_existed.png)
+
+<br>
+
+**Day 3**: Complete `create_roster` function and start reporting on Readme file, start working on `add_unavailability` function. 
+
+![Trello_Day3_1](./docs/Trello_Day3_1.png)
+![Trello_Day3_2](./docs/Trello_Day3_2&3.png)
+
+<br>
+
 **`view_schedule` function**
 
 This section allows users to view their work schedule which has been recorded from their previous inputs. Their final work schedule includes users' name, department, action date, followed by their rostered days and unavailability records.
@@ -328,6 +415,12 @@ This section allows users to view their work schedule which has been recorded fr
         </tr>
     </tbody>
 </table>
+
+**Checklist Tasks in action**
+
+![View_schedule](./docs/view_schedule_confirm.png)
+
+<br>
 
 **Day 4**: Complete `add_unavailability` function and `view_schedule` function
 
@@ -395,6 +488,15 @@ This section allows user to modify their current roster or modify their current 
     </tbody>
 </table>
 
+<br>
+
+**Checklist Tasks in action**
+
+![View_schedule](./docs/select_day_to_modify.png)
+![View_schedule](./docs/select_day_to_remove.png)
+![View_schedule](./docs/select_day_to_add.png)
+![View_schedule](./docs/change_unavailability.png)
+
 **Day 5**: Working on Modify Roster Function, do more research on OOP and planning on optimizing the code. 
 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
@@ -424,68 +526,6 @@ This section allows user to modify their current roster or modify their current 
 **Day 10**: Create slide deck and prepare presentation 
 
 ![Trello_Day10_1](./docs/Trello_Day10_1.png)
-
-<br>
-
-# Installation
-
-## System prerequisites: 
-
-- Python Version 3x is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
-
-- Git Setup is required to be able to clone the repo to your computer, follow [this link](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) to set up Git. Alternatively, you can download zip file to your computer by going to my [GitHub repo](https://github.com/ellenpham/RosterBoard_app), click into **Code**, then **Download ZIP**. 
-
-- For Window users, a latest version of Windows is required with WSL2/Ubuntu installed. If you have not had WSL2/Ubuntu set up, please follow [this link](https://learn.microsoft.com/en-us/windows/wsl/install).
-
-
-## Steps to install the app
-
-1. In your computer, open terminal or command prompt:
-
-    - For Window users: Go to Start menu, in the search bar, search for Terminal app, type in `bash` then hit Enter
-
-    - For Mac users: use Spotlight Search by clicking the search icon on the top right of the screen (or press Command+Space). In the search bar, type in "Terminal" and hit Return
-
-2. In your computer, open terminal or command prompt:
-    
-    - Change the directory to a folder where you want to download the app using `cd <directory>`
-
-    - Clone this repository using `git clone https://github.com/ellenpham/RosterBoard_app.git`
-
-    - Change the directory to the src folder using `cd .\RosterBoard_app\src`
-
-    - Execute Bash script `chmod +x run.sh`
-
-    - Run the app `source run.sh`
-
-
-## Dependencies
-
-These modules will be automatically intalled when running the program. 
-
-colored==1.4.4
-exceptiongroup==1.1.1
-iniconfig==2.0.0
-packaging==23.1
-pluggy==1.0.0
-prettytable==3.7.0
-pytest==7.3.1
-tomli==2.0.1
-wcwidth==0.2.6
-
-## Command lines arguments
-
-Instructions are included when running the application to help users perform each task. 
-
-The below command lines are commonly used:
-
-- Users' selection options are mainly formatted in a numbered list, corresponding numbers should be entered to be considered valid input. 
-
-- Users are guided with option to quit by enter "Q" whenever each task is finished.
-
-- Users only can completely exit the program in TWO cases: 1/ Enter "Exit" at Home Menu or 2/ Confirm when reviewing the final work schedule.
-
-- Follow guideline while running the app for the validity of other text-based input.
 
 <br>
 
