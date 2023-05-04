@@ -7,7 +7,6 @@ Presentation:
 
 [Project management plan](https://trello.com/b/eYtq1Thk/t1a3-terminal-application)
 
-<br>
 
 # Code style guide and styling conventions
 
@@ -15,11 +14,10 @@ Presentation:
 
 2. Goodger, D., Rossum, G. (2001) PEP 257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
 
-<br>
 
 # Installation
 
-## System prerequisites: 
+## System prerequisites
 
 - Python Version 3x is required to run the application. If Python has not been installed in your computer, please download by following [this link](https://www.python.org/downloads/).
 
@@ -28,7 +26,7 @@ Presentation:
 - For Window users, a latest version of Windows is required with WSL2/Ubuntu installed. If you have not had WSL2/Ubuntu set up, please follow [this link](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 
-## Steps to install the app
+## Installation steps
 
 1. In your computer, open terminal or command prompt:
 
@@ -73,7 +71,7 @@ The below command lines are commonly used:
 
 - Users are guided with option to quit by enter "Q" whenever each task is finished.
 
-- Users only can completely exit the program in TWO cases: 1/ Enter "Exit" at Home Menu or 2/ Confirm when reviewing the final work schedule.
+- Users only can completely exit the program when entering "Exit" at Home Menu.
 
 - Follow guideline while running the app for the validity of other text-based input.
 
