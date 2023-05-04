@@ -191,7 +191,8 @@ while user_menu_choice != "Exit":
 
     # Prompt 3 - View work schedule
     elif(user_menu_choice == "3"):
-
+        os.system('clear')
+        
         # Print out header for work schedule
         action_date = datetime.datetime.now().strftime("%A %B %d %-Y")
         print("\n")
