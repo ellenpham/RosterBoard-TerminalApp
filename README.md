@@ -40,7 +40,7 @@
 
     - Clone this repository using `git clone https://github.com/ellenpham/RosterBoard_app.git`
 
-    - Change the directory to the src folder using `cd .\RosterBoard_app\src`
+    - Change the directory to the src folder using `cd ./RosterBoard_app/src`
 
     - Execute Bash script `chmod +x run.sh`
 
