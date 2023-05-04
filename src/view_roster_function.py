@@ -32,10 +32,7 @@ def view_schedule():
             print(f'|{16*" "}Thank you for your coorporation! You have completed your work schedule for the next two weeks!{16*" "}|')
             print(f'+{"-"*126}+')
             print("\n")
-            # Delete csv files when exit program
-            os.system("rm schedule_record.csv")
-            os.system("rm ua_record.csv")
-            exit()
+            break
 
         elif confirm_or_not == "No":
             print("\n")

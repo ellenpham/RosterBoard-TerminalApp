@@ -230,7 +230,8 @@ while user_menu_choice != "Exit":
     elif(user_menu_choice == "Exit"):
         print("\n")
         print(f'+{"-"*122}+')
-        print(f'|{13*" "}See you again! Make sure you action your work schedule before this Sunday to secure your roster.{13*" "}|')
+        print(f'|{29*" "}See you again! Make sure you follow your confirmed work schedule.{28*" "}|')
+        print(f'|{31*" "}Please contact HR department if you need further discussion.{31*" "}|')
         print(f'+{"-"*122}+')
         print("\n")
         # Delete csv files when exit program
