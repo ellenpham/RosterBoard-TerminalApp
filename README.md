@@ -12,7 +12,7 @@
 
 1. Rossum, G., Warsaw, B., Coghlan, N. (2001) PEP8 - Style Guide for Python Code [Styling Convention]. https://peps.python.org/pep-0008/
 
-2. Goodger, D., Rossum, G. (2001) PEP 257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
+2. Goodger, D., Rossum, G. (2001) PEP257 - Docstring Conventions [Styling Convention]. https://peps.python.org/pep-0257/
 
 
 # Installation
