@@ -3,7 +3,7 @@
 # Links
 [GitHub repository](https://github.com/ellenpham/RosterBoard_app.git)
 
-Presentation:
+[Presentation](https://youtu.be/TudX7e9vcYI)
 
 [Project management plan](https://trello.com/b/eYtq1Thk/t1a3-terminal-application)
 
@@ -81,7 +81,7 @@ The below command lines are commonly used:
 
 ## Description
 
-NKG Corp. is a warehousing and distribution company. They have a large number of staff working across rotating shifts. **RosterBoard** is an internal application that allows company staff to provide their availability and unavailability, which are used for roster building and workforce planning. 
+NKG Corp. is a warehousing and distribution company. They have large number of staff working across rotating shifts. **RosterBoard** is an internal application that allows company staff to provide their availability and unavailability, which are used for roster building and workforce planning. 
 
 
 ## Main features
@@ -159,28 +159,28 @@ Below is the task priority during source code development process:
 
 - **common_functions.py** is the file which store all common functions that are used accross files.
 
-- **create_roster_function.py** is the file which contains `create_roster` function, it gets imported in **main.py** as Prompt 1.
+- **create_roster_function.py** is the file which contains `create_roster()` function, it gets imported in **main.py** as Prompt 1.
 
-- **add_unavailability_function.py** is the file which contains `add_unavailability` function, it gets imported in **main.py** as Prompt 2.
+- **add_unavailability_function.py** is the file which contains `add_unavailability()` function, it gets imported in **main.py** as Prompt 2.
 
-- **view_roster_function.py** is the file which contains `view_schedule` function, it gets imported in **main.py** as Prompt 3.
+- **view_roster_function.py** is the file which contains `view_schedule()` function, it gets imported in **main.py** as Prompt 3.
 
-- **modify_roster_function.py** is the file which contains `modify_schedule` function, it gets imported in **main.py** as Prompt 4.
+- **modify_roster_function.py** is the file which contains `modify_schedule()` function, it gets imported in **main.py** as Prompt 4.
 
 <br>
 
 **Classes and common functions**
 
 1. The class named `Roster` represents a roster object, it contains a few functions that belong to the relevant roster object. The functions within this class are listed as below:
-    - `load_from_file()`: this function is used to load data from a csv file to a temporary list for easy manipulation on memory. 
-    - `save_to_csv()`: this function is called to save the data to csv file for final display when the above list of data are met with all criteria.
-    - `display_roster()`: this function is called when the list of data need to be displayed.
+    - `load_from_file()`: this function is used to load data from a csv file to a temporary list for easy access and manipulation of data.  
+    - `save_to_csv()`: this function is called to save the data to csv file for final display when the above list of data is met with all criteria.
+    - `display_roster()`: this function is called when the list of data needs to be displayed.
    
 2. The class named `Unavailability` was created with the same approach as `Roster`, it is used to represents an unavailability object. It has the same functions, which are `load_from_file()`, `save_to_csv()` and `display_unavailability()`. 
 
-3. The class named `Item` is used to represents an item object. Here the item means each available day or unavailable day in the csv files, the parameters in an item object including day, shift and action (or status). 
+3. The class named `Item` is used to represents an item object. The attributes of an item object are day, shift, and action (or status). The `from_str()` is the function that is converted into a class method, which creates an Item object by an input string.
 
-4. `common_functions.py` file is used to store all functions that are used across files in source code, including functions for text color and `check_valid_shift()` function to check valid input for shifts. 
+4. `common_functions.py` file is used to store all functions that are used across files in source code, including functions for text styling and `check_valid_shift()` function to check valid input for shifts. 
 
 <br>
 
@@ -270,12 +270,12 @@ This section allows users to choose their available days during the following we
         </tr>
         <tr>
             <td>4</th>
-            <td>Use `while` to looping users to keep selecting days until they hit Q to end</th>
+            <td>Use while loop to keep prompting users to select days until they hit Q to finish</th>
             <td>26-28 Apr</th>
         </tr>
         <tr>
             <td>5</th>
-            <td>Using `csv.reader` and using `len()` to count if users select less than 3 days. If yes, prompt to add more days. If not, users have no roster, clear all input in csv file using `csv.writer`</th>
+            <td>Using csv.reader and len() to count if users select less than 3 days. If yes, prompt to add more days. If not, users have no roster, clear all input in csv file using csv.writer</th>
             <td>26-28 Apr</th>
         </tr>
         <tr>
@@ -428,7 +428,7 @@ This section allows user to modify their current roster or modify their current 
         </tr>
         <tr>
             <td>2</th>
-            <td>User have three options on how they can manipulate their current roster: 1/to modify or change current shift, 2/to remove and 3/to add</th>
+            <td>User have three options to modify roster: 1/to change current shift, 2/to remove a current day and 3/to add a new day</th>
             <td>30 Apr - 02 May</th>
         </tr>
         <tr>
@@ -494,7 +494,8 @@ This section allows user to modify their current roster or modify their current 
 
 **Day 11**: Completed slide deck and presentation. Review project management plan and tick off tasks.
 
-![Trello_Day10_1](./docs/Trello_Day10_1.png)
+![Trello_Day11_1](./docs/Trello_Day11_1.png)
+![Trello_Day11_2](./docs/Trello_Day11_2.png)
 
 <br>
 
@@ -553,7 +554,7 @@ This section allows user to modify their current roster or modify their current 
 
 Unit tests were carried to check if methods works are expected.
 
-1. The below code is to test 
+1. The below code is to test if the string that is read from csv file is matching with the expected string output of the item object.
 
 ```
 class TestItem (unittest.TestCase):

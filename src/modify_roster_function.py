@@ -255,8 +255,7 @@ def modify_schedule():
             # If yes, clear the current data in csv file
             elif redo_or_not == "Yes":
 
-                # can create a function?? ---> NEED TO FIX
-                # clear data in the csv file so users can rewrite from the scratch
+                # Clear data in the csv file so users can rewrite from the scratch
                 with open('ua_record.csv', 'w') as f:
                     writer = csv.writer(f)
                     writer.writerows([" "])

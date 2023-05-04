@@ -4,7 +4,7 @@ from common_functions import *
 # Define the Item class that represents an item object
 class Item:
     
-    # initialize an Item object from input parameters
+    # Initialize an Item object from input parameters
     def __init__(self, day, shift, action):
         self.day = day
         self.shift = shift
