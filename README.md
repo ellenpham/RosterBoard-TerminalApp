@@ -233,11 +233,6 @@ This code section includes getting users' input for their name and their departm
     </tbody>
 </table>
 
-**Checklist Tasks in action**
-
-![Name_input](./docs/name_input.png)
-![Department_input](./docs/department.png)
-
 <br>
 
 **Day 1**: Create project management plan, design control flow diagram, create mocking output, create welcome banner, introduction and instructions, research on `datetime` module, start on functions to get users' information.
@@ -298,12 +293,6 @@ This section allows users to choose their available days during the following we
     </tbody>
 </table>
 
-**Checklist Tasks in action**
-
-![Available_day_input](./docs/available_day_input.png)
-![Check_3availabledays](./docs/check_3availabledays.png)
-![Check_roster_existed](./docs/check_roster_existed.png)
-
 <br>
 
 **Day 2**: Complete functions for getting users' information, start working on `create_roster` function, research on OOP, research on file handling and `csv` module, research on `RegEx`.
@@ -361,13 +350,6 @@ This section allows users to choose their unavailable days for the week after th
 
 <br>
 
-**Checklist Tasks in action**
-
-![Unavailable_day_input](./docs/unavailable_day_input.png)
-![Check_unavailability_existed](./docs/check_unavailability_existed.png)
-
-<br>
-
 **Day 3**: Complete `create_roster` function and start reporting on Readme file, start working on `add_unavailability` function. 
 
 ![Trello_Day3_1](./docs/Trello_Day3_1.png)
@@ -415,10 +397,6 @@ This section allows users to view their work schedule which has been recorded fr
         </tr>
     </tbody>
 </table>
-
-**Checklist Tasks in action**
-
-![View_schedule](./docs/view_schedule_confirm.png)
 
 <br>
 
@@ -490,13 +468,6 @@ This section allows user to modify their current roster or modify their current 
 
 <br>
 
-**Checklist Tasks in action**
-
-![View_schedule](./docs/select_day_to_modify.png)
-![View_schedule](./docs/select_day_to_remove.png)
-![View_schedule](./docs/select_day_to_add.png)
-![View_schedule](./docs/change_unavailability.png)
-
 **Day 5**: Working on Modify Roster Function, do more research on OOP and planning on optimizing the code. 
 
 ![Trello_Day5_1](./docs/Trello_Day5_1.png)
@@ -504,7 +475,7 @@ This section allows user to modify their current roster or modify their current 
 
 <br>
 
-**Day 6 and Day 7**: Review source code and optimize by applying OOP, redo some pieces of code that execute the same tasks, so that it can be reused when needed. Also, data manipulation is more achievable by applying OOP. 
+**Day 6 and Day 7**: Review source code and optimize by applying OOP, redo some pieces of code that execute the same tasks, so that it can be reused when needed. Also, data manipulation is more achievable by applying OOP. Write Bash script and help documentation
 
 ![Trello_Day67_1](./docs/Trello_Day67_1.png)
 ![Trello_Day67_2](./docs/Trello_Day67_2.png)
@@ -513,24 +484,125 @@ This section allows user to modify their current roster or modify their current 
 
 **Day 8**: More research on `pytest` and develop test cases using unit test. Also, do manual tests on main features for error detection. 
 
-![Trello_Day8_1](./docs/Trello_Day8_1.png)
+![Trello_Day8](./docs/Trello_Day8.png)
 
 <br>
 
-**Day 9**: Write Bash script and help documentation
+**Day 9 and 10**: Completed testing and finish off Readme file. Created slide deck and prepare presentation 
 
-![Trello_Day9_1](./docs/Trello_Day9_1.png)
+![Trello_Day9&10_1](./docs/Trello_Day9&10.png)
 
 <br>
 
-**Day 10**: Create slide deck and prepare presentation 
+**Day 11**: Completed slide deck and presentation. Review project management plan and tick off tasks.
 
 ![Trello_Day10_1](./docs/Trello_Day10_1.png)
 
 <br>
 
-# Test cases
+# Testing plan
 
+## Manual testing
 
+### Test case 1
+`input_name()` function and `department_choice()` function: valid input contains letters only and function return a valid full name in the greeter.
 
+![Name_input](./docs/name_input.png)
+![Department_input](./docs/department.png)
 
+### Test case 2
+
+- Valid input for `available_day` variable number from 1 to 7 inclusively. 
+- Letter "Q" is also valid input for when users finish selecting.
+- Input for two same days is not allowed. A reminder pops up if a day is already chosen
+- If there are less than three days in the chosen list of days, a reminder pops up and uses are prompted to add more days. 
+- If roster has already been created, users can only modify by using Prompt 4 in Home Menu.
+
+![Available_day_input](./docs/available_day_input.png)
+![Check_3availabledays](./docs/check_3availabledays.png)
+![Check_roster_existed](./docs/check_roster_existed.png)
+
+### Test case 3
+
+- Input for two same unavailable days are not allowed, but multiple shifts selection is allowed. 
+- Similarly, if unavailability has already been created, users can only modify by using Prompt 4 in Home Menu.
+
+![Unavailable_day_input](./docs/unavailable_day_input.png)
+![Check_unavailability_existed](./docs/check_unavailability_existed.png)
+
+### Test case 4
+
+- Final work schedule is displayed in table format as expected.
+- Invalid input message pops up if users do not enter "Yes" or "No" to answer a yes-no prompt.
+
+![View_schedule](./docs/view_schedule_confirm.png)
+
+### Test case 5
+
+- Data is up-to-date for displaying after each modification.
+- Invalid input message pops up when users selection is not listed numbers.
+- Reminder pops up again when rostered days are less than three after removing.
+- If users choose to keep unavailabilituy record, final work schedule is displayed with confirmation request. 
+
+![View_schedule](./docs/select_day_to_modify.png)
+![View_schedule](./docs/select_day_to_remove.png)
+![View_schedule](./docs/select_day_to_add.png)
+![View_schedule](./docs/change_unavailability.png)
+
+<br>
+
+## Unit testing
+
+Unit tests were carried to check if methods works are expected.
+
+1. The below code is to test 
+
+```
+class TestItem (unittest.TestCase):
+    def test_from_string(self):
+        input = ["Fri 05/05/2023", "AM", "Added"]
+        item = Item.from_str(input)
+        self.assertEqual(str(item), "2023-05-05, AM, Added")  
+```
+
+2. The below code is to test if the `load_from_file()` method would load the correct number of item in the csv test file to the roster list as expected. 
+
+![Test file](./docs/test_csv.png)
+
+```
+class TestRoster(unittest.TestCase):
+    def test_load_from_file(self):
+        roster = Roster()
+        roster.load_from_file(file_name='test_schedule_record.csv')
+        self.assertEqual(len(roster.roster), 3)        
+```
+
+3. The below code is to test if the `check_valid_shift()` method would take test input as True. 
+
+```
+class TestValidShift(unittest.TestCase):
+    def test_check_valid_shift(self):
+        test_shift_1 = "AM"
+        test_shift_2 = "PM"
+        test_shift_3 = "Night"
+        self.assertTrue(check_valid_shift(test_shift_1))
+        self.assertTrue(check_valid_shift(test_shift_2))
+        self.assertTrue(check_valid_shift(test_shift_3))
+```
+
+4. The below code is to test if the `check_valid_shift()` method would take test input as False. 
+
+```
+class TestInvalidShift(unittest.TestCase):
+    def test_check_valid_shift(self):
+        test_shift_1 = "am"
+        test_shift_2 = "!#$"
+        test_shift_3 = "123"
+        self.assertFalse(check_valid_shift(test_shift_1))
+        self.assertFalse(check_valid_shift(test_shift_2))
+        self.assertFalse(check_valid_shift(test_shift_3))
+```
+
+Test result is returned as expected:
+
+![Test results](./docs/test_result.png)

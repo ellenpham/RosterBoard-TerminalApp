@@ -3,7 +3,6 @@ import unittest
 
 from Item import Item
 from Roster import Roster
-from main import input_name, department_choice
 from common_functions import check_valid_shift
 
 # Test valid shift input
