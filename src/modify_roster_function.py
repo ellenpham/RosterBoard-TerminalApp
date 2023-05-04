@@ -62,10 +62,8 @@ def modify_schedule():
                             with open('schedule_record.csv', 'w') as f:
                                 writer = csv.writer(f)
                                 writer.writerows([" "])
-                                f.close()
                             with open('schedule_record.csv', 'w') as f:
                                 f.write("Rostered days, Shift, Action\n")
-                                f.close()
                             print("-" * 110)
                             print("You have no roster for the following week.")
                             print("Please review and confirm your up-to-date work schedule")
@@ -249,7 +247,6 @@ def modify_schedule():
                 print('\n')
                 print(stylize("There is no change made to your unavailability record.", notice_color()))
                 print("-" * 130)
-                view_schedule()
                 break
 
             # If yes, clear the current data in csv file
@@ -296,6 +293,15 @@ def modify_schedule():
         
         # Hit Q to back to Home Menu
         elif modify_selection == "Q":
+            # Check again if the roster is less than 3 days
+            reader = csv.reader(open("schedule_record.csv"))
+            line_count = len(list(reader))
+            if line_count <= 3:
+                with open('schedule_record.csv', 'w') as f:
+                    writer = csv.writer(f)
+                    writer.writerows([" "])
+                with open('schedule_record.csv', 'w') as f:
+                    f.write("Rostered days, Shift, Action\n")
             print("\n")
             print(stylize("You have completed the modification!", notice_color()))
             print(stylize("Please Enter 3 in the Home Menu to review and confirm your up-to-date work schedule.", notice_color()))

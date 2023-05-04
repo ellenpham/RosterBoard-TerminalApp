@@ -541,12 +541,12 @@ This section allows user to modify their current roster or modify their current 
 - Data is up-to-date for displaying after each modification.
 - Invalid input message pops up when users selection is not listed numbers.
 - Reminder pops up again when rostered days are less than three after removing.
-- If users choose to keep unavailabilituy record, final work schedule is displayed with confirmation request. 
+- If users choose to keep unavailabilituy record, a message is displayed and let the users know there is no change made to their unavailability record.
 
-![View_schedule](./docs/select_day_to_modify.png)
-![View_schedule](./docs/select_day_to_remove.png)
-![View_schedule](./docs/select_day_to_add.png)
-![View_schedule](./docs/change_unavailability.png)
+![Modify](./docs/select_day_to_modify.png)
+![Remove](./docs/select_day_to_remove.png)
+![Add](./docs/select_day_to_add.png)
+![Change_unavailability](./docs/change_unavailability.png)
 
 <br>
 
